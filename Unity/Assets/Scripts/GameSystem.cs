@@ -4,12 +4,15 @@ using System.Collections;
 public class GameSystem : MonoBehaviour {
 
 
-	public enum GameState {CharacterSelect, MainGame};
+	public enum GameState {CharacterSelect, ShowObjective, MainGame};
 	public GameState state;
 
 	public GameObject playerPrefab;
 
+	private int numPlayersJoined = 0;
+
 	private GameObject[] _players;
+
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +34,10 @@ public class GameSystem : MonoBehaviour {
 				CharacterSelect();
 				break;
 
+			case GameState.ShowObjective:
+				ShowObjective();
+				break;
+
 			case GameState.MainGame:
 				break;
 		}
@@ -41,7 +48,10 @@ public class GameSystem : MonoBehaviour {
 		//select number of players
 		float unit = Screen.width/20;
 
-		GUI.Box(new Rect(Screen.width/2-unit*5, Screen.height/2-unit*5, unit*10, unit *10), "NUMBER OF PLAYERS");
+		GUI.Box(new Rect(Screen.width/2-unit*5, Screen.height/2-unit*5, unit*10, unit *10), "WHO'S PLAYING?");
+
+		//each player can say they're playing, increasing numPlayersJoined by 1, then set num players
+
 		if(GUI.Button(new Rect(Screen.width/2-unit*4, Screen.height/2-unit*5+unit*1, 2*unit, unit), "2"))
 		{
 			PlayerPrefs.SetInt("NumPlayers", 2);
@@ -59,19 +69,38 @@ public class GameSystem : MonoBehaviour {
 
 		if(GUI.Button(new Rect(Screen.width/2-unit*3, Screen.height/2, 6*unit, 2*unit), "START GAME"))
 		{
-			state = GameState.MainGame;
-			InitialisePlayers();
+			StartCoroutine(ShowObjectiveThenStartGame());
 		}
+	}
+
+	IEnumerator ShowObjectiveThenStartGame()
+	{
+		state = GameState.ShowObjective;
+
+		yield return new WaitForSeconds(3.0f);
+
+		state = GameState.MainGame;
+		InitialisePlayers();
+	}
+
+	void ShowObjective()
+	{
+		float unit = Screen.width/20;
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2, unit*10, unit*3), "SCORE 5 POINTS AND YOU ARE GOOD");
 	}
 
 	void InitialisePlayers()
 	{
 		//based on number of players set, create players
 		//always have player 1
+		//turn off initial camera
+		GameObject.Find("Main Camera").GetComponent<Camera>().enabled = false;
+
 		int numPlayers = PlayerPrefs.GetInt("NumPlayers");
 		_players = new GameObject[numPlayers];
 
 		_players[0] = GameObject.Find("Player1");
+		_players[0].GetComponentInChildren<Camera>().enabled = true;
 		_players[0].GetComponent<Player>().playerNumber = 1;
 
 
