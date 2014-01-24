@@ -36,7 +36,7 @@ public class Moveable : MonoBehaviour
 
         if (_timeSinceGrounded > 0.1f)
             yield break;
-        rigidbody.velocity += jumpSpeed * Vector3.up;
+        rigidbody.velocity += (jumpSpeed - rigidbody.velocity.y) * Vector3.up;
     }
 
     protected void Update()
@@ -44,8 +44,6 @@ public class Moveable : MonoBehaviour
         Vector3 velocityChange = _desiredSpeed.x * transform.right - _desiredSpeed.y * transform.forward - rigidbody.velocity;
         velocityChange.y = 0;
         rigidbody.velocity += velocityChange * acceleration * Time.deltaTime;
-
-        print(rigidbody.velocity);
 
 
         rigidbody.velocity += Vector3.up*gravity*Time.deltaTime;
