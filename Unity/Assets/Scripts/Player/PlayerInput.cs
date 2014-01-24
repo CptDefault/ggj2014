@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
     public float horizontalLookSensitivity = 200;
 
     private int pNo {
-        get { return _player.playerNumber; }
+        get { return _player.playerNumber;}
     }
 
     protected void Awake()
@@ -19,6 +19,8 @@ public class PlayerInput : MonoBehaviour
         _moveable = GetComponent<Moveable>();
         _weapon = GetComponent<Weapon>();
         _player = GetComponent<Player>();
+
+        //pNo = PlayerPrefs.GetInt("NumPlayers")-_player.playerNumber;
     }
 
     protected void Update()
