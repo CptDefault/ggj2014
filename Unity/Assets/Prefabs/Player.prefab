@@ -180,7 +180,17 @@ MonoBehaviour:
   minElevation: -70
   maxElevation: 70
   elevationSpeed: 180
-  muzzleFlash: {fileID: 100026, guid: c977a0752819b134a829502c1d8f2bf3, type: 2}
+  muzzleFlash: {fileID: 100000, guid: d48a4116116c5ca449a7948253d60e3f, type: 2}
+  gunRange: 20
+  gunCone: 20
+  cone:
+  - distance: 0
+    diameter: 0
+  - distance: 10
+    diameter: 2
+  - distance: 100
+    diameter: 2
+  reloadTime: 2
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

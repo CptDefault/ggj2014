@@ -11,7 +11,7 @@ public class GameSystem : MonoBehaviour {
 
 	private int numPlayersJoined = 0;
 
-	private GameObject[] _players;
+	public GameObject[] players;
 
 
 	// Use this for initialization
@@ -99,15 +99,15 @@ public class GameSystem : MonoBehaviour {
 
 		int numPlayers = PlayerPrefs.GetInt("NumPlayers");
 		print(numPlayers);
-		_players = new GameObject[numPlayers];
+		players = new GameObject[numPlayers];
 
 		for(int i=0; i<numPlayers; i++)
 		{
-			_players[i] = (GameObject)Instantiate(playerPrefab, new Vector3(5*i,5,0), Quaternion.identity);
-		    var player = _players[i].GetComponent<Player>();
+			players[i] = (GameObject)Instantiate(playerPrefab, new Vector3(5*i,5,0), Quaternion.identity);
+		    var player = players[i].GetComponent<Player>();
 		    player.playerNumber = i+1;
 		    player.Respawn();
-			_players[i].name = "Player"+(i+1);
+			players[i].name = "Player"+(i+1);
 		}
 
 		SetUpPlayerViewports(numPlayers);
@@ -118,21 +118,21 @@ public class GameSystem : MonoBehaviour {
 		switch(numPlayers)
 		{
 			case 2:
-				_players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
-				_players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0,1,1);
+				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
+				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0,1,1);
 				break;
 
 			case 3:
-				_players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
-				_players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
-				_players[2].GetComponentInChildren<Camera>().rect = new Rect(0f,-0.5f,1,1);
+				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
+				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
+				players[2].GetComponentInChildren<Camera>().rect = new Rect(0f,-0.5f,1,1);
 				break;
 
 			case 4:
-				_players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
-				_players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
-				_players[2].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,-0.5f,1,1);
-				_players[3].GetComponentInChildren<Camera>().rect = new Rect(0.5f,-0.5f,1,1);
+				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
+				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
+				players[2].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,-0.5f,1,1);
+				players[3].GetComponentInChildren<Camera>().rect = new Rect(0.5f,-0.5f,1,1);
 				break;
 
 		}

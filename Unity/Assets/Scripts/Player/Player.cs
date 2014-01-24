@@ -23,4 +23,9 @@ public class Player : MonoBehaviour {
 
         transform.position = Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
     }
+
+    public void GotHit()
+    {
+        Respawn();
+    }
 }
