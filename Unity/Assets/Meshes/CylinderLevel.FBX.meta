@@ -1,0 +1,125 @@
+fileFormatVersion: 2
+guid: 2ade54ff330939646babd0c26b566c63
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: EscapeStaircase01
+    100004: EscapeStaircasePt03
+    100006: EscapeStaircasePt04
+    100008: EscapeStaircasePt2
+    100010: Floor2
+    100012: Floor3
+    100014: Floor4
+    100016: InnerCylinder
+    100018: OuterWalls
+    100020: Staircase01-02
+    100022: Staircase02-03
+    100024: Staircase03-04
+    100026: Staircase04FinalPiece
+    400000: //RootNode
+    400002: EscapeStaircase01
+    400004: EscapeStaircasePt03
+    400006: EscapeStaircasePt04
+    400008: EscapeStaircasePt2
+    400010: Floor2
+    400012: Floor3
+    400014: Floor4
+    400016: InnerCylinder
+    400018: OuterWalls
+    400020: Staircase01-02
+    400022: Staircase02-03
+    400024: Staircase03-04
+    400026: Staircase04FinalPiece
+    2300000: EscapeStaircase01
+    2300002: EscapeStaircasePt03
+    2300004: EscapeStaircasePt04
+    2300006: EscapeStaircasePt2
+    2300008: Floor2
+    2300010: Floor3
+    2300012: Floor4
+    2300014: InnerCylinder
+    2300016: OuterWalls
+    2300018: Staircase01-02
+    2300020: Staircase02-03
+    2300022: Staircase03-04
+    2300024: Staircase04FinalPiece
+    3300000: EscapeStaircase01
+    3300002: EscapeStaircasePt03
+    3300004: EscapeStaircasePt04
+    3300006: EscapeStaircasePt2
+    3300008: Floor2
+    3300010: Floor3
+    3300012: Floor4
+    3300014: InnerCylinder
+    3300016: OuterWalls
+    3300018: Staircase01-02
+    3300020: Staircase02-03
+    3300022: Staircase03-04
+    3300024: Staircase04FinalPiece
+    4300000: InnerCylinder
+    4300002: OuterWalls
+    4300004: Floor2
+    4300006: Floor3
+    4300008: Floor4
+    4300010: Staircase01-02
+    4300012: Staircase02-03
+    4300014: Staircase03-04
+    4300016: Staircase04FinalPiece
+    4300018: EscapeStaircase01
+    4300020: EscapeStaircasePt2
+    4300022: EscapeStaircasePt03
+    4300024: EscapeStaircasePt04
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  userData: 

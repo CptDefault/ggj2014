@@ -12,6 +12,7 @@ public class Moveable : MonoBehaviour
 
     private Vector2 _desiredSpeed;
     private float _rotation;
+    private float _timeSinceGrounded;
 
     public void SetDesiredInput(Vector2 input)
     {
@@ -25,6 +26,17 @@ public class Moveable : MonoBehaviour
 
     public void Jump()
     {
+        StartCoroutine(JumpCoroutine());
+    }
+
+    private IEnumerator JumpCoroutine()
+    {
+        for (float t = 0; t < 0.2f && _timeSinceGrounded > 0.1f; t += Time.deltaTime)
+            yield return null;
+
+        if (_timeSinceGrounded > 0.1f)
+            yield break;
+        rigidbody.velocity += (jumpSpeed - rigidbody.velocity.y) * Vector3.up;
     }
 
     protected void Update()
@@ -33,9 +45,24 @@ public class Moveable : MonoBehaviour
         velocityChange.y = 0;
         rigidbody.velocity += velocityChange * acceleration * Time.deltaTime;
 
-        print(rigidbody.velocity);
-
 
         rigidbody.velocity += Vector3.up*gravity*Time.deltaTime;
+
+        _timeSinceGrounded += Time.deltaTime;
+    }
+
+    protected void OnCollisionStay(Collision col)
+    {
+        bool above = false;
+        
+        foreach (var point in col.contacts)
+        {
+            if (point.normal.y > 0.2f && point.point.y < collider.bounds.center.y)
+            {
+                above = true;
+            }
+        }
+        if (above)// && rigidbody.velocity.y <= 0.01f)
+            _timeSinceGrounded = 0;
     }
 }

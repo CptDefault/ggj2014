@@ -5,18 +5,22 @@ public class PlayerInput : MonoBehaviour
 {
     private Moveable _moveable;
     private Weapon _weapon;
+    private Player _player;
 
     public float vertLookSensitivity = 90;
     public float horizontalLookSensitivity = 200;
 
     private int pNo {
-        get { return 1; }
+        get { return _player.playerNumber;}
     }
 
     protected void Awake()
     {
         _moveable = GetComponent<Moveable>();
         _weapon = GetComponent<Weapon>();
+        _player = GetComponent<Player>();
+
+        //pNo = PlayerPrefs.GetInt("NumPlayers")-_player.playerNumber;
     }
 
     protected void Update()
@@ -27,5 +31,11 @@ public class PlayerInput : MonoBehaviour
 
         _weapon.ElevationInput(vInput * Mathf.Abs(vInput) * vertLookSensitivity * Time.deltaTime);
         _moveable.LookRelative(hInput * horizontalLookSensitivity * Time.deltaTime);
+
+        if(Input.GetButtonDown("A_"+pNo))
+            _moveable.Jump();
+
+        if(Input.GetAxis("Triggers_"+pNo) < -0.3f)
+            _weapon.Shoot();
     }
 }
