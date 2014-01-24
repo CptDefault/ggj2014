@@ -33,7 +33,7 @@ public class Moveable : MonoBehaviour
         velocityChange.y = 0;
         rigidbody.velocity += velocityChange * acceleration * Time.deltaTime;
 
-        print(rigidbody.velocity);
+       // print(rigidbody.velocity);
 
 
         rigidbody.velocity += Vector3.up*gravity*Time.deltaTime;
