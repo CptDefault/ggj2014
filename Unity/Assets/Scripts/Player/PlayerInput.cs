@@ -27,5 +27,8 @@ public class PlayerInput : MonoBehaviour
 
         _weapon.ElevationInput(vInput * Mathf.Abs(vInput) * vertLookSensitivity * Time.deltaTime);
         _moveable.LookRelative(hInput * horizontalLookSensitivity * Time.deltaTime);
+
+        if(Input.GetButtonDown("A_"+pNo))
+            _moveable.Jump();
     }
 }
