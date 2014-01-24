@@ -11,7 +11,10 @@ public class GameSystem : MonoBehaviour {
 
 	public GameObject playerPrefab;
 	private int numPlayersJoined = 0;
-	private GameObject[] _players;
+	public GameObject[] players;
+	public Player[] playerScripts;
+
+	public GUISkin scoreSkin;
 
 	//spawn points
 	private List<GameObject> _spawnPoints;
@@ -48,6 +51,14 @@ public class GameSystem : MonoBehaviour {
 		}
 
 		_lobby = new LobbyCharacter[4];
+
+		//state = GameState.ShowObjective;
+
+		//scale font
+		scoreSkin.GetStyle("Player1").fontSize = (int)(Screen.height/20f);
+		scoreSkin.GetStyle("Player2").fontSize = (int)(Screen.height/20f);
+		scoreSkin.GetStyle("Player3").fontSize = (int)(Screen.height/20f);
+		scoreSkin.GetStyle("Player4").fontSize = (int)(Screen.height/20f);
 	}
 	
 	// Update is called once per frame
@@ -80,10 +91,11 @@ public class GameSystem : MonoBehaviour {
 				break;
 
 			case GameState.ShowObjective:
-				ShowObjective();
+				ShowObjectiveGUI();
 				break;
 
 			case GameState.MainGame:
+				MainGameGUI();
 				break;
 		}
 	}
@@ -158,7 +170,7 @@ public class GameSystem : MonoBehaviour {
 
 		for(int i=0; i<5; i++)
 		{
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(0.05f);
 			_gameCountDown--;
 		}
 		
@@ -167,13 +179,17 @@ public class GameSystem : MonoBehaviour {
 		InitialisePlayers();
 	}
 
-	void ShowObjective()
+	void ShowObjectiveGUI()
 	{
 		float unit = Screen.width/20;
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3, unit*10, unit*6), "SCORE 5 POINTS TO WIN");
+		//background
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3, unit*10, unit*6), "");
 
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*2, unit*10, unit), "STARTING GAME IN");
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), ""+_gameCountDown);
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "OBJECTIVE");
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN");
+
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN");
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*4, unit*10, unit), ""+_gameCountDown);
 	}
 
 	void InitialisePlayers()
@@ -186,7 +202,8 @@ public class GameSystem : MonoBehaviour {
 
 		int numPlayers = numPlayersJoined;
 		print(numPlayers);
-		_players = new GameObject[numPlayers];
+		players = new GameObject[numPlayers];
+		playerScripts = new Player[numPlayers];
 
 		int currentPlayer = 0;
 		for(int i=0; i<4; i++)
@@ -204,9 +221,10 @@ public class GameSystem : MonoBehaviour {
 				print("used" + usedCount);
 			} while(usedCount > 0);
 
-			_players[currentPlayer] = (GameObject)Instantiate(playerPrefab, sp.transform.position, Quaternion.identity);
-			_players[currentPlayer].GetComponent<Player>().playerNumber = i+1;
-			_players[currentPlayer].name = "Player"+(i+1);
+			players[currentPlayer] = (GameObject)Instantiate(playerPrefab, sp.transform.position, Quaternion.identity);
+			players[currentPlayer].GetComponent<Player>().playerNumber = i+1;
+			players[currentPlayer].name = "Player"+(i+1);
+			playerScripts[currentPlayer] = players[currentPlayer].GetComponent<Player>();
 
 			currentPlayer++;
 		}
@@ -219,23 +237,73 @@ public class GameSystem : MonoBehaviour {
 		switch(numPlayers)
 		{
 			case 2:
-				_players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
-				_players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0,1,1);
+				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
+				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0,1,1);
+
+				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
+				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/2, 10,10);
 				break;
 
 			case 3:
-				_players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
-				_players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
-				_players[2].GetComponentInChildren<Camera>().rect = new Rect(0f,-0.5f,1,1);
+				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
+				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
+				players[2].GetComponentInChildren<Camera>().rect = new Rect(0f,-0.5f,1,1);
+
+				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
+				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
+				playerScripts[2].crosshairRect = new Rect(Screen.width*0.5f, Screen.height*0.75f, 10,10);
 				break;
 
 			case 4:
-				_players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
-				_players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
-				_players[2].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,-0.5f,1,1);
-				_players[3].GetComponentInChildren<Camera>().rect = new Rect(0.5f,-0.5f,1,1);
+				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
+				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
+				players[2].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,-0.5f,1,1);
+				players[3].GetComponentInChildren<Camera>().rect = new Rect(0.5f,-0.5f,1,1);
+
+				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
+				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
+				playerScripts[2].crosshairRect = new Rect(Screen.width/4, Screen.height*0.75f, 10,10);
+				playerScripts[3].crosshairRect = new Rect(Screen.width*0.75f, Screen.height*0.75f, 10,10);
 				break;
 
+		}
+	}
+
+	void MainGameGUI()
+	{
+		float unit = Screen.width/20;
+		switch(numPlayersJoined)
+		{
+			case 2:
+				GUI.Box(new Rect(Screen.width/2-unit, 0, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player1"));
+				GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player2"));
+
+				//crosshairs
+				
+
+				break;
+
+			case 3:
+				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player1"));
+				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player2"));
+				GUI.Box(new Rect(Screen.width/2-unit*0.5f, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player3"));
+
+				break;
+
+
+			case 4:
+				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player1"));
+				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player2"));
+				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player3"));
+				GUI.Box(new Rect(Screen.width/2, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[3].score, scoreSkin.GetStyle("Player4"));
+				break;
+
+		}
+
+		//draw crosshairs
+		for(int i=0;i<numPlayersJoined;i++)
+		{
+			GUI.Box(playerScripts[i].crosshairRect, "");
 		}
 	}
 

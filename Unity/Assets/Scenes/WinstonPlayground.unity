@@ -534,11 +534,11 @@ Transform:
   m_LocalPosition: {x: 1.6016736, y: -.155395985, z: -2.85171366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 449838995}
-  - {fileID: 1729874476}
-  - {fileID: 545685587}
-  - {fileID: 553755022}
   - {fileID: 1171271755}
+  - {fileID: 1729874476}
+  - {fileID: 449838995}
+  - {fileID: 553755022}
+  - {fileID: 545685587}
   m_Father: {fileID: 0}
 --- !u!1001 &1122051507
 Prefab:
@@ -1271,3 +1271,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   playerPrefab: {fileID: 100000, guid: 8f026ff8f518c6541bb84837df297386, type: 2}
+  players: []
+  playerScripts: []
+  scoreSkin: {fileID: 11400000, guid: 18176c75720e0a148811a62417fde022, type: 2}
