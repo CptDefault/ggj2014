@@ -25,6 +25,19 @@ public class GameSystem : MonoBehaviour {
 
 	void OnGUI() 
 	{
+		switch(state)
+		{
+			case GameState.CharacterSelect:
+				CharacterSelect();
+				break;
+
+			case GameState.MainGame:
+				break;
+		}
+	}
+
+	void CharacterSelect()
+	{
 		//select number of players
 		float unit = Screen.width/20;
 
@@ -59,28 +72,42 @@ public class GameSystem : MonoBehaviour {
 		_players = new GameObject[numPlayers];
 
 		_players[0] = GameObject.Find("Player1");
+		_players[0].GetComponent<Player>().playerNumber = 1;
 
 
 		switch(numPlayers)
 		{
-
-
 			case 2:
 			_players[1] = (GameObject)Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
+			_players[1].GetComponent<Player>().playerNumber = 2;
+			_players[1].name = "Player2";
 			break;
 
 			case 3:
 			_players[1] = (GameObject)Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
+			_players[1].GetComponent<Player>().playerNumber = 2;
+			_players[1].name = "Player2";
+
 			_players[2] = (GameObject)Instantiate(playerPrefab, new Vector3(0,1,0), Quaternion.identity);
+			_players[2].GetComponent<Player>().playerNumber = 3;
+			_players[2].name = "Player3";
+
+
 			break;
 
 			case 4:
 			_players[1] = (GameObject)Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
+			_players[1].GetComponent<Player>().playerNumber = 2;
+			_players[1].name = "Player2";
+
 			_players[2] = (GameObject)Instantiate(playerPrefab, new Vector3(0,1,0), Quaternion.identity);
+			_players[2].GetComponent<Player>().playerNumber = 3;
+			_players[2].name = "Player3";
+
 			_players[3] = (GameObject)Instantiate(playerPrefab, new Vector3(0,2,0), Quaternion.identity);
+			_players[3].GetComponent<Player>().playerNumber = 4;
+			_players[3].name = "Player4";
 			break;
-
-
 		}
 
 		SetUpPlayerViewports(numPlayers);
