@@ -51,7 +51,23 @@ public class GameSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetButtonDown("A_1"))
+		{
+			print("joined");
+		}
+
+		switch(state)
+		{
+			case GameState.JoinGame:
+				JoinGame();
+				break;
+
+			case GameState.ShowObjective:
+				break;
+
+			case GameState.MainGame:
+				break;
+		}
 	}
 
 	void OnGUI() 
@@ -59,7 +75,7 @@ public class GameSystem : MonoBehaviour {
 		switch(state)
 		{
 			case GameState.JoinGame:
-				JoinGame();
+				JoinGameGUI();
 				break;
 
 			case GameState.ShowObjective:
@@ -71,9 +87,30 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
-
-
 	void JoinGame()
+	{
+		for(int i=0; i<4; i++)
+		{
+			LobbyCharacter thisChar = _lobby[i];
+			if(!thisChar.joined && Input.GetButtonDown("A_"+(i+1)))
+			{
+				_lobby[i].joined = true;
+				numPlayersJoined++;
+			}
+		}
+
+		if(numPlayersJoined>1)
+		{
+			if(Input.GetButtonDown("Start_1"))
+			{
+				StartCoroutine(ShowObjectiveThenStartGame());
+				state = GameState.ShowObjective;
+			}
+		}
+	}
+
+
+	void JoinGameGUI()
 	{
 		//select number of players
 		float unit = Screen.width/20;
@@ -99,23 +136,17 @@ public class GameSystem : MonoBehaviour {
 
 			GUI.Box(new Rect(startingX+i*unit*3.5f, Screen.height*0.64f, unit*3, Screen.height*0.15f), joinedText);
 
-			if(Input.GetButtonDown("A_"+(i+1)))
-			{
-				_lobby[i].joined = true;
-				print("joined" + (i+1));
-			}
 		}
 
-		GUI.Box(new Rect(Screen.width/2-unit*2.5f, Screen.height*0.82f, unit*5, Screen.height*0.1f), "WAITING");
+		string startText;
+		if(numPlayersJoined>1)
+			startText = "PRESS START";
+		else
+			startText = "WAITING FOR PLAYERS TO JOIN";
+
+		GUI.Box(new Rect(Screen.width/2-unit*2.5f, Screen.height*0.82f, unit*5, Screen.height*0.1f), startText);
 
 		//each player can say they're playing, increasing numPlayersJoined by 1, then set num players
-		//read input
-
-		if(Input.GetButtonDown("A_1"))
-		{
-			print("joined");
-		}
-
 	}
 
 	IEnumerator ShowObjectiveThenStartGame()
@@ -150,7 +181,7 @@ public class GameSystem : MonoBehaviour {
 		//turn off initial camera
 		GameObject.Find("Main Camera").GetComponent<Camera>().enabled = false;
 
-		int numPlayers = PlayerPrefs.GetInt("NumPlayers");
+		int numPlayers = numPlayersJoined;
 		print(numPlayers);
 		_players = new GameObject[numPlayers];
 
