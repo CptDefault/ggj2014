@@ -5,18 +5,20 @@ public class PlayerInput : MonoBehaviour
 {
     private Moveable _moveable;
     private Weapon _weapon;
+    private Player _player;
 
     public float vertLookSensitivity = 90;
     public float horizontalLookSensitivity = 200;
 
     private int pNo {
-        get { return 1; }
+        get { return _player.playerNumber; }
     }
 
     protected void Awake()
     {
         _moveable = GetComponent<Moveable>();
         _weapon = GetComponent<Weapon>();
+        _player = GetComponent<Player>();
     }
 
     protected void Update()
