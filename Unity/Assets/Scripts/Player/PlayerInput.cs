@@ -34,5 +34,8 @@ public class PlayerInput : MonoBehaviour
 
         if(Input.GetButtonDown("A_"+pNo))
             _moveable.Jump();
+
+        if(Input.GetAxis("Triggers_"+pNo) > 0.3f)
+            _weapon.Shoot();
     }
 }

@@ -14,6 +14,8 @@ public class Weapon : MonoBehaviour
     private float _elevation;
     private float _targetElevation;
 
+    public GameObject muzzleFlash;
+
     public void ElevationInput(float angle)
     {
         _elevation += Mathf.Clamp(angle, -elevationSpeed, elevationSpeed);
@@ -27,6 +29,7 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        
+        if(muzzleFlash != null)
+            Instantiate(muzzleFlash, weaponTransform.position, weaponTransform.rotation);
     }
 }
