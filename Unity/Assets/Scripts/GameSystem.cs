@@ -101,45 +101,11 @@ public class GameSystem : MonoBehaviour {
 		print(numPlayers);
 		_players = new GameObject[numPlayers];
 
-		_players[0] = GameObject.Find("Player");
-		_players[0].GetComponentInChildren<Camera>().enabled = true;
-		_players[0].GetComponent<Player>().playerNumber = 1;
-		_players[0].name = "Player1";
-
-
-		switch(numPlayers)
+		for(int i=0; i<numPlayers; i++)
 		{
-			case 2:
-			_players[1] = (GameObject)Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
-			_players[1].GetComponent<Player>().playerNumber = 2;
-			_players[1].name = "Player2";
-			break;
-
-			case 3:
-			_players[1] = (GameObject)Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
-			_players[1].GetComponent<Player>().playerNumber = 2;
-			_players[1].name = "Player2";
-
-			_players[2] = (GameObject)Instantiate(playerPrefab, new Vector3(0,1,0), Quaternion.identity);
-			_players[2].GetComponent<Player>().playerNumber = 3;
-			_players[2].name = "Player3";
-
-
-			break;
-
-			case 4:
-			_players[1] = (GameObject)Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity);
-			_players[1].GetComponent<Player>().playerNumber = 2;
-			_players[1].name = "Player2";
-
-			_players[2] = (GameObject)Instantiate(playerPrefab, new Vector3(0,1,0), Quaternion.identity);
-			_players[2].GetComponent<Player>().playerNumber = 3;
-			_players[2].name = "Player3";
-
-			_players[3] = (GameObject)Instantiate(playerPrefab, new Vector3(0,2,0), Quaternion.identity);
-			_players[3].GetComponent<Player>().playerNumber = 4;
-			_players[3].name = "Player4";
-			break;
+			_players[i] = (GameObject)Instantiate(playerPrefab, new Vector3(5*i,0,0), Quaternion.identity);
+			_players[i].GetComponent<Player>().playerNumber = i+1;
+			_players[i].name = "Player"+(i+1);
 		}
 
 		SetUpPlayerViewports(numPlayers);
