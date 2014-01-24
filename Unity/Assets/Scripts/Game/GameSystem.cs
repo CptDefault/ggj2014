@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameSystem : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class GameSystem : MonoBehaviour {
 	private GameObject[] _players;
 
 	//spawn points
-	private ArrayList _spawnPoints;
+	private List<GameObject> _spawnPoints;
 
 	//objective screen
 	private int _gameCountDown = 5;
@@ -39,7 +40,7 @@ public class GameSystem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		_spawnPoints = new ArrayList();
+		_spawnPoints = new List<GameObject>();
 		//get spawn points from scene
 		foreach(GameObject sp in GameObject.FindGameObjectsWithTag("SpawnPoint"))
 		{
@@ -97,16 +98,18 @@ public class GameSystem : MonoBehaviour {
 				_lobby[i].joined = true;
 				numPlayersJoined++;
 			}
-		}
 
-		if(numPlayersJoined>1)
-		{
-			if(Input.GetButtonDown("Start_1"))
+			if(numPlayersJoined>1)
 			{
-				StartCoroutine(ShowObjectiveThenStartGame());
-				state = GameState.ShowObjective;
+				if(Input.GetButtonDown("Start_"+(i+1)))
+				{
+					StartCoroutine(ShowObjectiveThenStartGame());
+					state = GameState.ShowObjective;
+				}
 			}
 		}
+
+
 	}
 
 
@@ -185,21 +188,27 @@ public class GameSystem : MonoBehaviour {
 		print(numPlayers);
 		_players = new GameObject[numPlayers];
 
-		for(int i=0; i<numPlayers; i++)
+		int currentPlayer = 0;
+		for(int i=0; i<4; i++)
 		{
+			if(!_lobby[i].joined)
+				continue;
+
 			//choose a spawn point
 			//find one that hasn't been used
 			int usedCount = 0;
 			GameObject sp = null;
 			do {
-				sp = (_spawnPoints[Random.Range(0,_spawnPoints.Count)] as GameObject);
+				sp = _spawnPoints[Random.Range(0,_spawnPoints.Count)];
 				usedCount = sp.GetComponent<SpawnPoint>().usedCount++;
 				print("used" + usedCount);
 			} while(usedCount > 0);
 
-			_players[i] = (GameObject)Instantiate(playerPrefab, sp.transform.position, Quaternion.identity);
-			_players[i].GetComponent<Player>().playerNumber = i+1;
-			_players[i].name = "Player"+(i+1);
+			_players[currentPlayer] = (GameObject)Instantiate(playerPrefab, sp.transform.position, Quaternion.identity);
+			_players[currentPlayer].GetComponent<Player>().playerNumber = i+1;
+			_players[currentPlayer].name = "Player"+(i+1);
+
+			currentPlayer++;
 		}
 
 		SetUpPlayerViewports(numPlayers);
