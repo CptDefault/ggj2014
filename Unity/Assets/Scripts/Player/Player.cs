@@ -32,9 +32,10 @@ public class Player : MonoBehaviour {
         transform.position = Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
     }
 
-    public void GotHit()
+    public void GotHit(MonoBehaviour shooter)
     {
         Respawn();
+        shooter.GetComponent<Player>().ScoreUp();
     }
 
     public void ScoreUp()

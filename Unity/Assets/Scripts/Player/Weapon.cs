@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     private float _targetElevation;
 
     public GameObject muzzleFlash;
+    public GameObject particles;
     private GameSystem _gameSystem;
 
     public float gunRange = 20;
@@ -60,8 +61,16 @@ public class Weapon : MonoBehaviour
         if (!_isLoaded)
             return;
 
-        if(muzzleFlash != null)
-            Instantiate(muzzleFlash, weaponTransform.position, weaponTransform.rotation);
+        if (muzzleFlash != null)
+        {
+            var flash = Instantiate(muzzleFlash, weaponTransform.position, weaponTransform.rotation);
+            Destroy(flash, 0.2f);
+        }
+        if (particles != null)
+        {
+            var part = Instantiate(particles, weaponTransform.position, weaponTransform.rotation);
+            Destroy(part, 1f);
+        }
 
         var hitPlayers = _gameSystem.players.Where(TestPlayerHit);
 
@@ -70,7 +79,7 @@ public class Weapon : MonoBehaviour
             if(hitPlayer == gameObject)
                 continue;
             
-            hitPlayer.SendMessage("GotHit");
+            hitPlayer.SendMessage("GotHit", this);
         }
 
         _isLoaded = false;
