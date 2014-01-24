@@ -180,6 +180,7 @@ MonoBehaviour:
   minElevation: -70
   maxElevation: 70
   elevationSpeed: 180
+  muzzleFlash: {fileID: 100026, guid: c977a0752819b134a829502c1d8f2bf3, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,11 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43866acd98608a348b399d4536634606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  acceleration: 5
+  speed: 10
+  acceleration: 10
   deceleration: 5
-  gravity: -10
-  jumpSpeed: 10
+  gravity: -15
+  jumpSpeed: 6
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

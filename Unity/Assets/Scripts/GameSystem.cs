@@ -103,8 +103,10 @@ public class GameSystem : MonoBehaviour {
 
 		for(int i=0; i<numPlayers; i++)
 		{
-			_players[i] = (GameObject)Instantiate(playerPrefab, new Vector3(5*i,0,0), Quaternion.identity);
-			_players[i].GetComponent<Player>().playerNumber = i+1;
+			_players[i] = (GameObject)Instantiate(playerPrefab, new Vector3(5*i,5,0), Quaternion.identity);
+		    var player = _players[i].GetComponent<Player>();
+		    player.playerNumber = i+1;
+		    player.Respawn();
 			_players[i].name = "Player"+(i+1);
 		}
 

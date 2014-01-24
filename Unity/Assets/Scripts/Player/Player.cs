@@ -17,4 +17,10 @@ public class Player : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void Respawn()
+    {
+
+        transform.position = Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
+    }
 }

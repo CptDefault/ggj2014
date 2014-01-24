@@ -57,12 +57,12 @@ public class Moveable : MonoBehaviour
         
         foreach (var point in col.contacts)
         {
-            if (point.normal.y > 0.5f && point.point.y < collider.bounds.center.y)
+            if (point.normal.y > 0.2f && point.point.y < collider.bounds.center.y)
             {
                 above = true;
             }
         }
-        if (above && rigidbody.velocity.y <= 0.01f)
+        if (above)// && rigidbody.velocity.y <= 0.01f)
             _timeSinceGrounded = 0;
     }
 }
