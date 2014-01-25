@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4892e7a8384b1d9449621ca58d533038
+guid: b6c3b276084dfe844a427f8f484c7cf6
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -7,7 +7,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: DisplayStand
+    4300000: Bears
     9500000: //RootNode
   materials:
     importMaterials: 1
