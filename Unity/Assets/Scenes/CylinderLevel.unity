@@ -2350,7 +2350,7 @@ MonoBehaviour:
   controllerIcons: {fileID: 11400000, guid: 5680ebbf0ed8ee2408acf0b3d3432d82, type: 2}
   joinGameSkin: {fileID: 11400000, guid: 8e8f4199a0f3cb44ead643889869eab2, type: 2}
   adjustingControls: 0
-  scoreToWin: 2
+  scoreToWin: 5
 --- !u!4 &423862378
 Transform:
   m_ObjectHideFlags: 0
