@@ -1,52 +1,20 @@
 fileFormatVersion: 2
-guid: 8b9dac6a8596b7441b309b1fd73a8584
+guid: ce191b25a80650040978536628c1cf3a
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: Alien
-    100002: Alien001
-    100004: Alien002
-    100006: Box001
-    100008: Box003
-    100010: Cylinder001
-    100012: Cylinder003
-    100014: Lander
-    100016: //RootNode
-    400000: Alien
-    400002: Alien001
-    400004: Alien002
-    400006: Box001
-    400008: Box003
-    400010: Cylinder001
-    400012: Cylinder003
-    400014: Lander
-    400016: //RootNode
-    2300000: Alien
-    2300002: Alien001
-    2300004: Alien002
-    2300006: Box001
-    2300008: Box003
-    2300010: Cylinder001
-    2300012: Cylinder003
-    2300014: Lander
-    2300016: //RootNode
-    3300000: Alien
-    3300002: Alien001
-    3300004: Alien002
-    3300006: Box001
-    3300008: Box003
-    3300010: Cylinder001
-    3300012: Cylinder003
-    3300014: Lander
-    3300016: //RootNode
-    4300000: Lander
-    4300002: Cylinder001
-    4300004: Box001
-    4300006: Cylinder003
-    4300008: Alien
-    4300010: Alien001
-    4300012: Alien002
-    4300014: Box003
+    100000: //RootNode
+    100002: Longboat
+    100004: Water
+    400000: //RootNode
+    400002: Longboat
+    400004: Water
+    2300000: Longboat
+    2300002: Water
+    3300000: Longboat
+    3300002: Water
+    4300000: Longboat
+    4300002: Water
     9500000: //RootNode
   materials:
     importMaterials: 1
