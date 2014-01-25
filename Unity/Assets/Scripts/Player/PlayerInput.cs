@@ -24,6 +24,11 @@ public class PlayerInput : MonoBehaviour
         _player = GetComponent<Player>();
 
         //pNo = PlayerPrefs.GetInt("NumPlayers")-_player.playerNumber;
+
+        //set up defaults set at the join screen
+        vertLookInvert = PlayerPrefs.GetInt("P"+_player.playerNumber+"Inverted");
+        print("set inerted " + pNo + " " + vertLookInvert);
+        sensitivityScale = 1;//PlayerPrefs.GetFloat("P"+_player.playerNumber+"sensitivityScale");
     }
 
     protected void Update()

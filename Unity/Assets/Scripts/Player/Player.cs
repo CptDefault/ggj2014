@@ -106,12 +106,15 @@ public class Player : MonoBehaviour {
 			if(Input.GetButtonDown("Y_"+playerNumber)) {
 			    GetComponent<PlayerInput>().vertLookInvert *= -1;
 			    Clicker.Instance.Click();
+			    PlayerPrefs.SetInt("P"+playerNumber+"Inverted",  GetComponent<PlayerInput>().vertLookInvert);
 			}
 
 			if(Input.GetAxis("DPad_XAxis_"+playerNumber) > 0 || Input.GetAxis("DPad_YAxis_"+playerNumber) > 0) 
 				GetComponent<PlayerInput>().sensitivityScale += 0.01f;
 			else if(Input.GetAxis("DPad_XAxis_"+playerNumber) < 0 || Input.GetAxis("DPad_YAxis_"+playerNumber) < 0)
 				GetComponent<PlayerInput>().sensitivityScale -= 0.01f;
+
+			 PlayerPrefs.SetFloat("P"+playerNumber+"sensitivityScale",  GetComponent<PlayerInput>().sensitivityScale);
 		}
 	}
 
