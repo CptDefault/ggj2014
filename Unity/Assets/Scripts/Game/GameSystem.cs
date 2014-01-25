@@ -49,6 +49,8 @@ public class GameSystem : MonoBehaviour {
 		} else {
 			_instance = this;
 		}
+
+        Screen.showCursor = false;
 	}
 
 	// Use this for initialization
@@ -122,7 +124,7 @@ public class GameSystem : MonoBehaviour {
 		            {
 		                if (Input.GetButtonUp("Start_" + (i + 1)))
 		                {
-                            //state = GameState.ShowObjective;
+                            Application.LoadLevel(Application.loadedLevel);
 		                }
 		            }
 		        }
