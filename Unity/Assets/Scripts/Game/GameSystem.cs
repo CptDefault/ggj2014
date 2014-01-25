@@ -32,6 +32,9 @@ public class GameSystem : MonoBehaviour {
 	public bool adjustingControls;
 
 
+	private Rect[] gameOverPlayerRects;
+
+
 	//struct to hold info about who's joined the game
 	struct LobbyCharacter {
 		public int number;
@@ -537,6 +540,22 @@ public class GameSystem : MonoBehaviour {
 
 	        playerScripts[i].crosshairPos = rect.center;
 	    }
+
+	    //set up rects for game over
+	    gameOverPlayerRects = new Rect[numPlayers];
+	    switch(numPlayers)
+	    {
+	    	case 2:
+	    		gameOverPlayerRects[0] = new Rect(0,0, Screen.width/2, Screen.height);
+	    		gameOverPlayerRects[1] = new Rect(Screen.width/2,0, Screen.width/2, Screen.height);
+	    		break;
+
+	    	case 3: 
+	    		case 2:
+	    			gameOverPlayerRects[0] = new Rect(0,0, Screen.width/2, Screen.height);
+	    			gameOverPlayerRects[1] = new Rect(Screen.width/2,0, Screen.width/2, Screen.height);
+	    			break;
+	    }
 	}
 
     private void SetChildCamera(GameObject player, Rect rect)
@@ -550,15 +569,12 @@ public class GameSystem : MonoBehaviour {
 
     void MainGameGUI()
 	{
-		float unit = Screen.width/20;
+		float unit = Screen.width/15;
 		switch(numPlayersJoined)
 		{
 			case 2:
 				GUI.Box(new Rect(Screen.width/2-unit, 0, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
 				GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
-
-				//crosshairs
-				
 
 				break;
 
