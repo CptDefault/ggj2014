@@ -115,7 +115,9 @@ public class Player : MonoBehaviour {
 
     public void Respawn()
     {
-        transform.position = Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
+        var safestSpawnpoint = GameSystem.Instance.GetSafestSpawnpoint();
+        transform.position = safestSpawnpoint.transform.position; //Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
+        transform.rotation = safestSpawnpoint.transform.rotation;
     }
 
     public void GotHit(Weapon shooter)

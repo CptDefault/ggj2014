@@ -43,7 +43,7 @@ public class Weapon : MonoBehaviour
 
 
     public ConePoints[] cone = new ConePoints[]{new ConePoints(0,0), new ConePoints(10, 2), new ConePoints(100,2), };
-    public int reloadTime = 2;
+    public float reloadTime = 2.4f;
     private Animator _animator;
 
     public bool ShotReady
@@ -124,7 +124,7 @@ public class Weapon : MonoBehaviour
         if (particles != null)
         {
             var part = Instantiate(particles, weaponTransform.position + weaponTransform.forward, weaponTransform.rotation);
-            Destroy(part, 1f);
+            Destroy(part, Mathf.Min(1f, maxDist / 50f));
         }
 
         
