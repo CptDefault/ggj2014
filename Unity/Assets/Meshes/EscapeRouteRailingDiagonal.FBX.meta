@@ -1,0 +1,108 @@
+fileFormatVersion: 2
+guid: 3d955f26ba097e1408f1fbdd681455b6
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: HandRailingEscapeRoute002
+    100004: HandRailingEscapeRouteBottom001
+    100006: HandRailingPlankEscapeRoute002
+    100008: HandRailingPlankEscapeRoute004
+    100010: HandRailingPlankEscapeRoute005
+    100012: HandRailingPlankEscapeRoute007
+    100014: HandRailingPlankEscapeRoute009
+    100016: HandRailingPlankEscapeRoute010
+    100018: HandRailingPlankEscapeRoute011
+    400000: //RootNode
+    400002: HandRailingEscapeRoute002
+    400004: HandRailingEscapeRouteBottom001
+    400006: HandRailingPlankEscapeRoute002
+    400008: HandRailingPlankEscapeRoute004
+    400010: HandRailingPlankEscapeRoute005
+    400012: HandRailingPlankEscapeRoute007
+    400014: HandRailingPlankEscapeRoute009
+    400016: HandRailingPlankEscapeRoute010
+    400018: HandRailingPlankEscapeRoute011
+    2300000: HandRailingEscapeRoute002
+    2300002: HandRailingEscapeRouteBottom001
+    2300004: HandRailingPlankEscapeRoute002
+    2300006: HandRailingPlankEscapeRoute004
+    2300008: HandRailingPlankEscapeRoute005
+    2300010: HandRailingPlankEscapeRoute007
+    2300012: HandRailingPlankEscapeRoute009
+    2300014: HandRailingPlankEscapeRoute010
+    2300016: HandRailingPlankEscapeRoute011
+    2300018: //RootNode
+    3300000: HandRailingEscapeRoute002
+    3300002: HandRailingEscapeRouteBottom001
+    3300004: HandRailingPlankEscapeRoute002
+    3300006: HandRailingPlankEscapeRoute004
+    3300008: HandRailingPlankEscapeRoute005
+    3300010: HandRailingPlankEscapeRoute007
+    3300012: HandRailingPlankEscapeRoute009
+    3300014: HandRailingPlankEscapeRoute010
+    3300016: HandRailingPlankEscapeRoute011
+    3300018: //RootNode
+    4300000: HandRailingEscapeRoute002
+    4300002: HandRailingEscapeRouteBottom001
+    4300004: HandRailingPlankEscapeRoute002
+    4300006: HandRailingPlankEscapeRoute004
+    4300008: HandRailingPlankEscapeRoute005
+    4300010: HandRailingPlankEscapeRoute007
+    4300012: HandRailingPlankEscapeRoute009
+    4300014: HandRailingPlankEscapeRoute010
+    4300016: HandRailingPlankEscapeRoute011
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  additionalBone: 0
+  userData: 

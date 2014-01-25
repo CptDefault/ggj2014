@@ -35,11 +35,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02123731a49131a469bc3501cf436d93, type: 3}
+  m_Script: {fileID: 11500000, guid: c07dd4bfac8f724428405a3b96a72491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  playerPrefab: {fileID: 100000, guid: 8f026ff8f518c6541bb84837df297386, type: 2}
+  playerPrefab: {fileID: 0}
+  players: []
+  playerScripts: []
+  scoreSkin: {fileID: 0}
+  pauseSkin: {fileID: 0}
+  setControlsSkin: {fileID: 0}
+  controllerIcons: {fileID: 0}
+  adjustingControls: 0
+  scoreToWin: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

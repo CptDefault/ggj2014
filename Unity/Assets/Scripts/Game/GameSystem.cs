@@ -6,7 +6,9 @@ public class GameSystem : MonoBehaviour {
 
 	private static GameSystem _instance;
 
-	public enum GameState {JoinGame, ShowObjective, MainGame, Paused};
+	public enum GameState {JoinGame, ShowObjective, MainGame, Paused,
+	    GameOver
+	};
 	public GameState state;
 
 	public GameObject playerPrefab;
@@ -16,12 +18,17 @@ public class GameSystem : MonoBehaviour {
 
 	public GUISkin scoreSkin;
 	public GUISkin pauseSkin;
+	public GUISkin setControlsSkin;
+	public GUISkin controllerIcons;
 
 	//spawn points
 	private List<GameObject> _spawnPoints;
 
 	//objective screen
-	private int _gameCountDown = 5;
+	private int _gameCountDown = 3;
+
+	//pause screen
+	public bool adjustingControls;
 
 
 	//struct to hold info about who's joined the game
@@ -31,8 +38,10 @@ public class GameSystem : MonoBehaviour {
 	}
 
 	private LobbyCharacter[] _lobby;
+    public int scoreToWin = 5;
+    private int winner;
 
-	void Awake()
+    void Awake()
 	{
 		if (_instance != null && _instance != this) {
 			Destroy(this.gameObject);
@@ -63,15 +72,20 @@ public class GameSystem : MonoBehaviour {
 
 		pauseSkin.GetStyle("Title").fontSize = (int)(Screen.height/15f);
 		pauseSkin.GetStyle("Button").fontSize = (int)(Screen.height/25f);
+		pauseSkin.GetStyle("Button").padding.left = (int)(Screen.height/15f);
+
+		pauseSkin.GetStyle("Countdown").fontSize = (int)(Screen.height/15f);
+		pauseSkin.GetStyle("Text").fontSize = (int)(Screen.height/25f);
+
+		setControlsSkin.GetStyle("Title").fontSize = (int)(Screen.height/25f);
+		setControlsSkin.GetStyle("Button").fontSize = (int)(Screen.height/40f);
+		setControlsSkin.GetStyle("Button").padding.left = (int)(Screen.height/18f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetButtonDown("A_1"))
-		{
-			print("joined");
-		}
 
+	    
 		switch(state)
 		{
 			case GameState.JoinGame:
@@ -82,9 +96,27 @@ public class GameSystem : MonoBehaviour {
 				break;
 
 			case GameState.MainGame:
-
+                foreach (var player in playerScripts)
+                {
+                    if (player.score >= scoreToWin)
+                    {
+                        winner = player.playerNumber;
+                        state = GameState.GameOver;
+                        foreach (var p2 in playerScripts)
+                        {
+                            p2.GetComponent<PlayerInput>().enabled = false;
+                        }
+                        break;
+                    }
+                }
 				break;
+				
+            case GameState.GameOver:
+		 break;
 
+			case GameState.Paused:
+				Paused();
+				break;
 
 		}
 	}
@@ -108,13 +140,22 @@ public class GameSystem : MonoBehaviour {
 			case GameState.Paused:
 				PausedGUI();
 				break;
+
+            case GameState.GameOver:
+		        GameOverGUI();
+		        break;
 		}
 
 
 	}
 
-	public void TogglePauseGame()
+    public void TogglePauseGame()
 	{
+		if(adjustingControls)	
+			return;
+
+		Clicker.Instance.Click();
+
 		if(state != GameState.Paused) {
 			Time.timeScale = 0;
 			state = GameState.Paused;
@@ -125,29 +166,127 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
-	void PausedGUI()
+	void Paused()
+	{
+		if(adjustingControls)
+		{
+			for(int i=0; i<4; i++)
+			{
+				if(Input.GetButtonUp("X_"+(i+1)))
+				{
+					adjustingControls = false;
+					foreach(Player p in playerScripts)
+						p.setControls = false;
+
+					state = GameState.Paused;
+
+					Clicker.Instance.Click();
+				}
+			}
+
+			return;
+		}
+
+
+		for(int i=0; i<4; i++)
+		{
+			if(Input.GetButtonUp("X_"+(i+1)))
+			{
+				adjustingControls = true;
+
+				foreach(Player p in playerScripts)
+					p.setControls = true;
+				Clicker.Instance.Click();
+			}
+			else if(Input.GetButtonUp("A_"+(i+1)))
+			{
+				TogglePauseGame();
+				Clicker.Instance.Click();
+			}
+			else if(Input.GetButtonUp("Back_"+(i+1)))
+			{
+				//quit
+				Clicker.Instance.Click();
+			}
+		}
+	}
+
+    void PausedGUI()
 	{
 		GUI.skin = pauseSkin;
 
 		float unit = Screen.width/20;
+
+		if(adjustingControls)
+		{
+			//don't show rest of pause when adjusting controls
+			if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-(0.75f/2*unit), unit*3, 0.75f*unit), "DONE"))
+			{
+				adjustingControls = false;
+				foreach(Player p in playerScripts)
+					p.setControls = false;
+			}
+
+			GUI.Box(new Rect(Screen.width/2-1.4f*unit, Screen.height/2-(0.4f/2*unit), unit*0.5f, 0.5f*unit), "",controllerIcons.GetStyle("x"));
+
+			//controls for each player
+
+			return;
+		}
+
+		
 		//background
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3, unit*10, unit*6), "");
 
 		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2f, unit*5, unit), "PAUSED", pauseSkin.GetStyle("Title"));
 
 		//buttons
-		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*3.45f, unit*3, 0.75f*unit), "SET CONTROLS"))
+		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*3.2f, unit*3, 0.75f*unit), "RESUME"))
 		{
+			adjustingControls = true;
 
+			foreach(Player p in playerScripts)
+				p.setControls = true;
 		}
 
-		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*4.7f, unit*3, 0.75f*unit), "QUIT"))
+
+		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*4.2f, unit*3, 0.75f*unit), "CONTROLS"))
+		{
+			adjustingControls = true;
+
+			foreach(Player p in playerScripts)
+				p.setControls = true;
+		}
+
+		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*5.2f, unit*3, 0.75f*unit), "QUIT"))
 		{
 			
 		}
+
+		//icons
+		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*3.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("A"));
+		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*4.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("x"));
+		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*5.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("Back"));
+
 	}
 
-	void JoinGame()
+    private void GameOverGUI()
+    {
+        GUI.skin = pauseSkin;
+
+        float unit = Screen.width / 20;
+        //background
+        GUI.Box(new Rect(Screen.width / 2 - 5 * unit, Screen.height / 2 - unit * 3, unit * 10, unit * 6), "");
+        GUI.Box(new Rect(Screen.width / 2 - 2.5f * unit, Screen.height / 2 - unit * 4 + unit * 2f, unit * 5, unit), "PLAYER " + winner + "WINS", pauseSkin.GetStyle("Title"));
+
+
+        if (GUI.Button(new Rect(Screen.width / 2 - 1.5f * unit, Screen.height / 2 - unit * 4 + unit * 4.7f, unit * 3, 0.75f * unit), "RESTART"))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+    }
+
+    void JoinGame()
 	{
 		for(int i=0; i<4; i++)
 		{
@@ -156,6 +295,7 @@ public class GameSystem : MonoBehaviour {
 			{
 				_lobby[i].joined = true;
 				numPlayersJoined++;
+				Clicker.Instance.Click();
 			}
 
 			if(numPlayersJoined>0)
@@ -164,6 +304,7 @@ public class GameSystem : MonoBehaviour {
 				{
 					StartCoroutine(ShowObjectiveThenStartGame());
 					state = GameState.ShowObjective;
+					Clicker.Instance.Click();
 				}
 			}
 		}
@@ -215,28 +356,31 @@ public class GameSystem : MonoBehaviour {
 	{
 		state = GameState.ShowObjective;
 
-		for(int i=0; i<5; i++)
+		for(int i=0; i<3; i++)
 		{
-			yield return new WaitForSeconds(0.05f);
+			Clicker.Instance.Click();
+			yield return new WaitForSeconds(1f);
 			_gameCountDown--;
 		}
 		
 
 		state = GameState.MainGame;
 		InitialisePlayers();
+		Clicker.Instance.StartGameSound();
 	}
 
 	void ShowObjectiveGUI()
 	{
 		float unit = Screen.width/20;
 		//background
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3, unit*10, unit*6), "");
+		GUI.skin = pauseSkin;
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*4, unit*10, unit*8), "");
 
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "OBJECTIVE");
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN");
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "DEATHMATCH", pauseSkin.GetStyle("Title"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN", pauseSkin.GetStyle("Text"));
 
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN");
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*4, unit*10, unit), ""+_gameCountDown);
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-0.5f*unit, Screen.height/2-unit*3+unit*4, unit, unit), ""+_gameCountDown, pauseSkin.GetStyle("Countdown"));
 	}
 
 	void InitialisePlayers()
@@ -281,48 +425,28 @@ public class GameSystem : MonoBehaviour {
 
 	void SetUpPlayerViewports(int numPlayers)
 	{
-		switch(numPlayers)
-		{
-			case 1:
-				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
+	    for (int i = 0; i < numPlayers; i++)
+	    {
+            var rect = new Rect(i % 2 == 0 ? 0 : 0.5f,
+                i >= 2 ? 0 : (numPlayers > 2 ? 0.5f : 0),
+                i == 2 && numPlayers == 3 ? 1 :  0.5f,
+                numPlayers > 2 ? 0.5f : 1f);
+            SetChildCamera(players[i], rect);
 
-				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
-				break;
-
-			case 2:
-				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
-				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0,1,1);
-
-				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
-				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/2, 10,10);
-				break;
-
-			case 3:
-				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
-				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
-				players[2].GetComponentInChildren<Camera>().rect = new Rect(0f,-0.5f,1,1);
-
-				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
-				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
-				playerScripts[2].crosshairRect = new Rect(Screen.width*0.5f, Screen.height*0.75f, 10,10);
-				break;
-
-			case 4:
-				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
-				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
-				players[2].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,-0.5f,1,1);
-				players[3].GetComponentInChildren<Camera>().rect = new Rect(0.5f,-0.5f,1,1);
-
-				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
-				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
-				playerScripts[2].crosshairRect = new Rect(Screen.width/4, Screen.height*0.75f, 10,10);
-				playerScripts[3].crosshairRect = new Rect(Screen.width*0.75f, Screen.height*0.75f, 10,10);
-				break;
-
-		}
+	        playerScripts[i].crosshairPos = rect.center;
+	    }
 	}
 
-	void MainGameGUI()
+    private void SetChildCamera(GameObject player, Rect rect)
+    {
+        var cameras = player.GetComponentsInChildren<Camera>();
+        foreach (var cam in cameras)
+        {
+            cam.rect = rect;            
+        }
+    }
+
+    void MainGameGUI()
 	{
 		float unit = Screen.width/20;
 		switch(numPlayersJoined)
@@ -356,7 +480,8 @@ public class GameSystem : MonoBehaviour {
 		//draw crosshairs
 		for(int i=0;i<numPlayersJoined;i++)
 		{
-			GUI.Box(playerScripts[i].crosshairRect, "");
+            if(playerScripts[i].ShotReady)
+			    GUI.Box(playerScripts[i].crosshairRect, "");
 		}
 	}
 
