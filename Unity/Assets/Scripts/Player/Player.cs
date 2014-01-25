@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 
 	public int playerNumber;
 	public int score = 0;
+	public int deaths = 0;
     public Rect crosshairRect {
         get { return new Rect(crosshairPos.x * Screen.width-5, (1-crosshairPos.y) * Screen.height-5, 10, 10);}
     }
@@ -24,6 +25,9 @@ public class Player : MonoBehaviour {
 	public bool setControls;
     public Vector2 crosshairPos;
     private Weapon _weapon;
+
+    public string name;
+    public Color col;
 
 	//sound
 	public AudioSource deathSound;
@@ -54,6 +58,9 @@ public class Player : MonoBehaviour {
 	        }
 
 	    }
+
+
+
 	    
 	}
 
@@ -87,13 +94,13 @@ public class Player : MonoBehaviour {
 
     public void Respawn()
     {
-
         transform.position = Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
     }
 
     public void GotHit(MonoBehaviour shooter)
     {
         deathSound.Play();
+        deaths++;
         Respawn();
         shooter.GetComponent<Player>().ScoreUp();
     }
@@ -106,6 +113,34 @@ public class Player : MonoBehaviour {
     	score++;
 
     	AudioManager.Instance.PlayKillConfirmed();
+    }
+
+    public void SetPlayerNameAndColor(int num)
+    {
+    	playerNumber = num;
+    	
+    	switch(playerNumber)
+    	{
+    		case 1: 
+    			name = "RED";
+    			col = Color.red;
+    			break;
+
+    		case 2:
+    			name = "BLUE";
+    			col = Color.blue;
+    			break;
+
+    		case 3: 
+    			name = "GREEN";
+    			col = Color.green;
+    			break;
+
+    		case 4:
+    			name = "YELLOW";
+    			col = Color.yellow;
+    			break;
+    	}
     }
 
     void OnGUI()

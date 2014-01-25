@@ -2349,7 +2349,7 @@ MonoBehaviour:
   setControlsSkin: {fileID: 11400000, guid: a6b3f816902c1024cbaef163e130e875, type: 2}
   controllerIcons: {fileID: 11400000, guid: 5680ebbf0ed8ee2408acf0b3d3432d82, type: 2}
   adjustingControls: 0
-  scoreToWin: 5
+  scoreToWin: 2
 --- !u!4 &423862378
 Transform:
   m_ObjectHideFlags: 0
