@@ -117,12 +117,21 @@ public class Player : MonoBehaviour {
     {
         transform.position = Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
     }
-    public void GotHit(MonoBehaviour shooter)
+
+    public void GotHit(Weapon shooter)
     {
         //AudioSource.PlayClipAtPoint(deathSound.clip, transform.position, deathSound.volume);
         deaths++;
-        if(shooter != null)
+        Player sp=null;
+        string verb="";
+        if(shooter != null) {
+        	//set death message for me, and score for scorer
+        	sp = shooter.GetComponent<Player>();
+
+        	verb = DeathMessenger.Instance.GetRandomVerb();
+        	sp.SetScoredMessage(verb, name);
             shooter.GetComponent<Player>().ScoreUp();
+        }
         
         var rag = (GameObject)Instantiate(ragdoll, transform.position, transform.rotation);
 
@@ -133,7 +142,7 @@ public class Player : MonoBehaviour {
             rigid.AddForce(rigidbody.velocity, ForceMode.VelocityChange);
         }
 
-        GetRespawnCamera().Activate(this);
+        GetRespawnCamera().Activate(this, verb, sp.name, new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y, Screen.width/2.5f, Screen.height/15f));
     }
 
     public void ScoreUp()
@@ -174,8 +183,27 @@ public class Player : MonoBehaviour {
     	}
     }
 
+    private string _scoredMessage;
+    void SetScoredMessage(string verb, string receiever)
+    {
+    	_scoredMessage = "YOU " + verb+ " " + receiever;
+
+    	StartCoroutine(ShowScoredMessage());
+    }
+    IEnumerator ShowScoredMessage()
+    {
+    	yield return new WaitForSeconds(2.0f);
+
+    	_scoredMessage = null;
+    }
+
     void OnGUI()
     {
+    	//died
+
+		if(_scoredMessage != null)
+			GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y-Screen.height/4f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+
     	if(_scorePopUpTime < 1.3f)
     	{
     		GUI.Box(new Rect(crosshairRect.x-Screen.height/32, _scorePopUpY, Screen.height/15, Screen.height/15), "+1", scorePopUpStyle);

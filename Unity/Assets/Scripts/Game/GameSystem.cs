@@ -114,30 +114,25 @@ public class GameSystem : MonoBehaviour {
                     if (player.score >= scoreToWin)
                     {
                         winner = System.Array.IndexOf(playerScripts,player);
-                        print("Winner: " + winner);
-                        state = GameState.GameOver;
-                        foreach (var p2 in playerScripts)
-                        {
-                            p2.GetComponent<PlayerInput>().enabled = false;
-                            p2.GetComponent<Moveable>().enabled = false;
-                            p2.rigidbody.angularVelocity = Vector3.zero;
-                        }
+                        //print("Winner: " + winner);
+                        StartCoroutine(ActivateGameOver());
+
                         break;
                     }
                 }
 				break;
 				
             case GameState.GameOver:
-		        {
-		            for (int i = 0; i < 4; i++)
+            	for(int i=0; i<4; i++)
+            	{
+		            if(Input.GetButtonUp("Start_"+(i+1)))
 		            {
-		                if (Input.GetButtonUp("Start_" + (i + 1)))
-		                {
-                            Application.LoadLevel(Application.loadedLevel);
-		                }
+		            	//restart
+		            	Application.LoadLevel(Application.loadedLevel);
+		            	Clicker.Instance.Click();
 		            }
 		        }
-		 break;
+		 		break;
 
 			case GameState.Paused:
 				Paused();
@@ -295,6 +290,24 @@ public class GameSystem : MonoBehaviour {
 
 	}
 
+	IEnumerator ActivateGameOver()
+	{
+		foreach (var p2 in playerScripts)
+		{
+		    p2.GetComponent<PlayerInput>().enabled = false;
+		    p2.rigidbody.velocity = Vector3.zero;
+		    p2.rigidbody.angularVelocity = Vector3.zero;
+		}
+
+		for(float t = 0; t < 4.5f; t += Time.deltaTime / (1 - ( t / 6)))
+		{
+			Time.timeScale = 1 - ( t / 6);
+			yield return null;
+		}
+		state = GameState.GameOver;
+		Time.timeScale = 1;
+	}
+
     private void GameOverGUI()
     {
         GUI.skin = pauseSkin;
@@ -305,8 +318,26 @@ public class GameSystem : MonoBehaviour {
    			GUI.Box(gameOverPlayerRects[i], "", joinGameSkin.GetStyle(playerScripts[i].name));
    		}
 
-   		GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
-   		GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+   		switch(numPlayersJoined)
+   		{
+   			case 2:
+   				//draw black bars
+   				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+   				break;
+
+   			case 3:
+
+   				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height/2), "", scoreSkin.GetStyle("Box"));
+   				GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+   				break;
+
+
+   			case 4:
+   				GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+   				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+   				break;
+
+   		}
 
         float unit = Screen.width / 20;
         //background
