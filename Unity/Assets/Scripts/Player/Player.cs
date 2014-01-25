@@ -126,6 +126,8 @@ public class Player : MonoBehaviour {
         
         var rag = (GameObject)Instantiate(ragdoll, transform.position, transform.rotation);
 
+        rag.GetComponentInChildren<Renderer>().material.color = col;
+
         foreach (var rigid in rag.GetComponentsInChildren<Rigidbody>())
         {
             rigid.AddForce(rigidbody.velocity, ForceMode.VelocityChange);

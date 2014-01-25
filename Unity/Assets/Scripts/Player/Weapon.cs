@@ -55,6 +55,17 @@ public class Weapon : MonoBehaviour
     {
         _gameSystem = FindObjectOfType<GameSystem>();
         _animator = GetComponentInChildren<Animator>();
+
+    }
+
+
+    protected void Start()
+    {
+        print(weaponTransform.GetComponentInChildren<Renderer>().materials.Count());
+
+        var color = GetComponent<Player>().col;
+        print(color);
+        weaponTransform.GetComponentInChildren<Renderer>().materials[2].SetColor("_MainColor", color);
     }
 
     public void ElevationInput(float angle)
@@ -65,13 +76,13 @@ public class Weapon : MonoBehaviour
     private float _lastFrameMovement;
     protected void Update()
     {
+
         _elevation = Mathf.Clamp(_elevation, minElevation, maxElevation);
         weaponTransform.localRotation = Quaternion.Euler(_elevation, 0, 0);
 
         var velocity = rigidbody.velocity;
         velocity.y = 0;
         var clamp01 = Mathf.Clamp01(velocity.magnitude/5);
-        print(clamp01);
         _lastFrameMovement = _lastFrameMovement*0.90f + clamp01*.1f;
         _animator.SetFloat("MoveSpeed", _lastFrameMovement);
     }
