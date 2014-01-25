@@ -62,12 +62,18 @@ public class Weapon : MonoBehaviour
         _elevation += Mathf.Clamp(angle, -elevationSpeed, elevationSpeed);
     }
 
+    private float _lastFrameMovement;
     protected void Update()
     {
         _elevation = Mathf.Clamp(_elevation, minElevation, maxElevation);
         weaponTransform.localRotation = Quaternion.Euler(_elevation, 0, 0);
 
-        _animator.SetFloat("MoveSpeed", Mathf.Clamp01(rigidbody.velocity.magnitude / 5));
+        var velocity = rigidbody.velocity;
+        velocity.y = 0;
+        var clamp01 = Mathf.Clamp01(velocity.magnitude/5);
+        print(clamp01);
+        _lastFrameMovement = _lastFrameMovement*0.90f + clamp01*.1f;
+        _animator.SetFloat("MoveSpeed", _lastFrameMovement);
     }
 
     public void Shoot()
