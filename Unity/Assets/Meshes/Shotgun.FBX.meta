@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 6dcdd9f77b3904c4d90b50aed1b997ad
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: Barrel
     100002: Blunderblus
@@ -43,7 +43,7 @@ ModelImporter:
       name: Idle
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 15
+      lastFrame: 14
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -142,7 +142,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: .317626357
+      - time: .254211724
         functionName: releaseSlug
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -242,5 +242,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 

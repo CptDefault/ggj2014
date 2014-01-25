@@ -39,13 +39,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 100000, guid: 8f026ff8f518c6541bb84837df297386, type: 2}
   players: []
   playerScripts: []
-  scoreSkin: {fileID: 0}
-  pauseSkin: {fileID: 0}
-  setControlsSkin: {fileID: 0}
-  controllerIcons: {fileID: 0}
+  scoreSkin: {fileID: 11400000, guid: 18176c75720e0a148811a62417fde022, type: 2}
+  pauseSkin: {fileID: 11400000, guid: 698ecf77d06dc284b9b3e7f5b3f1da59, type: 2}
+  setControlsSkin: {fileID: 11400000, guid: a6b3f816902c1024cbaef163e130e875, type: 2}
+  controllerIcons: {fileID: 11400000, guid: 5680ebbf0ed8ee2408acf0b3d3432d82, type: 2}
   adjustingControls: 0
   scoreToWin: 5
 --- !u!1001 &100100000

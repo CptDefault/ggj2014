@@ -62,10 +62,18 @@ public class Weapon : MonoBehaviour
         _elevation += Mathf.Clamp(angle, -elevationSpeed, elevationSpeed);
     }
 
+    private float _lastFrameMovement;
     protected void Update()
     {
         _elevation = Mathf.Clamp(_elevation, minElevation, maxElevation);
         weaponTransform.localRotation = Quaternion.Euler(_elevation, 0, 0);
+
+        var velocity = rigidbody.velocity;
+        velocity.y = 0;
+        var clamp01 = Mathf.Clamp01(velocity.magnitude/5);
+        print(clamp01);
+        _lastFrameMovement = _lastFrameMovement*0.90f + clamp01*.1f;
+        _animator.SetFloat("MoveSpeed", _lastFrameMovement);
     }
 
     public void Shoot()
@@ -83,7 +91,7 @@ public class Weapon : MonoBehaviour
         foreach (var player in _gameSystem.players)
         {
             float dist;
-            if(player == gameObject || !TestPlayerHit(player, out dist))
+            if(player == gameObject || !player.activeSelf || !TestPlayerHit(player, out dist))
                 continue;
 
             if (dist > maxDist)
