@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200002}
   - 82: {fileID: 8200000}
+  - 82: {fileID: 8200004}
   m_Layer: 0
   m_Name: AUDIOMANAGER
   m_TagString: Untagged
@@ -37,11 +38,11 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: a83bc374d952a104e8b9032029e95766, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -95,11 +96,69 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: cd70fc3003eceb84b948d6cea2a80ab9, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &8200004
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 45ed414d4ad530e4c9fa7b20ab94289f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -160,8 +219,12 @@ MonoBehaviour:
   _mutedMusic: 0
   intro: {fileID: 8300000, guid: cd70fc3003eceb84b948d6cea2a80ab9, type: 3}
   loop: {fileID: 8300000, guid: a83bc374d952a104e8b9032029e95766, type: 3}
+  loopQuiet: {fileID: 8300000, guid: 45ed414d4ad530e4c9fa7b20ab94289f, type: 3}
   introSource: {fileID: 8200002}
   loopSource: {fileID: 8200000}
+  loopQuietSource: {fileID: 8200004}
+  useQuietMusic: 0
+  skipIntro: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
