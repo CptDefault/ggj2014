@@ -61,6 +61,9 @@ public class GameSystem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		Time.timeScale = 1;
+
 		_spawnPoints = new List<GameObject>();
 		//get spawn points from scene
 		foreach(GameObject sp in GameObject.FindGameObjectsWithTag("SpawnPoint"))
@@ -240,6 +243,7 @@ public class GameSystem : MonoBehaviour {
 			else if(Input.GetButtonUp("Back_"+(i+1)))
 			{
 				//quit
+				Application.LoadLevel(0);
 				Clicker.Instance.Click();
 			}
 		}
