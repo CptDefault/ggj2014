@@ -410,66 +410,16 @@ public class GameSystem : MonoBehaviour {
 
 	void SetUpPlayerViewports(int numPlayers)
 	{
-        float w = numPlayers == 1 ? 1 : 0.5f;
-        float h = numPlayers > 2 ? 0.5f : 1f;
-
 	    for (int i = 0; i < numPlayers; i++)
 	    {
             var rect = new Rect(i % 2 == 0 ? 0 : 0.5f,
                 i >= 2 ? 0 : (numPlayers > 2 ? 0.5f : 0),
-                i == 2 && numPlayers == 3 ? 1 : w, h);
+                i == 2 && numPlayers == 3 ? 1 :  0.5f,
+                numPlayers > 2 ? 0.5f : 1f);
             SetChildCamera(players[i], rect);
 
+	        playerScripts[i].crosshairPos = rect.center;
 	    }
-
-	    switch(numPlayers)
-		{
-			case 1:
-//		        w = 1;
-//		        h = 1;
-//				SetChildCamera(players[0], new Rect(0, 0, w, h));
-
-				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
-				break;
-
-			case 2:
-//		        w = 0.5f;
-//		        h = 1;
-//				SetChildCamera(players[0], new Rect(0,0,w,h));
-//				SetChildCamera(players[1], new Rect(0.5f,0,w,h));
-
-				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
-				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/2, 10,10);
-				break;
-
-			case 3:
-//		        w = 0.5f;
-//		        h = 0.5f;
-//				SetChildCamera(players[0], new Rect(0,0.5f,w,h));
-//				SetChildCamera(players[1], new Rect(0.5f,0.5f,w,h));
-//		        w = 1;
-//				SetChildCamera(players[2], new Rect(0,0,w,h));
-
-				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
-				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
-				playerScripts[2].crosshairRect = new Rect(Screen.width*0.5f, Screen.height*0.75f, 10,10);
-				break;
-
-			case 4:
-//		        w = 0.5f;
-//		        h = 0.5f;
-//				SetChildCamera(players[0], new Rect(0,0.5f,w,h));
-//				SetChildCamera(players[1], new Rect(0.5f,0.5f,w,h));
-//				SetChildCamera(players[2], new Rect(0,0,w,h));
-//				SetChildCamera(players[3], new Rect(0.5f,0,w,h));
-
-				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
-				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
-				playerScripts[2].crosshairRect = new Rect(Screen.width/4, Screen.height*0.75f, 10,10);
-				playerScripts[3].crosshairRect = new Rect(Screen.width*0.75f, Screen.height*0.75f, 10,10);
-				break;
-
-		}
 	}
 
     private void SetChildCamera(GameObject player, Rect rect)
@@ -515,7 +465,8 @@ public class GameSystem : MonoBehaviour {
 		//draw crosshairs
 		for(int i=0;i<numPlayersJoined;i++)
 		{
-			GUI.Box(playerScripts[i].crosshairRect, "");
+            if(playerScripts[i].ShotReady)
+			    GUI.Box(playerScripts[i].crosshairRect, "");
 		}
 	}
 

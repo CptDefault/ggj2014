@@ -11,9 +11,16 @@ public class AudioManager : MonoBehaviour {
 	//music
 	public AudioClip intro;
 	public AudioClip loop;
+	public AudioClip loopQuiet;
 
 	public AudioSource introSource;
 	public AudioSource loopSource;
+	public AudioSource loopQuietSource;
+
+    public bool useQuietMusic;
+    public bool skipIntro;
+
+    private float _quietLoudBalance = 0;
 
 	void Awake()
 	{
@@ -43,26 +50,36 @@ public class AudioManager : MonoBehaviour {
 		introSource.clip = intro;
 		loopSource.clip = loop;
 
-		//set previous settings
-		if(_mutedMusic)
-		{
-			introSource.volume = 0;
-			loopSource.volume = 0;
-		}
-		else
-		{
-			introSource.volume = 1;
-			loopSource.volume = 1;
-		}
-
-		if(_mutedAll)
-			AudioListener.volume = 0;
-		else
-			AudioListener.volume = 1;
-
-
 		StartCoroutine(IntroThenLoopMusic());
 	}
+
+    public void Update()
+    {
+        float targetLevel = useQuietMusic ? 0 : 1;
+        if (targetLevel > _quietLoudBalance)
+            _quietLoudBalance += Time.deltaTime;
+        else if (targetLevel < _quietLoudBalance)
+            _quietLoudBalance -= Time.deltaTime;
+        _quietLoudBalance = Mathf.Clamp01(_quietLoudBalance);
+
+        //set previous settings
+        if (_mutedMusic)
+        {
+            introSource.volume = 0;
+            loopSource.volume = 0;
+        }
+        else
+        {
+            introSource.volume = 1;
+            loopSource.volume = 1 * _quietLoudBalance;
+            loopQuietSource.volume = 1 * (1 - _quietLoudBalance);
+        }
+
+        if (_mutedAll)
+            AudioListener.volume = 0;
+        else
+            AudioListener.volume = 1;
+    }
 
 	public void ToggleMuteAll()
 	{
@@ -110,19 +127,18 @@ public class AudioManager : MonoBehaviour {
 
 		PlayerPrefs.Save();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	IEnumerator IntroThenLoopMusic()
 	{
 		yield return new WaitForSeconds(0.3f);
 		//need two audio sources to avoid gap
-		introSource.Play();
-		yield return new WaitForSeconds(intro.length/*-0.08f*/);
-		loopSource.Play();
+	    if (!skipIntro)
+	    {
+	        introSource.Play();
+	        yield return new WaitForSeconds(intro.length /*-0.08f*/);
+	    }
+	    loopSource.Play();
+		loopQuietSource.Play();
 	}
 
 	public static AudioManager Instance

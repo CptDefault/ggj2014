@@ -41,6 +41,11 @@ public class Weapon : MonoBehaviour
     public int reloadTime = 2;
     private Animator _animator;
 
+    public bool ShotReady
+    {
+        get { return _isLoaded; }
+    }
+
     protected void Awake()
     {
         _gameSystem = FindObjectOfType<GameSystem>();
