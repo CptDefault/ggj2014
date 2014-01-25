@@ -39,10 +39,12 @@ public class Weapon : MonoBehaviour
 
     public ConePoints[] cone = new ConePoints[]{new ConePoints(0,0), new ConePoints(10, 2), new ConePoints(100,2), };
     public int reloadTime = 2;
+    private Animator _animator;
 
     protected void Awake()
     {
         _gameSystem = FindObjectOfType<GameSystem>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     public void ElevationInput(float angle)
@@ -72,6 +74,8 @@ public class Weapon : MonoBehaviour
             var part = Instantiate(particles, weaponTransform.position + weaponTransform.forward, weaponTransform.rotation);
             Destroy(part, 1f);
         }
+
+        _animator.SetTrigger("Shoot");
 
         var hitPlayers = _gameSystem.players.Where(TestPlayerHit);
 
