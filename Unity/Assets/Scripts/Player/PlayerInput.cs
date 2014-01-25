@@ -40,5 +40,8 @@ public class PlayerInput : MonoBehaviour
 
         if(Input.GetButtonDown("A_"+pNo))
             _player.ScoreUp();
+
+        if(Input.GetButtonDown("Start_"+pNo))
+            GameSystem.Instance.TogglePauseGame();
     }
 }
