@@ -112,7 +112,6 @@ public class Weapon : MonoBehaviour
         {
             coneIndex++;
         }
-        print(player.name + " : " + distance);
 
         if (coneIndex >= cone.Length)
             return false; //target is out of range
@@ -127,8 +126,6 @@ public class Weapon : MonoBehaviour
                     return false;
 
         float segProg = (distance - cone[coneIndex-1].distance) / (cone[coneIndex].distance - cone[coneIndex-1].distance);
-
-        print(player.name + " : " + dispFromCenter.magnitude + " < " + Mathf.Lerp(cone[coneIndex - 1].diameter, cone[coneIndex].diameter, segProg) / 2);
 
         return dispFromCenter.magnitude < Mathf.Lerp(cone[coneIndex-1].diameter, cone[coneIndex].diameter, segProg) / 2;
     }

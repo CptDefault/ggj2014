@@ -19,9 +19,32 @@ public class Player : MonoBehaviour {
 		_myCamera = GetComponentInChildren<Camera>();
 
 		scorePopUpStyle.fontSize = (int)(Screen.height/20f);
+
+	    foreach (Transform child in transform)
+	    {
+	        SetChildLayerRecursive(child, 8 + playerNumber);
+	    }
+	    foreach (var cam in GetComponentsInChildren<Camera>())
+	    {
+	        for (int i = 1; i <= 4; i++)
+	        {
+	            if (i != playerNumber)
+                    cam.cullingMask = cam.cullingMask & ~(1 << 8 + i);
+	        }
+	    }
+	    
 	}
-	
-	// Update is called once per frame
+
+    private void SetChildLayerRecursive(Transform t, int layer)
+    {
+        t.gameObject.layer = layer;
+        foreach (Transform child in t)
+        {
+            SetChildLayerRecursive(child, layer);
+        }
+    }
+
+    // Update is called once per frame
 	void Update () {
 		
 	}
