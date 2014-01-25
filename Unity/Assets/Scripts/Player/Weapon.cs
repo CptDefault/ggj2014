@@ -112,6 +112,8 @@ public class Weapon : MonoBehaviour
         weaponSource.clip = shotgunBlast;
         weaponSource.Play();
         
+        AudioManager.Instance.ShotsFired();
+
         Invoke("Reloaded", reloadTime);
     }
 

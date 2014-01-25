@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour {
     public bool useQuietMusic;
     public bool skipIntro;
 
+    private float _timeSinceLastShot;
+
     private float _quietLoudBalance = 0;
 
 	//sound effects
@@ -58,11 +60,20 @@ public class AudioManager : MonoBehaviour {
 
     public void Update()
     {
+        if (GameSystem.Instance.state == GameSystem.GameState.MainGame)
+        {
+            if (_timeSinceLastShot > 4)
+                useQuietMusic = true;
+        }
+        else
+        {
+            useQuietMusic = false;
+        }
         float targetLevel = useQuietMusic ? 0 : 1;
-        if (targetLevel > _quietLoudBalance)
+        if (targetLevel > _quietLoudBalance / 2)
             _quietLoudBalance += Time.deltaTime;
         else if (targetLevel < _quietLoudBalance)
-            _quietLoudBalance -= Time.deltaTime;
+            _quietLoudBalance -= Time.deltaTime / 4;
         _quietLoudBalance = Mathf.Clamp01(_quietLoudBalance);
 
         //set previous settings
@@ -82,6 +93,8 @@ public class AudioManager : MonoBehaviour {
             AudioListener.volume = 0;
         else
             AudioListener.volume = 1;
+
+        _timeSinceLastShot += Time.deltaTime;
     }
 
 	public void ToggleMuteAll()
@@ -148,6 +161,12 @@ public class AudioManager : MonoBehaviour {
 	{
 		killConfirmedSource.Play();
 	}
+
+    public void ShotsFired()
+    {
+        _timeSinceLastShot = 0;
+        useQuietMusic = false;
+    }
 
 	public static AudioManager Instance
 	{
