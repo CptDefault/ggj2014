@@ -14,6 +14,8 @@ public class Player : MonoBehaviour {
 
 	private Camera _myCamera;
 
+	public bool setControls;
+
 	// Use this for initialization
 	void Start () {
 		_myCamera = GetComponentInChildren<Camera>();
@@ -24,6 +26,18 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+
+		if(setControls)
+		{
+			//invert Y
+			if(Input.GetButtonDown("Y_"+playerNumber))
+			    GetComponent<PlayerInput>().vertLookInvert *= -1;
+
+			if(Input.GetAxis("DPad_XAxis_"+playerNumber) > 0)
+				GetComponent<PlayerInput>().sensitivityScale += 0.01f;
+			else if(Input.GetAxis("DPad_XAxis_"+playerNumber) < 0)
+				GetComponent<PlayerInput>().sensitivityScale -= 0.01f;
+		}
 	}
 
     public void Respawn()
@@ -49,7 +63,27 @@ public class Player : MonoBehaviour {
     		_scorePopUpY -= 30*Time.deltaTime;
 
     	}
+
     	_scorePopUpTime += Time.deltaTime;
+
+    	if(setControls)
+    	{
+    		GUI.Box(new Rect(crosshairRect.x-Screen.height/5, crosshairRect.y-Screen.height/6, Screen.height/2.5F, Screen.height/3), "");
+
+    		GUI.Box(new Rect(crosshairRect.x-Screen.height/8, crosshairRect.y-Screen.height/7f, Screen.height/4f, Screen.height/13), "SET CONTROLS");
+
+    		string invertedText;
+
+    		if(GetComponent<PlayerInput>().vertLookInvert == 1)
+    			invertedText = "Y Look Normal";
+    		else
+    			invertedText = "Y Look Inverted";
+
+    		GUI.Box(new Rect(crosshairRect.x-Screen.height/8, crosshairRect.y-Screen.height/20f, Screen.height/4f, Screen.height/13), invertedText);
+
+    		GUI.Box(new Rect(crosshairRect.x-Screen.height/8, crosshairRect.y-Screen.height/20f+Screen.height/11f, Screen.height/4f, Screen.height/13), "Look Sensitivity: " + GetComponent<PlayerInput>().sensitivityScale);
+
+    	}
 
     }
 

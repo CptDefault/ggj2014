@@ -23,6 +23,9 @@ public class GameSystem : MonoBehaviour {
 	//objective screen
 	private int _gameCountDown = 5;
 
+	//pause screen
+	public bool adjustingControls;
+
 
 	//struct to hold info about who's joined the game
 	struct LobbyCharacter {
@@ -63,6 +66,7 @@ public class GameSystem : MonoBehaviour {
 
 		pauseSkin.GetStyle("Title").fontSize = (int)(Screen.height/15f);
 		pauseSkin.GetStyle("Button").fontSize = (int)(Screen.height/25f);
+		pauseSkin.GetStyle("Button").padding.left = (int)(Screen.height/15f);
 	}
 	
 	// Update is called once per frame
@@ -85,6 +89,9 @@ public class GameSystem : MonoBehaviour {
 
 				break;
 
+			case GameState.Paused:
+				Paused();
+				break;
 
 		}
 	}
@@ -115,6 +122,9 @@ public class GameSystem : MonoBehaviour {
 
 	public void TogglePauseGame()
 	{
+		if(adjustingControls)	
+			return;
+
 		if(state != GameState.Paused) {
 			Time.timeScale = 0;
 			state = GameState.Paused;
@@ -125,23 +135,69 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
+	void Paused()
+	{
+		if(adjustingControls)
+		{
+			for(int i=0; i<4; i++)
+			{
+				if(Input.GetButtonUp("Start_"+(i+1)))
+				{
+					adjustingControls = false;
+					foreach(Player p in playerScripts)
+						p.setControls = false;
+
+					state = GameState.Paused;
+				}
+			}
+		}
+	}
+
 	void PausedGUI()
 	{
 		GUI.skin = pauseSkin;
 
 		float unit = Screen.width/20;
+
+		if(adjustingControls)
+		{
+			//don't show rest of pause when adjusting controls
+			if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-(0.75f/2*unit), unit*3, 0.75f*unit), "DONE"))
+			{
+				adjustingControls = false;
+				foreach(Player p in playerScripts)
+					p.setControls = false;
+			}
+
+			//controls for each player
+
+			return;
+		}
+
+		
 		//background
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3, unit*10, unit*6), "");
 
 		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2f, unit*5, unit), "PAUSED", pauseSkin.GetStyle("Title"));
 
 		//buttons
-		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*3.45f, unit*3, 0.75f*unit), "SET CONTROLS"))
+		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*3.2f, unit*3, 0.75f*unit), "RESUME"))
 		{
+			adjustingControls = true;
 
+			foreach(Player p in playerScripts)
+				p.setControls = true;
 		}
 
-		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*4.7f, unit*3, 0.75f*unit), "QUIT"))
+		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*4.2f, unit*3, 0.75f*unit), "CONTROLS"))
+		{
+			adjustingControls = true;
+
+			foreach(Player p in playerScripts)
+				p.setControls = true;
+		}
+
+		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*5.2f, unit*3, 0.75f*unit), "QUIT"))
 		{
 			
 		}
