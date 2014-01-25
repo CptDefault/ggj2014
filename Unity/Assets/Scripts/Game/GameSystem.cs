@@ -42,7 +42,7 @@ public class GameSystem : MonoBehaviour {
 		public int number;
 		public bool joined;
 		public Vector2 centerOfScreen;
-		public bool adjustingControls;
+		public bool inverted;
 	}
 
 	private LobbyCharacter[] _lobby;
@@ -447,23 +447,18 @@ public class GameSystem : MonoBehaviour {
 			}
 
 
-			if(Input.GetButtonDown("X_"+(i+1)))
+			if(Input.GetButtonDown("Y_"+(i+1)))
 			{
-				_lobby[i].adjustingControls = !_lobby[i].adjustingControls;
-				Clicker.Instance.Click();
+				_lobby[i].inverted = !_lobby[i].inverted;
+				//PlayerPrefs.SetInt("P"+(i+1)+"Inverted", -1);
+				print("Invert controsl for " + (i+1));
 			}
 
 			//adjust controls
-			if(_lobby[i].adjustingControls)
+			/*if(_lobby[i].adjustingControls)
 			{
 				//print("I am adjusing "+ i);
 				//invert
-				if(Input.GetButtonDown("Y_"+(i+1)))
-				{
-					PlayerPrefs.SetInt("P"+(i+1)+"Inverted", -1*PlayerPrefs.GetInt("P"+(i+1)+"Inverted"));
-					//PlayerPrefs.SetInt("P"+(i+1)+"Inverted", -1);
-					print("Invert controsl for " + (i+1));
-				}
 
 				float sensitivityScale = PlayerPrefs.GetFloat("P"+(i+1)+"SensitivityScale");
 				if(Input.GetAxis("DPad_XAxis_"+(i+1)) > 0 || Input.GetAxis("DPad_YAxis_"+(i+1)) > 0) {
@@ -474,7 +469,7 @@ public class GameSystem : MonoBehaviour {
 					sensitivityScale -= 0.01f;
 					PlayerPrefs.SetFloat("P"+(i+1)+"SensitivityScale", sensitivityScale);
 				}
-			}
+			}*/
 			
 
 			if(numPlayersJoined>0)
@@ -508,7 +503,7 @@ public class GameSystem : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width/2,Screen.height/2, Screen.width/2, Screen.height/2), "", joinGameSkin.GetStyle("Yellow"));
 
 		float startingX = Screen.width/4;
-		float startingY = Screen.height/4;
+		float startingY = Screen.height/6;
 		joinGameSkin.GetStyle("JoinText").normal.textColor = Color.black;
 		for(int i=0; i<4; i++)
 		{
@@ -517,6 +512,14 @@ public class GameSystem : MonoBehaviour {
 			string playerName = "";
 			joinGameSkin.GetStyle("JoinText").normal.textColor = Color.black;
 
+			string invertedText = "";
+			if(!thisChar.inverted) {
+				invertedText = "Y LOOK NORMAL";
+			}
+			else {
+				invertedText = "Y LOOK INVERTED";
+			}
+
 			switch(i)
 			{
 				case 0:
@@ -524,25 +527,46 @@ public class GameSystem : MonoBehaviour {
 					playerName = "RED\n";
 
 					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit, unit*5, unit*2f), playerName, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX-2.5f*unit+unit*0.5f, startingY-unit+unit*0.9f, unit*5, unit*2f), invertedText, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX-3.1f*unit, startingY-unit+unit*1.35f, unit*1, unit*1f), "", controllerIcons.GetStyle("Y"));
+
 					break;
 
 				case 1:
 					playerName = "BLUE\n";
 					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit, unit*5, unit*2f), playerName, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*0.5f, startingY-unit+unit*0.9f, unit*5, unit*2f), invertedText, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX+Screen.width/2-3.1f*unit, startingY-unit+unit*1.35f, unit*1, unit*1f), "", controllerIcons.GetStyle("Y"));
+
 					break;
 
 				case 2:
 					playerName = "GREEN\n";
 					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+Screen.height/2, unit*5, unit*2f), playerName, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX-2.5f*unit+unit*0.5f, startingY+Screen.height/2-unit+unit*0.9f, unit*5, unit*2f), invertedText, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX-3.1f*unit, startingY+Screen.height/2-unit+unit*1.35f, unit*1, unit*1f), "", controllerIcons.GetStyle("Y"));
+
 					break;
 
 				case 3:
 					playerName = "YELLOW\n";
 					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+Screen.height/2, unit*5, unit*2f), playerName, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*0.5f, startingY+Screen.height/2-unit+unit*0.9f, unit*5, unit*2f), invertedText, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX+Screen.width/2-3.1f*unit, startingY-unit+Screen.height/2+unit*1.35f, unit*1, unit*1f), "", controllerIcons.GetStyle("Y"));
+
 					break;
 			}
 
 			string joinedText = "";
+			
 
 			if(thisChar.joined) {
 				joinedText += "READY";
@@ -553,40 +577,49 @@ public class GameSystem : MonoBehaviour {
 				joinGameSkin.GetStyle("JoinText").normal.textColor = Color.black;
 			}
 
+
 			switch(i)
 			{
 				case 0:
 					//red
 					playerName = "RED\n";
 
-					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+
 
 					if(!thisChar.joined) 
-						GUI.Box(new Rect(startingX-2.5f*unit+unit*1.9f, startingY-unit+unit*1.5f, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+						GUI.Box(new Rect(startingX-2.5f*unit+unit*1.9f, startingY-unit+unit*1.5f+unit, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+
 					break;
 
 				case 1:
 					playerName = "BLUE\n";
-					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+
 
 					if(!thisChar.joined) 
-						GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*1.9f, startingY-unit+unit*1.5f, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+						GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*1.9f, startingY-unit+unit*1.5f+unit, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+
 					break;
 
 				case 2:
 					playerName = "GREEN\n";
-					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+Screen.height/2+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+Screen.height/2+unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+
 
 					if(!thisChar.joined) 
-						GUI.Box(new Rect(startingX-2.5f*unit+unit*1.9f, startingY-unit+Screen.height/2+unit*1.5f, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+						GUI.Box(new Rect(startingX-2.5f*unit+unit*1.9f, startingY-unit+Screen.height/2+unit*1.5f+unit, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+
 					break;
 
 				case 3:
 					playerName = "YELLOW\n";
-					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+Screen.height/2+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+Screen.height/2+unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+
 
 					if(!thisChar.joined) 
-						GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*1.9f, startingY-unit+Screen.height/2+unit*1.5f, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+						GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*1.9f, startingY-unit+Screen.height/2+unit*1.5f+unit, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+
 					break;
 			}
 		}
@@ -604,11 +637,11 @@ public class GameSystem : MonoBehaviour {
 
 		//each player can say they're playing, increasing numPlayersJoined by 1, then set num players
 
-		JoinGameControlsGUI();
+		//JoinGameControlsGUI();
 	}
 
 	//customise controls on join game
-	void JoinGameControlsGUI()
+	/*void JoinGameControlsGUI()
 	{	
 		for(int i=0; i<4; i++)
 		{
@@ -645,7 +678,7 @@ public class GameSystem : MonoBehaviour {
 				GUI.Box(new Rect(_lobby[i].centerOfScreen.x*Screen.width-Screen.height/8.3f, (1-_lobby[i].centerOfScreen.y)*Screen.height-Screen.height/20f+Screen.height/11f+Screen.height/40f, Screen.width/40f, Screen.width/40f) ,"", GameSystem.Instance.controllerIcons.GetStyle("Dpad"));
 			}
 		}
-	}
+	}*/
 
 	IEnumerator ShowObjectiveThenStartGame()
 	{
@@ -673,7 +706,7 @@ public class GameSystem : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*4, unit*10, unit*8), "");
 
 		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "DEATHMATCH", pauseSkin.GetStyle("Title"));
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE " + scoreToWin + " KILLS TO WIN", pauseSkin.GetStyle("Text"));
 
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN", pauseSkin.GetStyle("Text"));
 		GUI.Box(new Rect(Screen.width/2-0.5f*unit, Screen.height/2-unit*3+unit*4, unit, unit), ""+_gameCountDown, pauseSkin.GetStyle("Countdown"));
@@ -697,6 +730,12 @@ public class GameSystem : MonoBehaviour {
 		{
 			if(!_lobby[i].joined)
 				continue;
+
+			//set inverted
+			if(_lobby[i].inverted)
+				PlayerPrefs.SetInt("P"+(i+1)+"Inverted", -1);
+			else
+				PlayerPrefs.SetInt("P"+(i+1)+"Inverted", 1);
 
 			//choose a spawn point
 			//find one that hasn't been used
