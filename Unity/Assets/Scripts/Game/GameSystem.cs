@@ -9,7 +9,8 @@ public class GameSystem : MonoBehaviour {
 	private static GameSystem _instance;
 
 	public enum GameState {JoinGame, ShowObjective, MainGame, Paused,
-	    GameOver
+	    GameOver,
+	    PreGameOver
 	};
 	public GameState state;
 
@@ -127,10 +128,15 @@ public class GameSystem : MonoBehaviour {
                         //print("Winner: " + winner);
                         StartCoroutine(ActivateGameOver());
 
+                        state = GameState.PreGameOver;
+
                         break;
                     }
                 }
 				break;
+
+            case GameState.PreGameOver:
+                break;
 				
             case GameState.GameOver:
             	for(int i=0; i<4; i++)
@@ -171,6 +177,12 @@ public class GameSystem : MonoBehaviour {
 			case GameState.Paused:
 				PausedGUI();
 				break;
+
+            case GameState.PreGameOver:
+                float unit = Screen.width / 15f;
+		        DrawBlackBars();
+		        GUI.Box(new Rect(Screen.width / 2f - 2 * unit, Screen.height / 2f - 0.35f * unit, unit * 4, unit * 0.7f), "GAME OVER", pauseSkin.GetStyle("Title"));
+		        break;
 
             case GameState.GameOver:
 		        GameOverGUI();
@@ -686,6 +698,8 @@ public class GameSystem : MonoBehaviour {
 	{
 		float unit = Screen.width/15;
 
+        DrawBlackBars();
+
 		//draw crosshairs
 		for(int i=0;i<numPlayersJoined;i++)
 		{
@@ -696,29 +710,18 @@ public class GameSystem : MonoBehaviour {
 		switch(numPlayersJoined)
 		{
 			case 2:
-				//draw black bars
-				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
-
 				GUI.Box(new Rect(Screen.width/2-unit, 0, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
 				GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
 				break;
 
 			case 3:
-
-				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height/2), "", scoreSkin.GetStyle("Box"));
-				GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
-
-
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
+                GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
 				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
 				GUI.Box(new Rect(Screen.width/2-unit*0.5f, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player"+playerScripts[2].playerNumber));
 				break;
 
 
 			case 4:
-				GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
-				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
-
 				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
 				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
 				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player"+playerScripts[2].playerNumber));
@@ -727,6 +730,35 @@ public class GameSystem : MonoBehaviour {
 
 		}
 	}
+
+    void DrawBlackBars()
+    {
+        float unit = Screen.width / 15;
+        switch (numPlayersJoined)
+        {
+            case 2:
+                //draw black bars
+                GUI.Box(new Rect(Screen.width / 2 - 3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+
+                break;
+
+            case 3:
+
+                GUI.Box(new Rect(Screen.width / 2 - 3, 0, 6, Screen.height / 2), "", scoreSkin.GetStyle("Box"));
+                GUI.Box(new Rect(0, Screen.height / 2 - 3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+
+
+                break;
+
+
+            case 4:
+                GUI.Box(new Rect(0, Screen.height / 2 - 3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+                GUI.Box(new Rect(Screen.width / 2 - 3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+
+                break;
+
+        }
+    }
 
 
 	public static GameSystem Instance
