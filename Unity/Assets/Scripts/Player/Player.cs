@@ -16,6 +16,9 @@ public class Player : MonoBehaviour {
 
 	public bool setControls;
 
+	//sound
+	public AudioSource deathSound;
+	
 	// Use this for initialization
 	void Start () {
 		_myCamera = GetComponentInChildren<Camera>();
@@ -53,10 +56,12 @@ public class Player : MonoBehaviour {
 		if(setControls)
 		{
 			//invert Y
-			if(Input.GetButtonDown("Y_"+playerNumber))
+			if(Input.GetButtonDown("Y_"+playerNumber)) {
 			    GetComponent<PlayerInput>().vertLookInvert *= -1;
+			    Clicker.Instance.Click();
+			}
 
-			if(Input.GetAxis("DPad_XAxis_"+playerNumber) > 0 || Input.GetAxis("DPad_YAxis_"+playerNumber) > 0)
+			if(Input.GetAxis("DPad_XAxis_"+playerNumber) > 0 || Input.GetAxis("DPad_YAxis_"+playerNumber) > 0) 
 				GetComponent<PlayerInput>().sensitivityScale += 0.01f;
 			else if(Input.GetAxis("DPad_XAxis_"+playerNumber) < 0 || Input.GetAxis("DPad_YAxis_"+playerNumber) < 0)
 				GetComponent<PlayerInput>().sensitivityScale -= 0.01f;
@@ -71,6 +76,7 @@ public class Player : MonoBehaviour {
 
     public void GotHit(MonoBehaviour shooter)
     {
+        deathSound.Play();
         Respawn();
         shooter.GetComponent<Player>().ScoreUp();
     }
@@ -81,6 +87,8 @@ public class Player : MonoBehaviour {
     	_scorePopUpTime = 0;
 
     	score++;
+
+    	AudioManager.Instance.PlayKillConfirmed();
     }
 
     void OnGUI()

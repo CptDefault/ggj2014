@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour {
 	public AudioSource introSource;
 	public AudioSource loopSource;
 
+	//sound effects
+	public AudioSource killConfirmedSource;
+
 	void Awake()
 	{
 		if (_instance != null && _instance != this) {
@@ -123,6 +126,11 @@ public class AudioManager : MonoBehaviour {
 		introSource.Play();
 		yield return new WaitForSeconds(intro.length/*-0.08f*/);
 		loopSource.Play();
+	}
+
+	public void PlayKillConfirmed()
+	{
+		killConfirmedSource.Play();
 	}
 
 	public static AudioManager Instance

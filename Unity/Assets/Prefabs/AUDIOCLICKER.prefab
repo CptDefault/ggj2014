@@ -9,11 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  - 82: {fileID: 8200002}
   - 82: {fileID: 8200000}
-  - 82: {fileID: 8200004}
+  - 82: {fileID: 8200002}
   m_Layer: 0
-  m_Name: AUDIOMANAGER
+  m_Name: AUDIOCLICKER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,11 +37,11 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5e786d3fc40469f458efe6e9da83ccac, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -96,65 +95,7 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
---- !u!82 &8200004
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: e9299d868b08db348ba593c797a4cbdb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7b1e3f71f2913f445a829cc9eebb33d1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -212,16 +153,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ece722a14221eb40b98c73ee91cb879, type: 3}
+  m_Script: {fileID: 11500000, guid: bf789276683925a44a46d9fa245c9fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mutedAll: 0
-  _mutedMusic: 0
-  intro: {fileID: 8300000, guid: cd70fc3003eceb84b948d6cea2a80ab9, type: 3}
-  loop: {fileID: 8300000, guid: a83bc374d952a104e8b9032029e95766, type: 3}
-  introSource: {fileID: 8200002}
-  loopSource: {fileID: 8200000}
-  killConfirmedSource: {fileID: 8200004}
+  click: {fileID: 8200000}
+  start: {fileID: 8200002}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
