@@ -347,7 +347,7 @@ AudioSource:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 859e1d962b0f91241a0e59691ffe651e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d316807897777724d84787d1c1ebbb76, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -555,6 +555,7 @@ MonoBehaviour:
   col: {r: 0, g: 0, b: 0, a: 0}
   deathSound: {fileID: 8200002}
   ragdoll: {fileID: 100048, guid: e14255708eee50546863529abde3deb0, type: 2}
+  scoredMessageLow: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -575,7 +576,8 @@ MonoBehaviour:
   gunRange: 20
   gunCone: 20
   weaponSource: {fileID: 8200000}
-  shotgunBlast: {fileID: 8300000, guid: 859e1d962b0f91241a0e59691ffe651e, type: 3}
+  shotgunBlast: {fileID: 8300000, guid: d316807897777724d84787d1c1ebbb76, type: 3}
+  reloadEffect: {fileID: 8300000, guid: 020df77cb86e887469be911472d59123, type: 3}
   cone:
   - distance: 0
     diameter: 0

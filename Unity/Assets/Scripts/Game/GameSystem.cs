@@ -47,6 +47,12 @@ public class GameSystem : MonoBehaviour {
     public int scoreToWin = 5;
     private int winner;
 
+    public Material RedMat;
+    public Material BlueMat;
+    public Material GreenMat;
+    public Material YellowMat;
+
+
     void Awake()
 	{
 		if (_instance != null && _instance != this) {
@@ -576,7 +582,7 @@ public class GameSystem : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*4, unit*10, unit*8), "");
 
 		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "DEATHMATCH", pauseSkin.GetStyle("Title"));
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE " + scoreToWin + " KILLS TO WIN", pauseSkin.GetStyle("Text"));
 
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN", pauseSkin.GetStyle("Text"));
 		GUI.Box(new Rect(Screen.width/2-0.5f*unit, Screen.height/2-unit*3+unit*4, unit, unit), ""+_gameCountDown, pauseSkin.GetStyle("Countdown"));
