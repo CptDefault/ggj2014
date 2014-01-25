@@ -98,6 +98,7 @@ public class Weapon : MonoBehaviour
                 maxDist = dist;
             
             player.SendMessage("GotHit", this);
+            
         }
 
         _animator.SetTrigger("Shoot");
