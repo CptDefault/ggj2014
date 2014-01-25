@@ -115,12 +115,15 @@ public class Player : MonoBehaviour {
 
     public void Respawn()
     {
-        transform.position = Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
+        var safestSpawnpoint = GameSystem.Instance.GetSafestSpawnpoint();
+        transform.position = safestSpawnpoint.transform.position; //Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
+        transform.rotation = safestSpawnpoint.transform.rotation;
     }
 
     public void GotHit(Weapon shooter)
     {
         //AudioSource.PlayClipAtPoint(deathSound.clip, transform.position, deathSound.volume);
+        _scoredMessage = null;
         deaths++;
         Player sp=null;
         string verb="";
@@ -134,6 +137,8 @@ public class Player : MonoBehaviour {
         }
         
         var rag = (GameObject)Instantiate(ragdoll, transform.position, transform.rotation);
+
+        rag.GetComponentInChildren<Renderer>().material.color = col;
 
         foreach (var rigid in rag.GetComponentsInChildren<Rigidbody>())
         {
@@ -182,6 +187,7 @@ public class Player : MonoBehaviour {
     }
 
     private string _scoredMessage;
+    public bool scoredMessageLow = false;
     void SetScoredMessage(string verb, string receiever)
     {
     	_scoredMessage = "YOU " + verb+ " " + receiever;
@@ -199,8 +205,13 @@ public class Player : MonoBehaviour {
     {
     	//died
 
-		if(_scoredMessage != null)
-			GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y-Screen.height/4f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+		if(_scoredMessage != null){
+			if(!scoredMessageLow)
+				GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y-Screen.height/4f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+			else
+				GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y+Screen.height/5.5f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+
+		}
 
     	if(_scorePopUpTime < 1.3f)
     	{

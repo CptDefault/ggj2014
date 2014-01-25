@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 
 public class GameSystem : MonoBehaviour {
@@ -60,6 +61,9 @@ public class GameSystem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		Time.timeScale = 1;
+
 		_spawnPoints = new List<GameObject>();
 		//get spawn points from scene
 		foreach(GameObject sp in GameObject.FindGameObjectsWithTag("SpawnPoint"))
@@ -169,6 +173,19 @@ public class GameSystem : MonoBehaviour {
 
 	}
 
+    public GameObject GetSafestSpawnpoint()
+    {
+        if(players == null || !players.Any())
+            return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
+        var activePlayers = players.Where(p => p != null && p.activeSelf).ToList();
+        if (activePlayers.Count == 0)
+            return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
+        return _spawnPoints.OrderBy(
+            spawn => activePlayers.
+                             Min(p => (p.transform.position - spawn.transform.position).sqrMagnitude))
+                    .Last();
+    }
+
     public void TogglePauseGame()
 	{
 		if(adjustingControls || state == GameState.ShowObjective)	
@@ -226,6 +243,7 @@ public class GameSystem : MonoBehaviour {
 			else if(Input.GetButtonUp("Back_"+(i+1)))
 			{
 				//quit
+				Application.LoadLevel(0);
 				Clicker.Instance.Click();
 			}
 		}
@@ -299,9 +317,9 @@ public class GameSystem : MonoBehaviour {
 		    p2.rigidbody.angularVelocity = Vector3.zero;
 		}
 
-		for(float t = 0; t < 4.5f; t += Time.deltaTime / (1 - ( t / 6)))
+		for(float t = 0; t < 2.5f; t += Time.deltaTime / (1 - ( t / 3)))
 		{
-			Time.timeScale = 1 - ( t / 6);
+			Time.timeScale = 1 - ( t / 3);
 			yield return null;
 		}
 		state = GameState.GameOver;
@@ -568,13 +586,15 @@ public class GameSystem : MonoBehaviour {
 			//find one that hasn't been used
 			int usedCount = 0;
 			GameObject sp = null;
-			do {
+			/*do {
 				sp = _spawnPoints[Random.Range(0,_spawnPoints.Count)];
 				usedCount = sp.GetComponent<SpawnPoint>().usedCount++;
 				print("used" + usedCount);
-			} while(usedCount > 0);
+			} while(usedCount > 0);*/
 
-			players[currentPlayer] = (GameObject)Instantiate(playerPrefab, sp.transform.position, Quaternion.identity);
+		    sp = GetSafestSpawnpoint();
+
+			players[currentPlayer] = (GameObject)Instantiate(playerPrefab, sp.transform.position, sp.transform.rotation);
 			//players[currentPlayer].GetComponent<Player>().playerNumber = i+1;
 			players[currentPlayer].GetComponent<Player>().SetPlayerNameAndColor(i+1);
 			players[currentPlayer].name = "Player"+(i+1);
@@ -582,6 +602,10 @@ public class GameSystem : MonoBehaviour {
 
 			currentPlayer++;
 		}
+
+		//special case
+		if(numPlayers == 3)
+			playerScripts[2].scoredMessageLow = true;
 
 		SetUpPlayerViewports(numPlayers);
 	}

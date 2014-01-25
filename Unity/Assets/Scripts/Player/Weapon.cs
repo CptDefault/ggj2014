@@ -43,7 +43,7 @@ public class Weapon : MonoBehaviour
 
 
     public ConePoints[] cone = new ConePoints[]{new ConePoints(0,0), new ConePoints(10, 2), new ConePoints(100,2), };
-    public int reloadTime = 2;
+    public float reloadTime = 2.4f;
     private Animator _animator;
 
     public bool ShotReady
@@ -55,6 +55,17 @@ public class Weapon : MonoBehaviour
     {
         _gameSystem = FindObjectOfType<GameSystem>();
         _animator = GetComponentInChildren<Animator>();
+
+    }
+
+
+    protected void Start()
+    {
+        print(weaponTransform.GetComponentInChildren<Renderer>().materials.Count());
+
+        var color = GetComponent<Player>().col;
+        print(color);
+        weaponTransform.GetComponentInChildren<Renderer>().materials[2].SetColor("_MainColor", color);
     }
 
     public void ElevationInput(float angle)
@@ -65,13 +76,13 @@ public class Weapon : MonoBehaviour
     private float _lastFrameMovement;
     protected void Update()
     {
+
         _elevation = Mathf.Clamp(_elevation, minElevation, maxElevation);
         weaponTransform.localRotation = Quaternion.Euler(_elevation, 0, 0);
 
         var velocity = rigidbody.velocity;
         velocity.y = 0;
         var clamp01 = Mathf.Clamp01(velocity.magnitude/5);
-        print(clamp01);
         _lastFrameMovement = _lastFrameMovement*0.90f + clamp01*.1f;
         _animator.SetFloat("MoveSpeed", _lastFrameMovement);
     }
@@ -113,7 +124,7 @@ public class Weapon : MonoBehaviour
         if (particles != null)
         {
             var part = Instantiate(particles, weaponTransform.position + weaponTransform.forward, weaponTransform.rotation);
-            Destroy(part, 1f);
+            Destroy(part, Mathf.Min(1f, maxDist / 50f));
         }
 
         

@@ -583,7 +583,7 @@ MonoBehaviour:
     diameter: 2
   - distance: 100
     diameter: 2
-  reloadTime: 2
+  reloadTime: 2.4000001
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

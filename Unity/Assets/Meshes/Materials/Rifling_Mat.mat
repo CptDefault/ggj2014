@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Rifling_Mat
-  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: a259a9a0b3021634faee21a13b29972b, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -26,3 +26,7 @@ Material:
         first:
           name: _Color
         second: {r: .10980393, g: .129411772, b: .0823529437, a: 1}
+      data:
+        first:
+          name: _MainColor
+        second: {r: .161764681, g: .161764681, b: .161764681, a: 1}
