@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12001, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ScoreSkin
+  m_Name: JoinGameSkin
   m_EditorClassIdentifier: 
   m_Font: {fileID: 12800000, guid: ad580846c3b94954cac4688df153e97e, type: 3}
   m_box:
     m_Name: box
     m_Normal:
-      m_Background: {fileID: 2800000, guid: 43d7fd17d12caec4b9b3971e77eae217, type: 3}
-      m_TextColor: {r: .799999952, g: .799999952, b: .799999952, a: 1}
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
     m_Hover:
       m_Background: {fileID: 0}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -49,7 +49,7 @@ MonoBehaviour:
       m_Top: 4
       m_Bottom: 4
     m_Padding:
-      m_Left: 4
+      m_Left: 59
       m_Right: 4
       m_Top: 4
       m_Bottom: 4
@@ -1193,7 +1193,7 @@ MonoBehaviour:
     m_StretchWidth: 1
     m_StretchHeight: 0
   m_CustomStyles:
-  - m_Name: Player1
+  - m_Name: Red
     m_Normal:
       m_Background: {fileID: 2800000, guid: 80d8ccf98659cbc458d2f5ae9e530bf8, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1238,10 +1238,10 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: ad580846c3b94954cac4688df153e97e, type: 3}
-    m_FontSize: 44
+    m_Font: {fileID: 0}
+    m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 4
+    m_Alignment: 0
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -1251,7 +1251,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: Player2
+  - m_Name: Blue
     m_Normal:
       m_Background: {fileID: 2800000, guid: 60d063154c85f674d93c8c35b04aa46e, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1296,10 +1296,10 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: ad580846c3b94954cac4688df153e97e, type: 3}
-    m_FontSize: 44
+    m_Font: {fileID: 0}
+    m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 4
+    m_Alignment: 0
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -1309,7 +1309,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: Player3
+  - m_Name: Green
     m_Normal:
       m_Background: {fileID: 2800000, guid: 51ad9dfbbce870d49b84bf528a4df970, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1354,10 +1354,10 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
-    m_Font: {fileID: 12800000, guid: ad580846c3b94954cac4688df153e97e, type: 3}
-    m_FontSize: 44
+    m_Font: {fileID: 0}
+    m_FontSize: 0
     m_FontStyle: 0
-    m_Alignment: 4
+    m_Alignment: 0
     m_WordWrap: 0
     m_RichText: 1
     m_TextClipping: 0
@@ -1367,7 +1367,7 @@ MonoBehaviour:
     m_FixedHeight: 0
     m_StretchWidth: 1
     m_StretchHeight: 0
-  - m_Name: Player4
+  - m_Name: Yellow
     m_Normal:
       m_Background: {fileID: 2800000, guid: 7776167e330c03944b9616fd3aeb1ae8, type: 3}
       m_TextColor: {r: 0, g: 0, b: 0, a: 1}
@@ -1412,8 +1412,66 @@ MonoBehaviour:
       m_Right: 0
       m_Top: 0
       m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 0
+    m_FontStyle: 0
+    m_Alignment: 0
+    m_WordWrap: 0
+    m_RichText: 1
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  - m_Name: JoinText
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_TextColor: {r: 0, g: 0, b: 0, a: 1}
+    m_Border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
     m_Font: {fileID: 12800000, guid: ad580846c3b94954cac4688df153e97e, type: 3}
-    m_FontSize: 44
+    m_FontSize: 59
     m_FontStyle: 0
     m_Alignment: 4
     m_WordWrap: 0
