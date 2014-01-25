@@ -6,8 +6,9 @@ public class SpawnPoint : MonoBehaviour {
 	public int usedCount = 0;
 
 	// Use this for initialization
-	void Start () {
-	
+	void Start ()
+	{
+	    renderer.enabled = false;
 	}
 	
 

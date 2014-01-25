@@ -21,14 +21,16 @@ public class Player : MonoBehaviour {
 
 	private Camera _myCamera;
 
+    private RespawnCamera _respawnCamera;
 	public bool setControls;
     public Vector2 crosshairPos;
     private Weapon _weapon;
 
 	//sound
 	public AudioSource deathSound;
-	
-	// Use this for initialization
+    public GameObject ragdoll;
+
+    // Use this for initialization
     protected void Awake()
     {
         _weapon = GetComponent<Weapon>();
@@ -55,7 +57,31 @@ public class Player : MonoBehaviour {
 
 	    }
 	    
+        Invoke("GotHitNull", 3);
 	}
+
+    private RespawnCamera GetRespawnCamera()
+    {
+        if (_respawnCamera == null)
+        {
+            var camGO = new GameObject("Player" + playerNumber + "RespawnCam");
+            _respawnCamera = camGO.AddComponent<RespawnCamera>();
+            var cam = camGO.AddComponent<Camera>();
+            cam.rect = _myCamera.rect;
+        }
+
+        _respawnCamera.transform.position = _myCamera.transform.position;
+        _respawnCamera.transform.rotation = _myCamera.transform.rotation;
+
+        iTween.MoveTo(_respawnCamera.gameObject,
+            iTween.Hash(
+            "position", _respawnCamera.transform.position + transform.up * 1 + transform.forward * -5,
+            "time", 4,
+            "looktarget", transform)
+            );
+
+        return _respawnCamera;
+    }
 
     private void SetChildLayerRecursive(Transform t, int layer)
     {
@@ -90,12 +116,25 @@ public class Player : MonoBehaviour {
 
         transform.position = Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
     }
-
+    public void GotHitNull()
+    {
+        GotHit(null);
+    }
     public void GotHit(MonoBehaviour shooter)
     {
-        deathSound.Play();
-        Respawn();
-        shooter.GetComponent<Player>().ScoreUp();
+        deathSound.PlayOneShot(deathSound.clip, deathSound.volume);
+        
+        if(shooter != null)
+            shooter.GetComponent<Player>().ScoreUp();
+        
+        var rag = (GameObject)Instantiate(ragdoll, transform.position, transform.rotation);
+
+        foreach (var rigid in rag.GetComponentsInChildren<Rigidbody>())
+        {
+            rigid.AddForce(rigidbody.velocity, ForceMode.VelocityChange);
+        }
+
+        GetRespawnCamera().Activate(this);
     }
 
     public void ScoreUp()
