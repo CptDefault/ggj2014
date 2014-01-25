@@ -37,6 +37,11 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    //sounds
+    public AudioSource weaponSource;
+    public AudioClip shotgunBlast;
+
+
     public ConePoints[] cone = new ConePoints[]{new ConePoints(0,0), new ConePoints(10, 2), new ConePoints(100,2), };
     public int reloadTime = 2;
     private Animator _animator;
@@ -102,6 +107,12 @@ public class Weapon : MonoBehaviour
             Destroy(part, 1f);
         }
 
+        
+        //play sound
+        weaponSource.clip = shotgunBlast;
+        weaponSource.Play();
+        
+        var hitPlayers = _gameSystem.players.Where(TestPlayerHit);
         Invoke("Reloaded", reloadTime);
     }
 

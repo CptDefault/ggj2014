@@ -22,6 +22,9 @@ public class AudioManager : MonoBehaviour {
 
     private float _quietLoudBalance = 0;
 
+	//sound effects
+	public AudioSource killConfirmedSource;
+
 	void Awake()
 	{
 		if (_instance != null && _instance != this) {
@@ -139,6 +142,11 @@ public class AudioManager : MonoBehaviour {
 	    }
 	    loopSource.Play();
 		loopQuietSource.Play();
+	}
+
+	public void PlayKillConfirmed()
+	{
+		killConfirmedSource.Play();
 	}
 
 	public static AudioManager Instance
