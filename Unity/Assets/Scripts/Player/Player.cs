@@ -155,7 +155,7 @@ public class Player : MonoBehaviour {
             Destroy(rigid, 15);
         }
 
-        GetRespawnCamera().Activate(this, verb, sp.name, new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y, Screen.width/2.5f, Screen.height/15f));
+        GetRespawnCamera().Activate(this, verb, sp.name, new Rect(crosshairRect.x-Screen.width/4.4f, crosshairRect.y, Screen.width/2.2f, Screen.height/15f));
     }
 
     public void ScoreUp()
@@ -217,9 +217,9 @@ public class Player : MonoBehaviour {
 
 		if(_scoredMessage != null){
 			if(!scoredMessageLow)
-				GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y-Screen.height/4f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+				GUI.Box(new Rect(crosshairRect.x-Screen.width/4.4f, crosshairRect.y-Screen.height/4f, Screen.width/2.2f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
 			else
-				GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y+Screen.height/5.5f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+				GUI.Box(new Rect(crosshairRect.x-Screen.width/4.4f, crosshairRect.y+Screen.height/5.5f, Screen.width/2.2f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
 
 		}
 
