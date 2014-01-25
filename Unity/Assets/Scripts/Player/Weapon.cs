@@ -63,12 +63,13 @@ public class Weapon : MonoBehaviour
 
         if (muzzleFlash != null)
         {
-            var flash = Instantiate(muzzleFlash, weaponTransform.position, weaponTransform.rotation);
+            var flash = (GameObject)Instantiate(muzzleFlash, weaponTransform.position + weaponTransform.forward - weaponTransform.up * 0.2f + weaponTransform.right  *0.2f, weaponTransform.rotation * Quaternion.Euler(0, 180, 0));
+            flash.transform.parent = weaponTransform;
             Destroy(flash, 0.2f);
         }
         if (particles != null)
         {
-            var part = Instantiate(particles, weaponTransform.position, weaponTransform.rotation);
+            var part = Instantiate(particles, weaponTransform.position + weaponTransform.forward, weaponTransform.rotation);
             Destroy(part, 1f);
         }
 
@@ -102,7 +103,6 @@ public class Weapon : MonoBehaviour
         var dispFromCenter = closestPoint - origin;
         dispFromCenter -= direction*Vector3.Dot(dispFromCenter, direction);
 
-
         int coneIndex = 0;
         while (coneIndex < cone.Length && cone[coneIndex].distance < distance)
         {
@@ -115,6 +115,12 @@ public class Weapon : MonoBehaviour
 
         if (coneIndex <= 0)
             return false; //target is less than minumum range (probably behind shooter)
+
+        if((closestPoint - origin).magnitude > 0.1f
+            && Physics.Raycast(origin, closestPoint - origin, (closestPoint - origin).magnitude  - 0.1f, ~(1 << 8))
+            && (player.transform.position - origin).magnitude > 0.1f
+            && Physics.Raycast(origin, player.transform.position - origin, (player.transform.position - origin).magnitude - 0.1f, ~(1 << 8)))
+                    return false;
 
         float segProg = (distance - cone[coneIndex-1].distance) / (cone[coneIndex].distance - cone[coneIndex-1].distance);
 

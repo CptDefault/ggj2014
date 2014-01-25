@@ -37,8 +37,5 @@ public class PlayerInput : MonoBehaviour
 
         if(Input.GetAxis("Triggers_"+pNo) < -0.3f)
             _weapon.Shoot();
-
-        if(Input.GetButtonDown("A_"+pNo))
-            _player.ScoreUp();
     }
 }
