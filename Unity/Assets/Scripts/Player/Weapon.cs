@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using System.Collections;
 
 public class Weapon : MonoBehaviour
@@ -15,6 +16,36 @@ public class Weapon : MonoBehaviour
     private float _targetElevation;
 
     public GameObject muzzleFlash;
+    public GameObject particles;
+    private GameSystem _gameSystem;
+
+    public float gunRange = 20;
+    public float gunCone = 20;
+
+    private bool _isLoaded = true;
+
+    [System.Serializable]
+    public class ConePoints
+    {
+        public float distance;
+        public float diameter;
+
+        public ConePoints(float distance = 0, float diameter = 2)
+        {
+            this.distance = distance;
+            this.diameter = diameter;
+        }
+    }
+
+    public ConePoints[] cone = new ConePoints[]{new ConePoints(0,0), new ConePoints(10, 2), new ConePoints(100,2), };
+    public int reloadTime = 2;
+    private Animator _animator;
+
+    protected void Awake()
+    {
+        _gameSystem = FindObjectOfType<GameSystem>();
+        _animator = GetComponentInChildren<Animator>();
+    }
 
     public void ElevationInput(float angle)
     {
@@ -29,7 +60,73 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        if(muzzleFlash != null)
-            Instantiate(muzzleFlash, weaponTransform.position, weaponTransform.rotation);
+        if (!_isLoaded)
+            return;
+
+        if (muzzleFlash != null)
+        {
+            var flash = (GameObject)Instantiate(muzzleFlash, weaponTransform.position + weaponTransform.forward - weaponTransform.up * 0.2f + weaponTransform.right  *0.2f, weaponTransform.rotation * Quaternion.Euler(0, 180, 0));
+            flash.transform.parent = weaponTransform;
+            Destroy(flash, 0.2f);
+        }
+        if (particles != null)
+        {
+            var part = Instantiate(particles, weaponTransform.position + weaponTransform.forward, weaponTransform.rotation);
+            Destroy(part, 1f);
+        }
+
+        _animator.SetTrigger("Shoot");
+
+        var hitPlayers = _gameSystem.players.Where(TestPlayerHit);
+
+        foreach (var hitPlayer in hitPlayers)
+        {
+            if(hitPlayer == gameObject)
+                continue;
+            
+            hitPlayer.SendMessage("GotHit", this);
+        }
+
+        _isLoaded = false;
+        Invoke("Reloaded", reloadTime);
+    }
+
+    protected void Reloaded()
+    {
+        _isLoaded = true;
+    }
+
+    private bool TestPlayerHit(GameObject player)
+    {
+        var origin = weaponTransform.position;
+        var direction = weaponTransform.forward;
+
+        float distance = Vector3.Dot(direction, player.transform.position - origin);
+        var closestPoint = player.collider.ClosestPointOnBounds(origin + distance*direction);
+
+        var dispFromCenter = closestPoint - origin;
+        dispFromCenter -= direction*Vector3.Dot(dispFromCenter, direction);
+
+        int coneIndex = 0;
+        while (coneIndex < cone.Length && cone[coneIndex].distance < distance)
+        {
+            coneIndex++;
+        }
+
+        if (coneIndex >= cone.Length)
+            return false; //target is out of range
+
+        if (coneIndex <= 0)
+            return false; //target is less than minumum range (probably behind shooter)
+
+        if((closestPoint - origin).magnitude > 0.1f
+            && Physics.Raycast(origin, closestPoint - origin, (closestPoint - origin).magnitude  - 0.1f, ~(1 << 8))
+            && (player.transform.position - origin).magnitude > 0.1f
+            && Physics.Raycast(origin, player.transform.position - origin, (player.transform.position - origin).magnitude - 0.1f, ~(1 << 8)))
+                    return false;
+
+        float segProg = (distance - cone[coneIndex-1].distance) / (cone[coneIndex].distance - cone[coneIndex-1].distance);
+
+        return dispFromCenter.magnitude < Mathf.Lerp(cone[coneIndex-1].diameter, cone[coneIndex].diameter, segProg) / 2;
     }
 }

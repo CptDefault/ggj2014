@@ -6,7 +6,9 @@ public class GameSystem : MonoBehaviour {
 
 	private static GameSystem _instance;
 
-	public enum GameState {JoinGame, ShowObjective, MainGame, Paused};
+	public enum GameState {JoinGame, ShowObjective, MainGame, Paused,
+	    GameOver
+	};
 	public GameState state;
 
 	public GameObject playerPrefab;
@@ -36,8 +38,10 @@ public class GameSystem : MonoBehaviour {
 	}
 
 	private LobbyCharacter[] _lobby;
+    public int scoreToWin = 5;
+    private int winner;
 
-	void Awake()
+    void Awake()
 	{
 		if (_instance != null && _instance != this) {
 			Destroy(this.gameObject);
@@ -77,11 +81,8 @@ public class GameSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetButtonDown("A_1"))
-		{
-			print("joined");
-		}
 
+	    
 		switch(state)
 		{
 			case GameState.JoinGame:
@@ -92,8 +93,23 @@ public class GameSystem : MonoBehaviour {
 				break;
 
 			case GameState.MainGame:
-
+                foreach (var player in playerScripts)
+                {
+                    if (player.score >= scoreToWin)
+                    {
+                        winner = player.playerNumber;
+                        state = GameState.GameOver;
+                        foreach (var p2 in playerScripts)
+                        {
+                            p2.GetComponent<PlayerInput>().enabled = false;
+                        }
+                        break;
+                    }
+                }
 				break;
+				
+            case GameState.GameOver:
+		 break;
 
 			case GameState.Paused:
 				Paused();
@@ -121,12 +137,16 @@ public class GameSystem : MonoBehaviour {
 			case GameState.Paused:
 				PausedGUI();
 				break;
+
+            case GameState.GameOver:
+		        GameOverGUI();
+		        break;
 		}
 
 
 	}
 
-	public void TogglePauseGame()
+    public void TogglePauseGame()
 	{
 		if(adjustingControls)	
 			return;
@@ -181,7 +201,7 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
-	void PausedGUI()
+    void PausedGUI()
 	{
 		GUI.skin = pauseSkin;
 
@@ -240,7 +260,23 @@ public class GameSystem : MonoBehaviour {
 
 	}
 
-	void JoinGame()
+    private void GameOverGUI()
+    {
+        GUI.skin = pauseSkin;
+
+        float unit = Screen.width / 20;
+        //background
+        GUI.Box(new Rect(Screen.width / 2 - 5 * unit, Screen.height / 2 - unit * 3, unit * 10, unit * 6), "");
+        GUI.Box(new Rect(Screen.width / 2 - 2.5f * unit, Screen.height / 2 - unit * 4 + unit * 2f, unit * 5, unit), "PLAYER " + winner + "WINS", pauseSkin.GetStyle("Title"));
+
+
+        if (GUI.Button(new Rect(Screen.width / 2 - 1.5f * unit, Screen.height / 2 - unit * 4 + unit * 4.7f, unit * 3, 0.75f * unit), "RESTART"))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+    }
+
+    void JoinGame()
 	{
 		for(int i=0; i<4; i++)
 		{
@@ -374,26 +410,45 @@ public class GameSystem : MonoBehaviour {
 
 	void SetUpPlayerViewports(int numPlayers)
 	{
-		switch(numPlayers)
+        float w = numPlayers == 1 ? 1 : 0.5f;
+        float h = numPlayers > 2 ? 0.5f : 1f;
+
+	    for (int i = 0; i < numPlayers; i++)
+	    {
+            var rect = new Rect(i % 2 == 0 ? 0 : 0.5f,
+                i >= 2 ? 0 : (numPlayers > 2 ? 0.5f : 0),
+                i == 2 && numPlayers == 3 ? 1 : w, h);
+            SetChildCamera(players[i], rect);
+
+	    }
+
+	    switch(numPlayers)
 		{
 			case 1:
-				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
+//		        w = 1;
+//		        h = 1;
+//				SetChildCamera(players[0], new Rect(0, 0, w, h));
 
 				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
 				break;
 
 			case 2:
-				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
-				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0,1,1);
+//		        w = 0.5f;
+//		        h = 1;
+//				SetChildCamera(players[0], new Rect(0,0,w,h));
+//				SetChildCamera(players[1], new Rect(0.5f,0,w,h));
 
 				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
 				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/2, 10,10);
 				break;
 
 			case 3:
-				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
-				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
-				players[2].GetComponentInChildren<Camera>().rect = new Rect(0f,-0.5f,1,1);
+//		        w = 0.5f;
+//		        h = 0.5f;
+//				SetChildCamera(players[0], new Rect(0,0.5f,w,h));
+//				SetChildCamera(players[1], new Rect(0.5f,0.5f,w,h));
+//		        w = 1;
+//				SetChildCamera(players[2], new Rect(0,0,w,h));
 
 				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
 				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
@@ -401,10 +456,12 @@ public class GameSystem : MonoBehaviour {
 				break;
 
 			case 4:
-				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0.5f,1,1);
-				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0.5f,1,1);
-				players[2].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,-0.5f,1,1);
-				players[3].GetComponentInChildren<Camera>().rect = new Rect(0.5f,-0.5f,1,1);
+//		        w = 0.5f;
+//		        h = 0.5f;
+//				SetChildCamera(players[0], new Rect(0,0.5f,w,h));
+//				SetChildCamera(players[1], new Rect(0.5f,0.5f,w,h));
+//				SetChildCamera(players[2], new Rect(0,0,w,h));
+//				SetChildCamera(players[3], new Rect(0.5f,0,w,h));
 
 				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
 				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
@@ -415,7 +472,16 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
-	void MainGameGUI()
+    private void SetChildCamera(GameObject player, Rect rect)
+    {
+        var cameras = player.GetComponentsInChildren<Camera>();
+        foreach (var cam in cameras)
+        {
+            cam.rect = rect;            
+        }
+    }
+
+    void MainGameGUI()
 	{
 		float unit = Screen.width/20;
 		switch(numPlayersJoined)
