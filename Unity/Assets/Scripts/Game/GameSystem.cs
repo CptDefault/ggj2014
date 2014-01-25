@@ -6,7 +6,7 @@ public class GameSystem : MonoBehaviour {
 
 	private static GameSystem _instance;
 
-	public enum GameState {JoinGame, ShowObjective, MainGame};
+	public enum GameState {JoinGame, ShowObjective, MainGame, Paused};
 	public GameState state;
 
 	public GameObject playerPrefab;
@@ -15,6 +15,7 @@ public class GameSystem : MonoBehaviour {
 	public Player[] playerScripts;
 
 	public GUISkin scoreSkin;
+	public GUISkin pauseSkin;
 
 	//spawn points
 	private List<GameObject> _spawnPoints;
@@ -59,6 +60,9 @@ public class GameSystem : MonoBehaviour {
 		scoreSkin.GetStyle("Player2").fontSize = (int)(Screen.height/20f);
 		scoreSkin.GetStyle("Player3").fontSize = (int)(Screen.height/20f);
 		scoreSkin.GetStyle("Player4").fontSize = (int)(Screen.height/20f);
+
+		pauseSkin.GetStyle("Title").fontSize = (int)(Screen.height/15f);
+		pauseSkin.GetStyle("Button").fontSize = (int)(Screen.height/25f);
 	}
 	
 	// Update is called once per frame
@@ -78,7 +82,10 @@ public class GameSystem : MonoBehaviour {
 				break;
 
 			case GameState.MainGame:
+
 				break;
+
+
 		}
 	}
 
@@ -97,6 +104,46 @@ public class GameSystem : MonoBehaviour {
 			case GameState.MainGame:
 				MainGameGUI();
 				break;
+
+			case GameState.Paused:
+				PausedGUI();
+				break;
+		}
+
+
+	}
+
+	public void TogglePauseGame()
+	{
+		if(state != GameState.Paused) {
+			Time.timeScale = 0;
+			state = GameState.Paused;
+		}
+		else {
+			Time.timeScale = 1;
+			state = GameState.MainGame;
+		}
+	}
+
+	void PausedGUI()
+	{
+		GUI.skin = pauseSkin;
+
+		float unit = Screen.width/20;
+		//background
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3, unit*10, unit*6), "");
+
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2f, unit*5, unit), "PAUSED", pauseSkin.GetStyle("Title"));
+
+		//buttons
+		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*3.45f, unit*3, 0.75f*unit), "SET CONTROLS"))
+		{
+
+		}
+
+		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*4.7f, unit*3, 0.75f*unit), "QUIT"))
+		{
+			
 		}
 	}
 
@@ -111,7 +158,7 @@ public class GameSystem : MonoBehaviour {
 				numPlayersJoined++;
 			}
 
-			if(numPlayersJoined>1)
+			if(numPlayersJoined>0)
 			{
 				if(Input.GetButtonDown("Start_"+(i+1)))
 				{
@@ -236,6 +283,12 @@ public class GameSystem : MonoBehaviour {
 	{
 		switch(numPlayers)
 		{
+			case 1:
+				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
+
+				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
+				break;
+
 			case 2:
 				players[0].GetComponentInChildren<Camera>().rect = new Rect(-0.5f,0,1,1);
 				players[1].GetComponentInChildren<Camera>().rect = new Rect(0.5f,0,1,1);

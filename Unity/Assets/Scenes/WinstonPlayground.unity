@@ -1274,3 +1274,4 @@ MonoBehaviour:
   players: []
   playerScripts: []
   scoreSkin: {fileID: 11400000, guid: 18176c75720e0a148811a62417fde022, type: 2}
+  pauseSkin: {fileID: 11400000, guid: 698ecf77d06dc284b9b3e7f5b3f1da59, type: 2}
