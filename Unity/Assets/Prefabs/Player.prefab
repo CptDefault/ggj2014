@@ -551,6 +551,7 @@ MonoBehaviour:
   setControls: 0
   crosshairPos: {x: 0, y: 0}
   deathSound: {fileID: 8200002}
+  ragdoll: {fileID: 100048, guid: e14255708eee50546863529abde3deb0, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

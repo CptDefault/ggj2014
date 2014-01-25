@@ -83,7 +83,7 @@ public class Weapon : MonoBehaviour
         foreach (var player in _gameSystem.players)
         {
             float dist;
-            if(player == gameObject || !TestPlayerHit(player, out dist))
+            if(player == gameObject || !player.activeSelf || !TestPlayerHit(player, out dist))
                 continue;
 
             if (dist > maxDist)

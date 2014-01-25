@@ -76,10 +76,13 @@ public class GameSystem : MonoBehaviour {
 
 		pauseSkin.GetStyle("Countdown").fontSize = (int)(Screen.height/15f);
 		pauseSkin.GetStyle("Text").fontSize = (int)(Screen.height/25f);
+		pauseSkin.GetStyle("Score").fontSize = (int)(Screen.height/25f);
 
 		setControlsSkin.GetStyle("Title").fontSize = (int)(Screen.height/25f);
 		setControlsSkin.GetStyle("Button").fontSize = (int)(Screen.height/40f);
 		setControlsSkin.GetStyle("Button").padding.left = (int)(Screen.height/18f);
+
+		 pauseSkin.GetStyle("Text").normal.textColor = Color.white;
 	}
 	
 	// Update is called once per frame
@@ -105,6 +108,8 @@ public class GameSystem : MonoBehaviour {
                         foreach (var p2 in playerScripts)
                         {
                             p2.GetComponent<PlayerInput>().enabled = false;
+                            p2.GetComponent<Moveable>().enabled = false;
+                            p2.rigidbody.angularVelocity = Vector3.zero;
                         }
                         break;
                     }
@@ -112,6 +117,15 @@ public class GameSystem : MonoBehaviour {
 				break;
 				
             case GameState.GameOver:
+		        {
+		            for (int i = 0; i < 4; i++)
+		            {
+		                if (Input.GetButtonUp("Start_" + (i + 1)))
+		                {
+                            //state = GameState.ShowObjective;
+		                }
+		            }
+		        }
 		 break;
 
 			case GameState.Paused:
@@ -151,7 +165,7 @@ public class GameSystem : MonoBehaviour {
 
     public void TogglePauseGame()
 	{
-		if(adjustingControls)	
+		if(adjustingControls || state == GameState.ShowObjective)	
 			return;
 
 		Clicker.Instance.Click();
@@ -276,14 +290,37 @@ public class GameSystem : MonoBehaviour {
 
         float unit = Screen.width / 20;
         //background
-        GUI.Box(new Rect(Screen.width / 2 - 5 * unit, Screen.height / 2 - unit * 3, unit * 10, unit * 6), "");
-        GUI.Box(new Rect(Screen.width / 2 - 2.5f * unit, Screen.height / 2 - unit * 4 + unit * 2f, unit * 5, unit), "PLAYER " + winner + "WINS", pauseSkin.GetStyle("Title"));
+        GUI.Box(new Rect(Screen.width / 2 - 5 * unit, Screen.height / 2 - unit * 4, unit * 10, unit * 8), "");
+        GUI.Box(new Rect(Screen.width / 2 - 2.5f * unit, Screen.height / 2 - unit * 5 + unit * 2f, unit * 5, unit), "GAME OVER", pauseSkin.GetStyle("Title"));
+        pauseSkin.GetStyle("Text").normal.textColor = playerScripts[winner-1].col;
+        GUI.Box(new Rect(Screen.width / 2 - 1.5f * unit, Screen.height / 2 - unit * 5 + unit * 3f, unit * 3, unit),  "" + playerScripts[winner-1].name+ " WINS", pauseSkin.GetStyle("Text"));
 
+        //scoreboard
+        //top row
+        GUI.Box(new Rect(Screen.width / 1.9f - 4f * unit, Screen.height / 2 - unit * 5 + unit * 4f, unit * 3, unit), "PLAYER", pauseSkin.GetStyle("Score"));
+        GUI.Box(new Rect(Screen.width / 1.9f - unit, Screen.height / 2 - unit * 5 + unit * 4f, unit , unit), "KILLS", pauseSkin.GetStyle("Score"));
+        GUI.Box(new Rect(Screen.width / 1.9f + unit, Screen.height / 2 - unit * 5 + unit * 4f, unit , unit), "DEATHS", pauseSkin.GetStyle("Score"));
 
-        if (GUI.Button(new Rect(Screen.width / 2 - 1.5f * unit, Screen.height / 2 - unit * 4 + unit * 4.7f, unit * 3, 0.75f * unit), "RESTART"))
+       
+
+        for(int i=0; i<numPlayersJoined; i++)
+        {
+   			pauseSkin.GetStyle("Score").normal.textColor = playerScripts[winner-1].col;
+
+        	pauseSkin.GetStyle("Score").normal.textColor = playerScripts[i].col;
+        	GUI.Box(new Rect(Screen.width / 1.9f - 4f * unit, (Screen.height / 2 - unit * 5 + unit * 4.8f+i*0.5f*unit), unit * 3f, 0.5f*unit), playerScripts[i].name, pauseSkin.GetStyle("Score"));
+        	pauseSkin.GetStyle("Score").normal.textColor = Color.white;
+        	GUI.Box(new Rect(Screen.width / 1.9f - unit, (Screen.height / 2 - unit * 5 + unit * 4.8f+i*0.5f*unit), unit * 1f, 0.5f*unit), "" + playerScripts[i].score, pauseSkin.GetStyle("Score"));
+        	GUI.Box(new Rect(Screen.width / 1.9f + 1f * unit, (Screen.height / 2 - unit * 5 + unit * 4.8f+i*0.5f*unit), unit * 1f, 0.5f*unit), ""+playerScripts[i].deaths, pauseSkin.GetStyle("Score"));
+        }
+
+        if (GUI.Button(new Rect(Screen.width / 2 - 1.5f * unit, Screen.height / 2 - unit * 5 + unit * 6.9f, unit * 3, 0.75f * unit), "RESTART"))
         {
             Application.LoadLevel(Application.loadedLevel);
         }
+
+        //icon
+        GUI.Box(new Rect(Screen.width / 2 - 1.3f * unit, Screen.height / 2 - unit * 5 + unit * 7.05f, unit * 0.5f, 0.5f * unit),"", controllerIcons.GetStyle("Start"));
     }
 
     void JoinGame()
@@ -359,7 +396,7 @@ public class GameSystem : MonoBehaviour {
 		for(int i=0; i<3; i++)
 		{
 			Clicker.Instance.Click();
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(0.1f);
 			_gameCountDown--;
 		}
 		
@@ -413,7 +450,8 @@ public class GameSystem : MonoBehaviour {
 			} while(usedCount > 0);
 
 			players[currentPlayer] = (GameObject)Instantiate(playerPrefab, sp.transform.position, Quaternion.identity);
-			players[currentPlayer].GetComponent<Player>().playerNumber = i+1;
+			//players[currentPlayer].GetComponent<Player>().playerNumber = i+1;
+			players[currentPlayer].GetComponent<Player>().SetPlayerNameAndColor(i+1);
 			players[currentPlayer].name = "Player"+(i+1);
 			playerScripts[currentPlayer] = players[currentPlayer].GetComponent<Player>();
 
@@ -452,8 +490,8 @@ public class GameSystem : MonoBehaviour {
 		switch(numPlayersJoined)
 		{
 			case 2:
-				GUI.Box(new Rect(Screen.width/2-unit, 0, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player1"));
-				GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player2"));
+				GUI.Box(new Rect(Screen.width/2-unit, 0, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
+				GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
 
 				//crosshairs
 				
@@ -461,18 +499,18 @@ public class GameSystem : MonoBehaviour {
 				break;
 
 			case 3:
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player1"));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player2"));
-				GUI.Box(new Rect(Screen.width/2-unit*0.5f, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player3"));
+				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
+				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
+				GUI.Box(new Rect(Screen.width/2-unit*0.5f, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player"+playerScripts[2].playerNumber));
 
 				break;
 
 
 			case 4:
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player1"));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player2"));
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player3"));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[3].score, scoreSkin.GetStyle("Player4"));
+				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
+				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
+				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player"+playerScripts[2].playerNumber));
+				GUI.Box(new Rect(Screen.width/2, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[3].score, scoreSkin.GetStyle("Player"+playerScripts[3].playerNumber));
 				break;
 
 		}
