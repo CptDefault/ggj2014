@@ -46,8 +46,13 @@ MonoBehaviour:
   pauseSkin: {fileID: 11400000, guid: 698ecf77d06dc284b9b3e7f5b3f1da59, type: 2}
   setControlsSkin: {fileID: 11400000, guid: a6b3f816902c1024cbaef163e130e875, type: 2}
   controllerIcons: {fileID: 11400000, guid: 5680ebbf0ed8ee2408acf0b3d3432d82, type: 2}
+  joinGameSkin: {fileID: 11400000, guid: 8e8f4199a0f3cb44ead643889869eab2, type: 2}
   adjustingControls: 0
   scoreToWin: 5
+  RedMat: {fileID: 2100000, guid: 3612d4d84ea78534bb4817a9929a4cbc, type: 2}
+  BlueMat: {fileID: 2100000, guid: 58e5f5403242ab74dbb1298295e44f54, type: 2}
+  GreenMat: {fileID: 2100000, guid: 5aea963dd6aa8fd4d9ca7e9151d08652, type: 2}
+  YellowMat: {fileID: 2100000, guid: 7c9e2b9df4639404683bf4de7c75856d, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
