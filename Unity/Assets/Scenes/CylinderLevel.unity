@@ -11306,6 +11306,47 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1004252645}
   m_GameObject: {fileID: 1493552974}
   m_Mesh: {fileID: 4300000, guid: 15697df7425c42446bc8f02bda3d5914, type: 3}
+--- !u!1 &1496200543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1496200545}
+  - 114: {fileID: 1496200544}
+  m_Layer: 0
+  m_Name: DEATHMESSENGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1496200544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1496200543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8e2796a20d6ed4696cdb6a0549a19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receiver: {fileID: 0}
+  sender: {fileID: 0}
+  messageSkin: {fileID: 11400000, guid: 18176c75720e0a148811a62417fde022, type: 2}
+--- !u!4 &1496200545
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1496200543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6016736, y: -.155395985, z: -2.85171366}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1506317798
 GameObject:
   m_ObjectHideFlags: 0
