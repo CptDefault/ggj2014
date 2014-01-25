@@ -66,6 +66,8 @@ public class Weapon : MonoBehaviour
     {
         _elevation = Mathf.Clamp(_elevation, minElevation, maxElevation);
         weaponTransform.localRotation = Quaternion.Euler(_elevation, 0, 0);
+
+        _animator.SetFloat("MoveSpeed", Mathf.Clamp01(rigidbody.velocity.magnitude / 5));
     }
 
     public void Shoot()
