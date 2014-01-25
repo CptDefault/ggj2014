@@ -16,6 +16,8 @@ public class GameSystem : MonoBehaviour {
 
 	public GUISkin scoreSkin;
 	public GUISkin pauseSkin;
+	public GUISkin setControlsSkin;
+	public GUISkin controllerIcons;
 
 	//spawn points
 	private List<GameObject> _spawnPoints;
@@ -67,6 +69,10 @@ public class GameSystem : MonoBehaviour {
 		pauseSkin.GetStyle("Title").fontSize = (int)(Screen.height/15f);
 		pauseSkin.GetStyle("Button").fontSize = (int)(Screen.height/25f);
 		pauseSkin.GetStyle("Button").padding.left = (int)(Screen.height/15f);
+
+		setControlsSkin.GetStyle("Title").fontSize = (int)(Screen.height/25f);
+		setControlsSkin.GetStyle("Button").fontSize = (int)(Screen.height/40f);
+		setControlsSkin.GetStyle("Button").padding.left = (int)(Screen.height/18f);
 	}
 	
 	// Update is called once per frame
@@ -141,7 +147,7 @@ public class GameSystem : MonoBehaviour {
 		{
 			for(int i=0; i<4; i++)
 			{
-				if(Input.GetButtonUp("Start_"+(i+1)))
+				if(Input.GetButtonUp("X_"+(i+1)))
 				{
 					adjustingControls = false;
 					foreach(Player p in playerScripts)
@@ -149,6 +155,28 @@ public class GameSystem : MonoBehaviour {
 
 					state = GameState.Paused;
 				}
+			}
+
+			return;
+		}
+
+
+		for(int i=0; i<4; i++)
+		{
+			if(Input.GetButtonUp("X_"+(i+1)))
+			{
+				adjustingControls = true;
+
+				foreach(Player p in playerScripts)
+					p.setControls = true;
+			}
+			else if(Input.GetButtonUp("A_"+(i+1)))
+			{
+				TogglePauseGame();
+			}
+			else if(Input.GetButtonUp("Back_"+(i+1)))
+			{
+				//quit
 			}
 		}
 	}
@@ -168,6 +196,8 @@ public class GameSystem : MonoBehaviour {
 				foreach(Player p in playerScripts)
 					p.setControls = false;
 			}
+
+			GUI.Box(new Rect(Screen.width/2-1.4f*unit, Screen.height/2-(0.4f/2*unit), unit*0.5f, 0.5f*unit), "",controllerIcons.GetStyle("x"));
 
 			//controls for each player
 
@@ -189,6 +219,7 @@ public class GameSystem : MonoBehaviour {
 				p.setControls = true;
 		}
 
+
 		if(GUI.Button(new Rect(Screen.width/2-1.5f*unit, Screen.height/2-unit*4+unit*4.2f, unit*3, 0.75f*unit), "CONTROLS"))
 		{
 			adjustingControls = true;
@@ -201,6 +232,12 @@ public class GameSystem : MonoBehaviour {
 		{
 			
 		}
+
+		//icons
+		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*3.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("A"));
+		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*4.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("x"));
+		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*5.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("Back"));
+
 	}
 
 	void JoinGame()
