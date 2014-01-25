@@ -5642,6 +5642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mutedAll: 0
   _mutedMusic: 0
+  mainMenu: 0
   intro: {fileID: 8300000, guid: cd70fc3003eceb84b948d6cea2a80ab9, type: 3}
   loop: {fileID: 8300000, guid: a83bc374d952a104e8b9032029e95766, type: 3}
   loopQuiet: {fileID: 8300000, guid: 45ed414d4ad530e4c9fa7b20ab94289f, type: 3}

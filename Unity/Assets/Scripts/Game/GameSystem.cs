@@ -603,6 +603,10 @@ public class GameSystem : MonoBehaviour {
 			currentPlayer++;
 		}
 
+		//special case
+		if(numPlayers == 3)
+			playerScripts[2].scoredMessageLow = true;
+
 		SetUpPlayerViewports(numPlayers);
 	}
 

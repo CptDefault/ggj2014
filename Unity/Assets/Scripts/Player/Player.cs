@@ -187,6 +187,7 @@ public class Player : MonoBehaviour {
     }
 
     private string _scoredMessage;
+    public bool scoredMessageLow = false;
     void SetScoredMessage(string verb, string receiever)
     {
     	_scoredMessage = "YOU " + verb+ " " + receiever;
@@ -204,8 +205,13 @@ public class Player : MonoBehaviour {
     {
     	//died
 
-		if(_scoredMessage != null)
-			GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y-Screen.height/4f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+		if(_scoredMessage != null){
+			if(!scoredMessageLow)
+				GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y-Screen.height/4f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+			else
+				GUI.Box(new Rect(crosshairRect.x-Screen.width/5f, crosshairRect.y+Screen.height/5.5f, Screen.width/2.5f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+
+		}
 
     	if(_scorePopUpTime < 1.3f)
     	{
