@@ -2348,6 +2348,7 @@ MonoBehaviour:
   pauseSkin: {fileID: 11400000, guid: 698ecf77d06dc284b9b3e7f5b3f1da59, type: 2}
   setControlsSkin: {fileID: 11400000, guid: a6b3f816902c1024cbaef163e130e875, type: 2}
   controllerIcons: {fileID: 11400000, guid: 5680ebbf0ed8ee2408acf0b3d3432d82, type: 2}
+  joinGameSkin: {fileID: 11400000, guid: 8e8f4199a0f3cb44ead643889869eab2, type: 2}
   adjustingControls: 0
   scoreToWin: 2
 --- !u!4 &423862378
