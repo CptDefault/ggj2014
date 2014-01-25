@@ -112,7 +112,6 @@ public class Weapon : MonoBehaviour
         weaponSource.clip = shotgunBlast;
         weaponSource.Play();
         
-        var hitPlayers = _gameSystem.players.Where(TestPlayerHit);
         Invoke("Reloaded", reloadTime);
     }
 
