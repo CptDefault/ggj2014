@@ -37,9 +37,19 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    //sounds
+    public AudioSource weaponSource;
+    public AudioClip shotgunBlast;
+
+
     public ConePoints[] cone = new ConePoints[]{new ConePoints(0,0), new ConePoints(10, 2), new ConePoints(100,2), };
     public int reloadTime = 2;
     private Animator _animator;
+
+    public bool ShotReady
+    {
+        get { return _isLoaded; }
+    }
 
     protected void Awake()
     {
@@ -63,9 +73,31 @@ public class Weapon : MonoBehaviour
         if (!_isLoaded)
             return;
 
+        _isLoaded = false;
+
+        float maxDist =float.MaxValue;
+        RaycastHit hitInfo;
+        if (Physics.Raycast(weaponTransform.position, weaponTransform.forward, out hitInfo))
+            maxDist = hitInfo.distance;
+
+        foreach (var player in _gameSystem.players)
+        {
+            float dist;
+            if(player == gameObject || !TestPlayerHit(player, out dist))
+                continue;
+
+            if (dist > maxDist)
+                maxDist = dist;
+            
+            player.SendMessage("GotHit", this);
+        }
+
+        _animator.SetTrigger("Shoot");
+
+
         if (muzzleFlash != null)
         {
-            var flash = (GameObject)Instantiate(muzzleFlash, weaponTransform.position + weaponTransform.forward - weaponTransform.up * 0.2f + weaponTransform.right  *0.2f, weaponTransform.rotation * Quaternion.Euler(0, 180, 0));
+            var flash = (GameObject)Instantiate(muzzleFlash, weaponTransform.position + weaponTransform.forward - weaponTransform.up * 0.2f + weaponTransform.right * 0.2f, weaponTransform.rotation * Quaternion.Euler(0, 180, 0));
             flash.transform.parent = weaponTransform;
             Destroy(flash, 0.2f);
         }
@@ -75,19 +107,13 @@ public class Weapon : MonoBehaviour
             Destroy(part, 1f);
         }
 
-        _animator.SetTrigger("Shoot");
+        
+        //play sound
+        weaponSource.clip = shotgunBlast;
+        weaponSource.Play();
+        
+        AudioManager.Instance.ShotsFired();
 
-        var hitPlayers = _gameSystem.players.Where(TestPlayerHit);
-
-        foreach (var hitPlayer in hitPlayers)
-        {
-            if(hitPlayer == gameObject)
-                continue;
-            
-            hitPlayer.SendMessage("GotHit", this);
-        }
-
-        _isLoaded = false;
         Invoke("Reloaded", reloadTime);
     }
 
@@ -96,8 +122,10 @@ public class Weapon : MonoBehaviour
         _isLoaded = true;
     }
 
-    private bool TestPlayerHit(GameObject player)
+    private bool TestPlayerHit(GameObject player, out float dist)
     {
+        dist = 0;
+
         var origin = weaponTransform.position;
         var direction = weaponTransform.forward;
 
@@ -125,6 +153,7 @@ public class Weapon : MonoBehaviour
             && Physics.Raycast(origin, player.transform.position - origin, (player.transform.position - origin).magnitude - 0.1f, ~(1 << 8)))
                     return false;
 
+        dist = distance;
         float segProg = (distance - cone[coneIndex-1].distance) / (cone[coneIndex].distance - cone[coneIndex-1].distance);
 
         return dispFromCenter.magnitude < Mathf.Lerp(cone[coneIndex-1].diameter, cone[coneIndex].diameter, segProg) / 2;

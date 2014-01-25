@@ -25,7 +25,7 @@ public class GameSystem : MonoBehaviour {
 	private List<GameObject> _spawnPoints;
 
 	//objective screen
-	private int _gameCountDown = 3;
+	private int _gameCountDown = 5;
 
 	//pause screen
 	public bool adjustingControls;
@@ -74,9 +74,6 @@ public class GameSystem : MonoBehaviour {
 		pauseSkin.GetStyle("Button").fontSize = (int)(Screen.height/25f);
 		pauseSkin.GetStyle("Button").padding.left = (int)(Screen.height/15f);
 
-		pauseSkin.GetStyle("Countdown").fontSize = (int)(Screen.height/15f);
-		pauseSkin.GetStyle("Text").fontSize = (int)(Screen.height/25f);
-
 		setControlsSkin.GetStyle("Title").fontSize = (int)(Screen.height/25f);
 		setControlsSkin.GetStyle("Button").fontSize = (int)(Screen.height/40f);
 		setControlsSkin.GetStyle("Button").padding.left = (int)(Screen.height/18f);
@@ -110,13 +107,15 @@ public class GameSystem : MonoBehaviour {
                     }
                 }
 				break;
-				
             case GameState.GameOver:
-		 break;
 
+<<<<<<< HEAD
 			case GameState.Paused:
 				Paused();
 				break;
+=======
+                break;
+>>>>>>> master
 
 		}
 	}
@@ -154,8 +153,6 @@ public class GameSystem : MonoBehaviour {
 		if(adjustingControls)	
 			return;
 
-		Clicker.Instance.Click();
-
 		if(state != GameState.Paused) {
 			Time.timeScale = 0;
 			state = GameState.Paused;
@@ -166,6 +163,7 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
+<<<<<<< HEAD
 	void Paused()
 	{
 		if(adjustingControls)
@@ -179,8 +177,6 @@ public class GameSystem : MonoBehaviour {
 						p.setControls = false;
 
 					state = GameState.Paused;
-
-					Clicker.Instance.Click();
 				}
 			}
 
@@ -196,22 +192,22 @@ public class GameSystem : MonoBehaviour {
 
 				foreach(Player p in playerScripts)
 					p.setControls = true;
-				Clicker.Instance.Click();
 			}
 			else if(Input.GetButtonUp("A_"+(i+1)))
 			{
 				TogglePauseGame();
-				Clicker.Instance.Click();
 			}
 			else if(Input.GetButtonUp("Back_"+(i+1)))
 			{
 				//quit
-				Clicker.Instance.Click();
 			}
 		}
 	}
 
+	void PausedGUI()
+=======
     void PausedGUI()
+>>>>>>> master
 	{
 		GUI.skin = pauseSkin;
 
@@ -295,7 +291,6 @@ public class GameSystem : MonoBehaviour {
 			{
 				_lobby[i].joined = true;
 				numPlayersJoined++;
-				Clicker.Instance.Click();
 			}
 
 			if(numPlayersJoined>0)
@@ -304,7 +299,6 @@ public class GameSystem : MonoBehaviour {
 				{
 					StartCoroutine(ShowObjectiveThenStartGame());
 					state = GameState.ShowObjective;
-					Clicker.Instance.Click();
 				}
 			}
 		}
@@ -356,31 +350,28 @@ public class GameSystem : MonoBehaviour {
 	{
 		state = GameState.ShowObjective;
 
-		for(int i=0; i<3; i++)
+		for(int i=0; i<5; i++)
 		{
-			Clicker.Instance.Click();
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(0.05f);
 			_gameCountDown--;
 		}
 		
 
 		state = GameState.MainGame;
 		InitialisePlayers();
-		Clicker.Instance.StartGameSound();
 	}
 
 	void ShowObjectiveGUI()
 	{
 		float unit = Screen.width/20;
 		//background
-		GUI.skin = pauseSkin;
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*4, unit*10, unit*8), "");
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3, unit*10, unit*6), "");
 
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "DEATHMATCH", pauseSkin.GetStyle("Title"));
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "OBJECTIVE");
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN");
 
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN", pauseSkin.GetStyle("Text"));
-		GUI.Box(new Rect(Screen.width/2-0.5f*unit, Screen.height/2-unit*3+unit*4, unit, unit), ""+_gameCountDown, pauseSkin.GetStyle("Countdown"));
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN");
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*4, unit*10, unit), ""+_gameCountDown);
 	}
 
 	void InitialisePlayers()
@@ -425,16 +416,66 @@ public class GameSystem : MonoBehaviour {
 
 	void SetUpPlayerViewports(int numPlayers)
 	{
+        float w = numPlayers == 1 ? 1 : 0.5f;
+        float h = numPlayers > 2 ? 0.5f : 1f;
+
 	    for (int i = 0; i < numPlayers; i++)
 	    {
             var rect = new Rect(i % 2 == 0 ? 0 : 0.5f,
                 i >= 2 ? 0 : (numPlayers > 2 ? 0.5f : 0),
-                i == 2 && numPlayers == 3 ? 1 :  0.5f,
-                numPlayers > 2 ? 0.5f : 1f);
+                i == 2 && numPlayers == 3 ? 1 : w, h);
             SetChildCamera(players[i], rect);
 
-	        playerScripts[i].crosshairPos = rect.center;
 	    }
+
+	    switch(numPlayers)
+		{
+			case 1:
+//		        w = 1;
+//		        h = 1;
+//				SetChildCamera(players[0], new Rect(0, 0, w, h));
+
+				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
+				break;
+
+			case 2:
+//		        w = 0.5f;
+//		        h = 1;
+//				SetChildCamera(players[0], new Rect(0,0,w,h));
+//				SetChildCamera(players[1], new Rect(0.5f,0,w,h));
+
+				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/2, 10,10);
+				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/2, 10,10);
+				break;
+
+			case 3:
+//		        w = 0.5f;
+//		        h = 0.5f;
+//				SetChildCamera(players[0], new Rect(0,0.5f,w,h));
+//				SetChildCamera(players[1], new Rect(0.5f,0.5f,w,h));
+//		        w = 1;
+//				SetChildCamera(players[2], new Rect(0,0,w,h));
+
+				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
+				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
+				playerScripts[2].crosshairRect = new Rect(Screen.width*0.5f, Screen.height*0.75f, 10,10);
+				break;
+
+			case 4:
+//		        w = 0.5f;
+//		        h = 0.5f;
+//				SetChildCamera(players[0], new Rect(0,0.5f,w,h));
+//				SetChildCamera(players[1], new Rect(0.5f,0.5f,w,h));
+//				SetChildCamera(players[2], new Rect(0,0,w,h));
+//				SetChildCamera(players[3], new Rect(0.5f,0,w,h));
+
+				playerScripts[0].crosshairRect = new Rect(Screen.width/4, Screen.height/4, 10,10);
+				playerScripts[1].crosshairRect = new Rect(Screen.width*0.75f, Screen.height/4, 10,10);
+				playerScripts[2].crosshairRect = new Rect(Screen.width/4, Screen.height*0.75f, 10,10);
+				playerScripts[3].crosshairRect = new Rect(Screen.width*0.75f, Screen.height*0.75f, 10,10);
+				break;
+
+		}
 	}
 
     private void SetChildCamera(GameObject player, Rect rect)
@@ -480,8 +521,7 @@ public class GameSystem : MonoBehaviour {
 		//draw crosshairs
 		for(int i=0;i<numPlayersJoined;i++)
 		{
-            if(playerScripts[i].ShotReady)
-			    GUI.Box(playerScripts[i].crosshairRect, "");
+			GUI.Box(playerScripts[i].crosshairRect, "");
 		}
 	}
 

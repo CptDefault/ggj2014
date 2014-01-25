@@ -5,9 +5,16 @@ public class Player : MonoBehaviour {
 
 	public int playerNumber;
 	public int score = 0;
-	public Rect crosshairRect;
+    public Rect crosshairRect {
+        get { return new Rect(crosshairPos.x * Screen.width-5, (1-crosshairPos.y) * Screen.height-5, 10, 10);}
+    }
 
-	//score GUI indicator
+    public bool ShotReady
+    {
+        get { return _weapon.ShotReady; }
+    }
+
+    //score GUI indicator
 	public GUIStyle scorePopUpStyle;
 	private float _scorePopUpTime=10;
 	private float _scorePopUpY;
@@ -15,10 +22,22 @@ public class Player : MonoBehaviour {
 	private Camera _myCamera;
 
 	public bool setControls;
+    public Vector2 crosshairPos;
+    private Weapon _weapon;
 
+	//sound
+	public AudioSource deathSound;
+	
 	// Use this for initialization
+    protected void Awake()
+    {
+        _weapon = GetComponent<Weapon>();
+
+        _myCamera = GetComponentInChildren<Camera>();        
+    }
+
+    // Use this for initialization
 	void Start () {
-		_myCamera = GetComponentInChildren<Camera>();
 
 		scorePopUpStyle.fontSize = (int)(Screen.height/20f);
 
@@ -33,6 +52,7 @@ public class Player : MonoBehaviour {
 	            if (i != playerNumber)
                     cam.cullingMask = cam.cullingMask & ~(1 << 8 + i);
 	        }
+
 	    }
 	    
 	}
@@ -53,10 +73,12 @@ public class Player : MonoBehaviour {
 		if(setControls)
 		{
 			//invert Y
-			if(Input.GetButtonDown("Y_"+playerNumber))
+			if(Input.GetButtonDown("Y_"+playerNumber)) {
 			    GetComponent<PlayerInput>().vertLookInvert *= -1;
+			    Clicker.Instance.Click();
+			}
 
-			if(Input.GetAxis("DPad_XAxis_"+playerNumber) > 0 || Input.GetAxis("DPad_YAxis_"+playerNumber) > 0)
+			if(Input.GetAxis("DPad_XAxis_"+playerNumber) > 0 || Input.GetAxis("DPad_YAxis_"+playerNumber) > 0) 
 				GetComponent<PlayerInput>().sensitivityScale += 0.01f;
 			else if(Input.GetAxis("DPad_XAxis_"+playerNumber) < 0 || Input.GetAxis("DPad_YAxis_"+playerNumber) < 0)
 				GetComponent<PlayerInput>().sensitivityScale -= 0.01f;
@@ -71,6 +93,7 @@ public class Player : MonoBehaviour {
 
     public void GotHit(MonoBehaviour shooter)
     {
+        deathSound.Play();
         Respawn();
         shooter.GetComponent<Player>().ScoreUp();
     }
@@ -81,6 +104,8 @@ public class Player : MonoBehaviour {
     	_scorePopUpTime = 0;
 
     	score++;
+
+    	AudioManager.Instance.PlayKillConfirmed();
     }
 
     void OnGUI()
