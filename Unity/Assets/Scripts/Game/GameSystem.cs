@@ -114,30 +114,25 @@ public class GameSystem : MonoBehaviour {
                     if (player.score >= scoreToWin)
                     {
                         winner = System.Array.IndexOf(playerScripts,player);
-                        print("Winner: " + winner);
-                        state = GameState.GameOver;
-                        foreach (var p2 in playerScripts)
-                        {
-                            p2.GetComponent<PlayerInput>().enabled = false;
-                            p2.GetComponent<Moveable>().enabled = false;
-                            p2.rigidbody.angularVelocity = Vector3.zero;
-                        }
+                        //print("Winner: " + winner);
+                        StartCoroutine(ActivateGameOver());
+
                         break;
                     }
                 }
 				break;
 				
             case GameState.GameOver:
-		        {
-		            for (int i = 0; i < 4; i++)
+            	for(int i=0; i<4; i++)
+            	{
+		            if(Input.GetButtonUp("Start_"+(i+1)))
 		            {
-		                if (Input.GetButtonUp("Start_" + (i + 1)))
-		                {
-                            Application.LoadLevel(Application.loadedLevel);
-		                }
+		            	//restart
+		            	Application.LoadLevel(Application.loadedLevel);
+		            	Clicker.Instance.Click();
 		            }
 		        }
-		 break;
+		 		break;
 
 			case GameState.Paused:
 				Paused();
@@ -293,6 +288,24 @@ public class GameSystem : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*4.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("x"));
 		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*5.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("Back"));
 
+	}
+
+	IEnumerator ActivateGameOver()
+	{
+		foreach (var p2 in playerScripts)
+		{
+		    p2.GetComponent<PlayerInput>().enabled = false;
+		    p2.rigidbody.velocity = Vector3.zero;
+		    p2.rigidbody.angularVelocity = Vector3.zero;
+		}
+
+		for(float t = 0; t < 4.5f; t += Time.deltaTime / (1 - ( t / 6)))
+		{
+			Time.timeScale = 1 - ( t / 6);
+			yield return null;
+		}
+		state = GameState.GameOver;
+		Time.timeScale = 1;
 	}
 
     private void GameOverGUI()
