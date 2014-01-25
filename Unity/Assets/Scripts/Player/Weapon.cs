@@ -61,10 +61,7 @@ public class Weapon : MonoBehaviour
 
     protected void Start()
     {
-        print(weaponTransform.GetComponentInChildren<Renderer>().materials.Count());
-
         var color = GetComponent<Player>().col;
-        print(color);
         weaponTransform.GetComponentInChildren<Renderer>().materials[2].SetColor("_MainColor", color);
     }
 

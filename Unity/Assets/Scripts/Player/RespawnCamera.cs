@@ -31,8 +31,11 @@ public class RespawnCamera : MonoBehaviour {
         camera.enabled = false;
         _diedMessage = null;
 
-        player.gameObject.SetActive(true);
-        player.Respawn();
+        if (player != null)
+        {
+            player.gameObject.SetActive(true);
+            player.Respawn();
+        }
     }
 
     void OnGUI()

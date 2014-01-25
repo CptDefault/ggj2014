@@ -132,7 +132,8 @@ public class GameSystem : MonoBehaviour {
 		            if(Input.GetButtonUp("Start_"+(i+1)))
 		            {
 		            	//restart
-		            	Application.LoadLevel(Application.loadedLevel);
+                        ResetLevel();
+		            	//Application.LoadLevel(Application.loadedLevel);
 		            	Clicker.Instance.Click();
 		            }
 		        }
@@ -243,7 +244,8 @@ public class GameSystem : MonoBehaviour {
 			else if(Input.GetButtonUp("Back_"+(i+1)))
 			{
 				//quit
-				Application.LoadLevel(0);
+                ResetLevel();
+				//Application.LoadLevel(0);
 				Clicker.Instance.Click();
 			}
 		}
@@ -307,6 +309,22 @@ public class GameSystem : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width/2-1.37f*unit, Screen.height/2-unit*4+unit*5.35f, 0.5f*unit, 0.5f*unit),"", controllerIcons.GetStyle("Back"));
 
 	}
+
+    public void ResetLevel()
+    {
+        GameObject.Find("Main Camera").GetComponent<Camera>().enabled = true;
+
+        _gameCountDown = 3;
+        winner = 0;
+        
+        foreach (var player in players)
+        {
+            Destroy(player);
+        }
+
+        StartCoroutine(ShowObjectiveThenStartGame());
+    }
+
 
 	IEnumerator ActivateGameOver()
 	{
@@ -539,7 +557,7 @@ public class GameSystem : MonoBehaviour {
 		for(int i=0; i<3; i++)
 		{
 			Clicker.Instance.Click();
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(1f);
 			_gameCountDown--;
 		}
 		
@@ -553,6 +571,7 @@ public class GameSystem : MonoBehaviour {
 	{
 		float unit = Screen.width/20;
 		//background
+	    pauseSkin.GetStyle("Text").normal.textColor = Color.white;
 		GUI.skin = pauseSkin;
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*4, unit*10, unit*8), "");
 
