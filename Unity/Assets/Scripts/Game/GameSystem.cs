@@ -25,7 +25,7 @@ public class GameSystem : MonoBehaviour {
 	private List<GameObject> _spawnPoints;
 
 	//objective screen
-	private int _gameCountDown = 5;
+	private int _gameCountDown = 3;
 
 	//pause screen
 	public bool adjustingControls;
@@ -376,7 +376,7 @@ public class GameSystem : MonoBehaviour {
 		GUI.skin = pauseSkin;
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*4, unit*10, unit*8), "");
 
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "OBJECTIVE", pauseSkin.GetStyle("Title"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "DEATHMATCH", pauseSkin.GetStyle("Title"));
 		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN", pauseSkin.GetStyle("Text"));
 
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN", pauseSkin.GetStyle("Text"));
