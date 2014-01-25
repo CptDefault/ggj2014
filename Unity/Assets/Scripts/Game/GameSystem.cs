@@ -41,6 +41,8 @@ public class GameSystem : MonoBehaviour {
 	struct LobbyCharacter {
 		public int number;
 		public bool joined;
+		public Vector2 centerOfScreen;
+		public bool adjustingControls;
 	}
 
 	private LobbyCharacter[] _lobby;
@@ -72,6 +74,24 @@ public class GameSystem : MonoBehaviour {
 		}
 
 		_lobby = new LobbyCharacter[4];
+
+		//init center of screen for lobby characters for customise controls
+	    for (int i = 0; i < 4; i++)
+	    {
+            var rect = new Rect(i % 2 == 0 ? 0 : 0.5f,
+                i >= 2 ? 0 : (4 > 2 ? 0.5f : 0),
+                i == 2 && 4 == 3 ? 1 :  0.5f,
+                4 > 2 ? 0.5f : 1f);
+	        _lobby[i].centerOfScreen = rect.center;
+
+	        if(!PlayerPrefs.HasKey("P"+(i+1)+"Inverted"))
+	        	PlayerPrefs.SetInt("P"+(i+1)+"Inverted", 1);
+
+	        if(!PlayerPrefs.HasKey("P"+(i+1)+"SensitivityScale"))
+	        	PlayerPrefs.SetFloat("P"+(i+1)+"SensitivityScale", 1);
+	    }
+
+	    //initialise
 
 		//state = GameState.ShowObjective;
 
@@ -219,6 +239,7 @@ public class GameSystem : MonoBehaviour {
 					state = GameState.Paused;
 
 					Clicker.Instance.Click();
+					PlayerPrefs.Save();
 				}
 			}
 
@@ -244,8 +265,8 @@ public class GameSystem : MonoBehaviour {
 			else if(Input.GetButtonUp("Back_"+(i+1)))
 			{
 				//quit
-                ResetLevel();
-				//Application.LoadLevel(0);
+                //ResetLevel();
+				Application.LoadLevel(1);
 				Clicker.Instance.Click();
 			}
 		}
@@ -312,6 +333,8 @@ public class GameSystem : MonoBehaviour {
 
     public void ResetLevel()
     {
+        Time.timeScale = 1;
+
         GameObject.Find("Main Camera").GetComponent<Camera>().enabled = true;
 
         _gameCountDown = 3;
@@ -423,11 +446,43 @@ public class GameSystem : MonoBehaviour {
 				print("joined");
 			}
 
-			if(numPlayersJoined>0)
+
+			if(Input.GetButtonDown("X_"+(i+1)))
 			{
+				_lobby[i].adjustingControls = !_lobby[i].adjustingControls;
+				Clicker.Instance.Click();
+			}
+
+			//adjust controls
+			if(_lobby[i].adjustingControls)
+			{
+				//print("I am adjusing "+ i);
+				//invert
+				if(Input.GetButtonDown("Y_"+(i+1)))
+				{
+					PlayerPrefs.SetInt("P"+(i+1)+"Inverted", -1*PlayerPrefs.GetInt("P"+(i+1)+"Inverted"));
+					//PlayerPrefs.SetInt("P"+(i+1)+"Inverted", -1);
+					print("Invert controsl for " + (i+1));
+				}
+
+				float sensitivityScale = PlayerPrefs.GetFloat("P"+(i+1)+"SensitivityScale");
+				if(Input.GetAxis("DPad_XAxis_"+(i+1)) > 0 || Input.GetAxis("DPad_YAxis_"+(i+1)) > 0) {
+					sensitivityScale += 0.01f;
+					PlayerPrefs.SetFloat("P"+(i+1)+"SensitivityScale", sensitivityScale);
+				}
+				else if(Input.GetAxis("DPad_XAxis_"+(i+1)) < 0 || Input.GetAxis("DPad_YAxis_"+(i+1)) < 0){
+					sensitivityScale -= 0.01f;
+					PlayerPrefs.SetFloat("P"+(i+1)+"SensitivityScale", sensitivityScale);
+				}
+			}
+			
+
+			if(numPlayersJoined>0)
+			{ 
 				if(Input.GetButtonDown("Start_"+(i+1)))
 				{
 					StartCoroutine(ShowObjectiveThenStartGame());
+					PlayerPrefs.Save();
 					state = GameState.ShowObjective;
 					Clicker.Instance.Click();
 				}
@@ -548,6 +603,48 @@ public class GameSystem : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width/2-unit*3f, Screen.height/2-0.05f*Screen.height, unit*6, Screen.height*0.1f), startText, pauseSkin.GetStyle("Title"));
 
 		//each player can say they're playing, increasing numPlayersJoined by 1, then set num players
+
+		JoinGameControlsGUI();
+	}
+
+	//customise controls on join game
+	void JoinGameControlsGUI()
+	{	
+		for(int i=0; i<4; i++)
+		{
+			//check if this lobby char is trying to customise
+			if(_lobby[i].adjustingControls == true)
+			{
+				//draw GUI for me
+
+				GUI.Box(new Rect(_lobby[i].centerOfScreen.x*Screen.width-Screen.height/5, (1-_lobby[i].centerOfScreen.y)*Screen.height-Screen.height/6, Screen.height/2.5F, Screen.height/3), "", GameSystem.Instance.setControlsSkin.GetStyle("Box"));
+
+				GUI.Box(new Rect(_lobby[i].centerOfScreen.x*Screen.width-Screen.height/8, (1-_lobby[i].centerOfScreen.y)*Screen.height-Screen.height/7f, Screen.height/4f, Screen.height/13), "SET CONTROLS",GameSystem.Instance.setControlsSkin.GetStyle("Title"));
+
+				string invertedText;
+
+				//print(""+ i+ " inverted" + PlayerPrefs.GetInt("P"+(i+1)+"Inverted"));
+				if(PlayerPrefs.GetInt("P"+(i+1)+"Inverted") == 1) {
+					invertedText = "Y Look Normal";
+				}
+				else {
+					invertedText = "Y Look Inverted";
+				}
+
+				GUI.Box(new Rect(_lobby[i].centerOfScreen.x*Screen.width-Screen.height/8, (1-_lobby[i].centerOfScreen.y)*Screen.height-Screen.height/20f, Screen.height/4f, Screen.height/13), invertedText, GameSystem.Instance.setControlsSkin.GetStyle("Button"));
+
+				GUI.Box(new Rect(_lobby[i].centerOfScreen.x*Screen.width-Screen.height/8, (1-_lobby[i].centerOfScreen.y)*Screen.height-Screen.height/20f+Screen.height/11f, Screen.height/4f, Screen.height/13), "Look Sensitivity", GameSystem.Instance.setControlsSkin.GetStyle("Button"));
+
+				GUI.skin = GameSystem.Instance.setControlsSkin;
+				float sensitivityScale = PlayerPrefs.GetFloat("P"+(i+1)+"SensitivityScale");
+				sensitivityScale = GUI.HorizontalSlider(new Rect(_lobby[i].centerOfScreen.x*Screen.width-Screen.height/8, (1-_lobby[i].centerOfScreen.y)*Screen.height-Screen.height/20f+Screen.height/6f, Screen.height/4f, Screen.height/13), sensitivityScale, 0.5f, 2.0f);
+
+				//icons
+				GUI.Box(new Rect(_lobby[i].centerOfScreen.x*Screen.width-Screen.height/8.3f, (1-_lobby[i].centerOfScreen.y)*Screen.height-Screen.height/20f+Screen.height/40f, Screen.width/40f, Screen.width/40f) ,"", GameSystem.Instance.controllerIcons.GetStyle("Y"));
+
+				GUI.Box(new Rect(_lobby[i].centerOfScreen.x*Screen.width-Screen.height/8.3f, (1-_lobby[i].centerOfScreen.y)*Screen.height-Screen.height/20f+Screen.height/11f+Screen.height/40f, Screen.width/40f, Screen.width/40f) ,"", GameSystem.Instance.controllerIcons.GetStyle("Dpad"));
+			}
+		}
 	}
 
 	IEnumerator ShowObjectiveThenStartGame()
@@ -557,7 +654,7 @@ public class GameSystem : MonoBehaviour {
 		for(int i=0; i<3; i++)
 		{
 			Clicker.Instance.Click();
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(0.1f);
 			_gameCountDown--;
 		}
 		
