@@ -40,7 +40,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - m_Motion: {fileID: 7400000, guid: 6dcdd9f77b3904c4d90b50aed1b997ad, type: 3}
-    m_Threshold: 0
+    m_Threshold: .100000001
     m_Position: {x: 0, y: 0}
     m_TimeScale: .200000003
     m_CycleOffset: 0
@@ -53,9 +53,9 @@ BlendTree:
     m_CycleOffset: 0
     m_IsAnim: 1
     m_Mirror: 0
-  m_BlendParameter: Blend
+  m_BlendParameter: MoveSpeed
   m_BlendParameterY: New Float
-  m_MinThreshold: 0
+  m_MinThreshold: .100000001
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 0
   m_BlendType: 0
@@ -89,7 +89,7 @@ Transition:
   m_TransitionOffset: .480672687
   m_Conditions:
   - m_ConditionMode: 5
-    m_ConditionEvent: 
+    m_ConditionEvent: MoveSpeed
     m_EventTreshold: 0
     m_ExitTime: .99420172
   m_Atomic: 1
@@ -174,15 +174,15 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
+      first: {fileID: 0}
+      second: []
+    data:
+      first: {fileID: 0}
+      second: []
+    data:
       first: {fileID: 110249142}
       second:
       - {fileID: 110192860}
-    data:
-      first: {fileID: 0}
-      second: []
-    data:
-      first: {fileID: 0}
-      second: []
     data:
       first: {fileID: 110286954}
       second:
