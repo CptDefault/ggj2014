@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using System.Collections;
 
@@ -40,6 +41,7 @@ public class Weapon : MonoBehaviour
     //sounds
     public AudioSource weaponSource;
     public AudioClip shotgunBlast;
+    public AudioClip reloadEffect;
 
 
     public ConePoints[] cone = new ConePoints[]{new ConePoints(0,0), new ConePoints(10, 2), new ConePoints(100,2), };
@@ -129,13 +131,17 @@ public class Weapon : MonoBehaviour
         weaponSource.clip = shotgunBlast;
         weaponSource.Play();
         
-        AudioManager.Instance.ShotsFired();
+        StartCoroutine(Reload());
 
-        Invoke("Reloaded", reloadTime);
+        AudioManager.Instance.ShotsFired();
     }
 
-    protected void Reloaded()
+    protected IEnumerator Reload()
     {
+        const float shootAnimTime = 0.1f;
+        yield return new WaitForSeconds(shootAnimTime);
+        weaponSource.PlayOneShot(reloadEffect);
+        yield return new WaitForSeconds(reloadTime - shootAnimTime);
         _isLoaded = true;
     }
 

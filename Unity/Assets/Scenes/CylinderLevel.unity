@@ -90,7 +90,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &658525
 Transform:
@@ -126,8 +126,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .81306076, w: .432201385}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -162,7 +162,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &868557
 Transform:
@@ -198,8 +198,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .881420135, w: .814037323}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -234,7 +234,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &994387
 Transform:
@@ -270,8 +270,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .693870544, w: .432151794}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -306,7 +306,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &11732573
 Transform:
@@ -342,8 +342,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 4
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .374633789, w: .786743164}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -375,7 +375,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &13202939
 Transform:
@@ -406,7 +406,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &16352981
 Transform:
@@ -429,8 +429,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .166992188, y: .166992188, z: 0, w: .34375}
   m_Materials:
   - {fileID: 2100000, guid: 42b618ef997a19141adebb63b6fdfb02, type: 2}
   m_SubsetIndices: 
@@ -476,7 +476,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &22164532
 Transform:
@@ -507,7 +507,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &26706428
 Transform:
@@ -543,8 +543,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .168441772, w: .728988647}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -579,7 +579,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &42320109
 Transform:
@@ -615,8 +615,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .801254272, w: .31590271}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -723,7 +723,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &59862700
 Transform:
@@ -795,7 +795,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &60285477
 Transform:
@@ -831,8 +831,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .584457397, w: .174301147}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -937,7 +937,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &71526892
 Transform:
@@ -980,7 +980,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &74970980
 Transform:
@@ -1016,8 +1016,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .357421875, y: .357421875, z: .542549133, w: -.0013961792}
   m_Materials:
   - {fileID: 2100000, guid: 5958f9336a07dd147a88dd23988f1cfb, type: 2}
   m_SubsetIndices: 
@@ -1049,7 +1049,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &79176708
 Transform:
@@ -1079,7 +1079,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &91341944
 Transform:
@@ -1115,8 +1115,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .477241516, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1151,7 +1151,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &91859940
 Transform:
@@ -1223,7 +1223,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &93723872
 Transform:
@@ -1259,8 +1259,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .336448669, w: .792503357}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1295,7 +1295,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &104177057
 Transform:
@@ -1331,8 +1331,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .908882141, w: .872749329}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1367,7 +1367,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &104224344
 Transform:
@@ -1403,8 +1403,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .705688477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1439,7 +1439,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &110815122
 Transform:
@@ -1475,8 +1475,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .339477539, w: .893188477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1511,7 +1511,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &113879962
 Transform:
@@ -1547,8 +1547,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .455638885, w: .874584198}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1582,7 +1582,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &122496915
 Transform:
@@ -1605,8 +1605,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 12
+  m_LightmapTilingOffset: {x: .581054688, y: .581054688, z: -.00226974487, w: .314136505}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1641,7 +1641,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &123925145
 Transform:
@@ -1677,8 +1677,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .513374329, w: .645210266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1752,7 +1752,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &152025100
 Transform:
@@ -1802,7 +1802,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &153815251
 Transform:
@@ -1838,8 +1838,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .585571289, w: .831665039}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -1873,7 +1873,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &173608437
 Transform:
@@ -1922,7 +1922,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &179860021
 Transform:
@@ -1972,7 +1972,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &183745495
 Transform:
@@ -2008,8 +2008,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .807113647, w: .467269897}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2043,7 +2043,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &187821562
 Transform:
@@ -2093,7 +2093,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &196815490
 Transform:
@@ -2129,8 +2129,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .46043396, w: .303207397}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2205,7 +2205,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &210819869
 Transform:
@@ -2241,8 +2241,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .178710938, y: .178710938, z: .760044098, w: .773715973}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2277,7 +2277,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &219663225
 Transform:
@@ -2313,8 +2313,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .455589294, w: .432151794}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2349,7 +2349,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &229051075
 Transform:
@@ -2385,8 +2385,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .22712326, w: .597240448}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2420,7 +2420,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &231994141
 Transform:
@@ -2443,8 +2443,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 12
+  m_LightmapTilingOffset: {x: .581054688, y: .581054688, z: -.00226974487, w: .630542755}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2479,7 +2479,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &233980716
 Transform:
@@ -2515,8 +2515,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .247070312, y: .247070312, z: -.000965118408, w: .738292694}
   m_Materials:
   - {fileID: 2100000, guid: 5958f9336a07dd147a88dd23988f1cfb, type: 2}
   m_SubsetIndices: 
@@ -2551,7 +2551,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &235650426
 Transform:
@@ -2587,8 +2587,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .178710938, y: .178710938, z: .71023941, w: -.0006980896}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2620,7 +2620,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &236150135
 Transform:
@@ -2649,7 +2649,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &249933303
 Transform:
@@ -2685,8 +2685,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .585571289, w: .737915039}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2718,7 +2718,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &250754056
 Transform:
@@ -2807,7 +2807,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &262002905
 Transform:
@@ -2843,8 +2843,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .408813477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2879,7 +2879,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &272096756
 Transform:
@@ -2915,8 +2915,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .244750977, w: .737915039}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -2951,7 +2951,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &284746167
 Transform:
@@ -2987,8 +2987,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 12
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .855941772, w: .12840271}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -3023,7 +3023,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &290836363
 Transform:
@@ -3095,7 +3095,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &293868368
 Transform:
@@ -3131,8 +3131,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .72265625, y: .72265625, z: -.00282287598, w: -.00282287598}
   m_Materials:
   - {fileID: 2100000, guid: 5958f9336a07dd147a88dd23988f1cfb, type: 2}
   m_SubsetIndices: 
@@ -3167,7 +3167,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &294099495
 Transform:
@@ -3204,8 +3204,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .130859375, y: .130859375, z: .840309143, w: .130348206}
   m_Materials:
   - {fileID: 2100000, guid: 1b638c13f31b51c49882b17da1289f67, type: 2}
   m_SubsetIndices: 
@@ -3240,7 +3240,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &297022972
 Transform:
@@ -3276,8 +3276,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .586616516, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -3309,7 +3309,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &299742544
 Transform:
@@ -3408,7 +3408,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &326102952
 Transform:
@@ -3438,7 +3438,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &329063555
 Transform:
@@ -3474,8 +3474,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .893188477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -3509,7 +3509,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &332577156
 Transform:
@@ -3532,8 +3532,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .59375, y: .59375, z: -.00231933594, w: .651977539}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -3568,7 +3568,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &337330663
 Transform:
@@ -3604,8 +3604,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .642211914, w: .867797852}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -3640,7 +3640,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &338403483
 Transform:
@@ -3676,8 +3676,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .178710938, y: .178710938, z: -.0006980896, w: -.0006980896}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -3709,7 +3709,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &346196086
 Transform:
@@ -3810,7 +3810,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &366383646
 Transform:
@@ -3833,8 +3833,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .59375, y: .59375, z: -.00231933594, w: .324829102}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -3868,7 +3868,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &367708200
 Transform:
@@ -3990,7 +3990,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &369249603
 Transform:
@@ -4026,8 +4026,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .840316772, w: .645980835}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -4205,7 +4205,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &408206792
 Transform:
@@ -4254,7 +4254,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &411074784
 Transform:
@@ -4438,6 +4438,10 @@ MonoBehaviour:
   joinGameSkin: {fileID: 11400000, guid: 8e8f4199a0f3cb44ead643889869eab2, type: 2}
   adjustingControls: 0
   scoreToWin: 5
+  RedMat: {fileID: 0}
+  BlueMat: {fileID: 0}
+  GreenMat: {fileID: 0}
+  YellowMat: {fileID: 0}
 --- !u!4 &423862378
 Transform:
   m_ObjectHideFlags: 0
@@ -4465,7 +4469,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &425006437
 Transform:
@@ -4537,7 +4541,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &426985903
 Transform:
@@ -4560,8 +4564,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .166992188, y: .166992188, z: 0, w: .512695312}
   m_Materials:
   - {fileID: 2100000, guid: b143d2f9ec8750d40bc5b7eac94c881e, type: 2}
   m_SubsetIndices: 
@@ -4610,7 +4614,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &431548556
 Transform:
@@ -4751,7 +4755,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &445378911
 Transform:
@@ -4785,7 +4789,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &448711052
 Transform:
@@ -4825,7 +4829,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &451856365
 Transform:
@@ -4861,8 +4865,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .587593079, w: .649116516}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -4897,7 +4901,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &452559498
 Transform:
@@ -4933,8 +4937,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .799438477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -5103,7 +5107,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &475192271
 Transform:
@@ -5139,8 +5143,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .513374329, w: .321968079}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -5159,6 +5163,64 @@ MeshFilter:
   m_PrefabInternal: {fileID: 2082672076}
   m_GameObject: {fileID: 475192270}
   m_Mesh: {fileID: 4300000, guid: 215e48a2de095754c805d631779520ca, type: 3}
+--- !u!1 &483325895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100526, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 483325896}
+  - 33: {fileID: 483325898}
+  - 23: {fileID: 483325897}
+  m_Layer: 0
+  m_Name: Cylinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &483325896
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400526, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 483325895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.93852711, y: 11.0435524, z: -1.3536799}
+  m_LocalScale: {x: .0700000003, y: 10.0365067, z: .0700000003}
+  m_Children: []
+  m_Father: {fileID: 535146630}
+--- !u!23 &483325897
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300374, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 483325895}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .1015625, y: .1015625, z: .557174325, w: .659892142}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &483325898
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300424, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 483325895}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &492833316
 GameObject:
   m_ObjectHideFlags: 0
@@ -5355,7 +5417,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &527586163
 Transform:
@@ -5427,7 +5489,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &532032808
 Transform:
@@ -5463,8 +5525,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .178710938, y: .178710938, z: .35477066, w: -.0006980896}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -5496,7 +5558,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &533598652
 Transform:
@@ -5526,7 +5588,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &533894780
 Transform:
@@ -5562,8 +5624,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 12
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .576850891, w: .638374329}
   m_Materials:
   - {fileID: 2100000, guid: 5958f9336a07dd147a88dd23988f1cfb, type: 2}
   m_SubsetIndices: 
@@ -5582,6 +5644,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 2082672076}
   m_GameObject: {fileID: 533894779}
   m_Mesh: {fileID: 4300000, guid: 4892e7a8384b1d9449621ca58d533038, type: 3}
+--- !u!1 &535146629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100524, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 535146630}
+  m_Layer: 0
+  m_Name: Wires
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &535146630
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400524, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 535146629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.17331266, y: 11.7098579, z: -1.08066678}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1181182187}
+  - {fileID: 763150926}
+  - {fileID: 1245032134}
+  - {fileID: 483325896}
+  - {fileID: 1957988668}
+  m_Father: {fileID: 1485302494}
 --- !u!1 &538078079
 GameObject:
   m_ObjectHideFlags: 0
@@ -5597,7 +5690,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &538078080
 Transform:
@@ -5647,7 +5740,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &544686383
 Transform:
@@ -5718,7 +5811,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &546919598
 Transform:
@@ -5767,7 +5860,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &559573659
 Transform:
@@ -5790,8 +5883,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .517578185, y: .517578125, z: -.00202178978, w: -.00202178955}
   m_Materials:
   - {fileID: 2100000, guid: aa9f7bcb239fe7b49b46f3351df81beb, type: 2}
   - {fileID: 2100000, guid: 7eaa9ec73c1d21143a99843d7eb3f978, type: 2}
@@ -6118,7 +6211,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &561026417
 Transform:
@@ -6154,8 +6247,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .502563477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -6190,7 +6283,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &569871384
 Transform:
@@ -6226,8 +6319,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .400093079, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -6261,7 +6354,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &585697567
 Transform:
@@ -6284,8 +6377,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .344726562, y: .344726562, z: .642208099, w: .430294037}
   m_Materials:
   - {fileID: 2100000, guid: 4a3de850cc264204f88ac30021e4b9e3, type: 2}
   m_SubsetIndices: 
@@ -6321,7 +6414,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &592140205
 Transform:
@@ -6371,8 +6464,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .130859375, y: .130859375, z: .853981018, w: .823707581}
   m_Materials:
   - {fileID: 2100000, guid: 1b638c13f31b51c49882b17da1289f67, type: 2}
   m_SubsetIndices: 
@@ -6407,7 +6500,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &598099518
 Transform:
@@ -6443,8 +6536,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .740913391, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -6479,7 +6572,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &613865117
 Transform:
@@ -6516,8 +6609,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .130859375, y: .130859375, z: .840309143, w: -.000511169434}
   m_Materials:
   - {fileID: 2100000, guid: 1b638c13f31b51c49882b17da1289f67, type: 2}
   m_SubsetIndices: 
@@ -6551,7 +6644,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &616993147
 Transform:
@@ -6575,8 +6668,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .233398438, y: .233398438, z: .3399086, w: .60943985}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -6611,7 +6704,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &627063980
 Transform:
@@ -6647,8 +6740,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .244750977, w: .831665039}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -6682,7 +6775,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &627135406
 Transform:
@@ -6706,8 +6799,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .233398438, y: .233398438, z: .567447662, w: .315494537}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -6741,7 +6834,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &628394536
 Transform:
@@ -6764,8 +6857,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .581054688, y: .581054688, z: -.00226974487, w: -.00226974487}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -6799,7 +6892,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &656263570
 Transform:
@@ -6822,8 +6915,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .344726562, y: .344726562, z: .648067474, w: -.00134658813}
   m_Materials:
   - {fileID: 2100000, guid: 4a3de850cc264204f88ac30021e4b9e3, type: 2}
   m_SubsetIndices: 
@@ -6857,7 +6950,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &663542510
 Transform:
@@ -6881,8 +6974,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .227539062, y: .227539062, z: -.000888824463, w: .748134613}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -6917,7 +7010,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &664686520
 Transform:
@@ -6989,7 +7082,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &669057066
 Transform:
@@ -7025,8 +7118,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .587593079, w: -.00127410889}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -7058,7 +7151,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &671236720
 Transform:
@@ -7087,7 +7180,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &671874204
 Transform:
@@ -7110,8 +7203,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .581054688, y: .581054688, z: -.00226974487, w: .65202713}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -7145,7 +7238,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &673680617
 Transform:
@@ -7169,8 +7262,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .233398438, y: .233398438, z: .3399086, w: .853580475}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -7202,7 +7295,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &687046283
 Transform:
@@ -7278,7 +7371,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &708381008
 Transform:
@@ -7314,8 +7407,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .708518982, w: .303245544}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -7349,7 +7442,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &709451950
 Transform:
@@ -7372,10 +7465,10 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .200195312, y: .200195312, z: .680858612, w: .706249237}
   m_Materials:
-  - {fileID: 2100000, guid: 735f2bed62ea9bf40b06775a5e625794, type: 2}
+  - {fileID: 2100000, guid: aa9f7bcb239fe7b49b46f3351df81beb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -7408,7 +7501,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &718191941
 Transform:
@@ -7444,8 +7537,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 12
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .576850891, w: .315132141}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -7555,7 +7648,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &725679226
 Transform:
@@ -7626,7 +7719,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &750051010
 Transform:
@@ -7649,8 +7742,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .208984375, y: .208984375, z: .573402405, w: .609535217}
   m_Materials:
   - {fileID: 2100000, guid: f74ac51de8a6a21459339bbc9b675936, type: 2}
   m_SubsetIndices: 
@@ -7683,7 +7776,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &762749217
 Transform:
@@ -7720,6 +7813,64 @@ Animator:
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
+--- !u!1 &763150925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100528, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 763150926}
+  - 33: {fileID: 763150928}
+  - 23: {fileID: 763150927}
+  m_Layer: 0
+  m_Name: Cylinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &763150926
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400528, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 763150925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.5619459, y: 7.16433144, z: 2.54068375}
+  m_LocalScale: {x: .0700000003, y: 10.0365067, z: .0700000003}
+  m_Children: []
+  m_Father: {fileID: 535146630}
+--- !u!23 &763150927
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300376, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 763150925}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .1015625, y: .1015625, z: .442916512, w: .895243704}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &763150928
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300426, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 763150925}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &770847832
 GameObject:
   m_ObjectHideFlags: 0
@@ -7808,7 +7959,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &773682058
 Transform:
@@ -7831,8 +7982,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .59375, y: .59375, z: -.00231933594, w: .324829102}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -7867,7 +8018,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &785951715
 Transform:
@@ -7904,8 +8055,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .130859375, y: .130859375, z: .853981018, w: .692848206}
   m_Materials:
   - {fileID: 2100000, guid: 1b638c13f31b51c49882b17da1289f67, type: 2}
   m_SubsetIndices: 
@@ -7937,7 +8088,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &788817600
 Transform:
@@ -7967,7 +8118,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &790148263
 Transform:
@@ -7991,8 +8142,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .233398438, y: .233398438, z: .573307037, w: .466861725}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -8027,7 +8178,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &793948562
 Transform:
@@ -8098,7 +8249,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &796274792
 Transform:
@@ -8122,8 +8273,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .227539062, y: .227539062, z: .339931488, w: .315517426}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -8158,7 +8309,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &830930265
 Transform:
@@ -8194,8 +8345,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .853149414}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -8358,7 +8509,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &840615723
 Transform:
@@ -8392,7 +8543,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &852322407
 Transform:
@@ -8415,10 +8566,10 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .166992188, y: .166992188, z: .341796875, w: .684570312}
   m_Materials:
-  - {fileID: 2100000, guid: 61078800830d4d94abe1a7798fc6ab2e, type: 2}
+  - {fileID: 2100000, guid: 5448819ee78e1e7479adf74e3e0e6dd7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -8465,7 +8616,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &888769868
 Transform:
@@ -8501,8 +8652,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .574729919, w: .432151794}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -8537,7 +8688,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &891542610
 Transform:
@@ -8606,7 +8757,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &891714010
 Transform:
@@ -8636,7 +8787,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &895633447
 Transform:
@@ -8672,8 +8823,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .339477539, w: .799438477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -8707,7 +8858,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &912118398
 Transform:
@@ -8731,8 +8882,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .227539062, y: .227539062, z: .680751801, w: .820400238}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -8767,7 +8918,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &926420067
 Transform:
@@ -8803,8 +8954,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .168441772, w: .342269897}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -8836,7 +8987,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &935125392
 Transform:
@@ -8876,7 +9027,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &937305857
 Transform:
@@ -8912,8 +9063,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .22712326, w: .748607635}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -8948,7 +9099,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &940499787
 Transform:
@@ -9020,7 +9171,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &946199471
 Transform:
@@ -9056,8 +9207,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .336410522, w: .303207397}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -9092,7 +9243,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &958117528
 Transform:
@@ -9161,7 +9312,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &972488474
 Transform:
@@ -9191,7 +9342,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &976140382
 Transform:
@@ -9227,8 +9378,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .15234375, y: .15234375, z: .853897095, w: -.000595092773}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -9263,7 +9414,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!23 &977619892
 Renderer:
@@ -9409,7 +9560,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &993994465
 Transform:
@@ -9433,8 +9584,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .227539062, y: .227539062, z: -.000888824463, w: .596767426}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -9469,7 +9620,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &995940762
 Transform:
@@ -9505,8 +9656,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .168441772, w: .471176147}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -9613,7 +9764,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1013105114
 Transform:
@@ -9649,8 +9800,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .455638885, w: .767162323}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -9685,7 +9836,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1018153278
 Transform:
@@ -9722,8 +9873,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .130859375, y: .130859375, z: .840309143, w: .453590393}
   m_Materials:
   - {fileID: 2100000, guid: 1b638c13f31b51c49882b17da1289f67, type: 2}
   m_SubsetIndices: 
@@ -9758,7 +9909,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1018899102
 Transform:
@@ -9794,8 +9945,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .587593079, w: -.00127410889}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -9830,7 +9981,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1034852936
 Transform:
@@ -9853,8 +10004,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .184570312, y: .184570312, z: .57421875, w: .774414062}
   m_Materials:
   - {fileID: 2100000, guid: 743564dc5b87e96448b6d907cf0a490d, type: 2}
   m_SubsetIndices: 
@@ -9903,7 +10054,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1043527265
 Transform:
@@ -9972,7 +10123,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1046973600
 Transform:
@@ -10009,7 +10160,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1068353111
 Transform:
@@ -10045,8 +10196,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .881420135, w: .706615448}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -10080,7 +10231,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1078905971
 Transform:
@@ -10130,7 +10281,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1083395669
 Transform:
@@ -10166,8 +10317,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .840316772, w: .774887085}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -10325,7 +10476,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1094077784
 Transform:
@@ -10348,8 +10499,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .344726562, y: .344726562, z: .648067474, w: .540645599}
   m_Materials:
   - {fileID: 2100000, guid: 4a3de850cc264204f88ac30021e4b9e3, type: 2}
   m_SubsetIndices: 
@@ -10383,7 +10534,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1101363348
 Transform:
@@ -10432,7 +10583,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1108492409
 Transform:
@@ -10455,8 +10606,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .344726562, y: .344726562, z: -.00134658813, w: .514278412}
   m_Materials:
   - {fileID: 2100000, guid: 4a3de850cc264204f88ac30021e4b9e3, type: 2}
   m_SubsetIndices: 
@@ -10491,7 +10642,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1109970387
 Transform:
@@ -10527,8 +10678,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .542602539, w: .349243164}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -10563,7 +10714,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1130903861
 Transform:
@@ -10599,8 +10750,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .781723022, w: .609848022}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -10635,7 +10786,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1149045713
 Transform:
@@ -10671,8 +10822,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .855941772, w: -.000503540039}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -10706,7 +10857,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1155779886
 Transform:
@@ -10730,8 +10881,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .233398438, y: .233398438, z: .3399086, w: .466861725}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -10763,7 +10914,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1156209511
 Transform:
@@ -10852,7 +11003,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1162815218
 Transform:
@@ -10888,8 +11039,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .819946289}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -10924,7 +11075,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1165126933
 Transform:
@@ -10960,8 +11111,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .858032227}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -10993,7 +11144,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1172932222
 Transform:
@@ -11026,7 +11177,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1177540212
 Transform:
@@ -11062,8 +11213,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .908882141, w: .820991516}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -11082,6 +11233,64 @@ MeshFilter:
   m_PrefabInternal: {fileID: 2082672076}
   m_GameObject: {fileID: 1177540211}
   m_Mesh: {fileID: 4300000, guid: ca3f7d5c4b017964b89205a8b55ca7b6, type: 3}
+--- !u!1 &1181182186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100532, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1181182187}
+  - 33: {fileID: 1181182189}
+  - 23: {fileID: 1181182188}
+  m_Layer: 0
+  m_Name: Cylinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1181182187
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400532, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1181182186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.09474659, y: 9.05388832, z: 1.85916924}
+  m_LocalScale: {x: .0700000003, y: 10.0365067, z: .0700000003}
+  m_Children: []
+  m_Father: {fileID: 535146630}
+--- !u!23 &1181182188
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300380, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1181182186}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .1015625, y: .1015625, z: .818893075, w: .601298392}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &1181182189
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300430, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1181182186}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1184318384
 GameObject:
   m_ObjectHideFlags: 0
@@ -11098,7 +11307,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1184318385
 Transform:
@@ -11134,8 +11343,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .340522766, w: .914741516}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -11167,7 +11376,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1191454568
 Transform:
@@ -11267,7 +11476,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1206868548
 Transform:
@@ -11306,7 +11515,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1220826675
 Transform:
@@ -11329,8 +11538,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .59375, y: .59375, z: -.00231933594, w: -.00231933594}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -11365,7 +11574,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1226084920
 Transform:
@@ -11401,8 +11610,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .245796204, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -11436,7 +11645,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1227386871
 Transform:
@@ -11557,7 +11766,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1239960456
 Transform:
@@ -11606,7 +11815,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1242915108
 Transform:
@@ -11656,7 +11865,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1244811211
 Transform:
@@ -11692,8 +11901,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .587593079, w: .325874329}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -11712,6 +11921,64 @@ MeshFilter:
   m_PrefabInternal: {fileID: 2082672076}
   m_GameObject: {fileID: 1244811210}
   m_Mesh: {fileID: 4300000, guid: 215e48a2de095754c805d631779520ca, type: 3}
+--- !u!1 &1245032133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100534, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1245032134}
+  - 33: {fileID: 1245032136}
+  - 23: {fileID: 1245032135}
+  m_Layer: 0
+  m_Name: Cylinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1245032134
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400534, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1245032133}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.436592102, y: 11.0435524, z: -6.22163963}
+  m_LocalScale: {x: .0700000003, y: 10.0365067, z: .0700000003}
+  m_Children: []
+  m_Father: {fileID: 535146630}
+--- !u!23 &1245032135
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300382, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1245032133}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .1015625, y: .1015625, z: .716354012, w: .601298392}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &1245032136
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300432, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1245032133}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1246988245
 GameObject:
   m_ObjectHideFlags: 0
@@ -11725,7 +11992,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1246988246
 Transform:
@@ -11758,7 +12025,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1248960153
 Transform:
@@ -11794,8 +12061,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .336448669, w: .552268982}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -11899,7 +12166,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1259728063
 Transform:
@@ -11931,7 +12198,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1271844490
 Transform:
@@ -11967,8 +12234,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 4
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .374633789, w: .880493164}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -12066,7 +12333,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1279072159
 Transform:
@@ -12135,7 +12402,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1286863325
 Transform:
@@ -12163,7 +12430,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1289266219
 Transform:
@@ -12352,7 +12619,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1312871072
 Transform:
@@ -12375,10 +12642,10 @@ Renderer:
   m_PrefabInternal: {fileID: 2082672076}
   m_GameObject: {fileID: 1312871071}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 1
+  m_LightmapTilingOffset: {x: .0556640625, y: .0556640662, z: -.000218634028, w: .963312805}
   m_Materials:
   - {fileID: 2100000, guid: 7998f7feb5628e14f9c2c335c6c9794b, type: 2}
   m_SubsetIndices: 
@@ -12485,7 +12752,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1325110557
 Transform:
@@ -12521,8 +12788,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .455638885, w: .552318573}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -12555,7 +12822,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1329620577
 Transform:
@@ -12598,7 +12865,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1330753290
 Transform:
@@ -12621,8 +12888,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .59375, y: .59375, z: -.00231933594, w: -.00231933594}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -12730,7 +12997,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1380778112
 Transform:
@@ -12802,7 +13069,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1401467529
 Transform:
@@ -12839,8 +13106,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .130859375, y: .130859375, z: .840309143, w: .322731018}
   m_Materials:
   - {fileID: 2100000, guid: 1b638c13f31b51c49882b17da1289f67, type: 2}
   m_SubsetIndices: 
@@ -12875,7 +13142,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1421500268
 Transform:
@@ -12984,7 +13251,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1440669184
 Transform:
@@ -13012,7 +13279,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1444325919
 Transform:
@@ -13042,7 +13309,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1451600116
 Transform:
@@ -13065,8 +13332,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .166015625, y: .166015625, z: 0, w: .681640625}
   m_Materials:
   - {fileID: 2100000, guid: 61078800830d4d94abe1a7798fc6ab2e, type: 2}
   m_SubsetIndices: 
@@ -13112,7 +13379,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1460319427
 Transform:
@@ -13216,7 +13483,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1468837020
 Transform:
@@ -13252,8 +13519,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .168441772, w: .600082397}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -13285,7 +13552,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1485302494
 Transform:
@@ -13304,6 +13571,7 @@ Transform:
   - {fileID: 1963302392}
   - {fileID: 71526892}
   - {fileID: 1246988246}
+  - {fileID: 535146630}
   m_Father: {fileID: 0}
 --- !u!1 &1487019868
 GameObject:
@@ -13318,7 +13586,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1487019869
 Transform:
@@ -13468,7 +13736,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1505884702
 Transform:
@@ -13504,8 +13772,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .571968079, w: .914741516}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -13540,7 +13808,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1515808664
 Transform:
@@ -13563,8 +13831,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .166992188, y: .166992188, z: .341796875, w: .515625}
   m_Materials:
   - {fileID: 2100000, guid: 6ba4d60abea991142b5df372210d9419, type: 2}
   m_SubsetIndices: 
@@ -13612,7 +13880,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1517903031
 Transform:
@@ -13635,8 +13903,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 12
+  m_LightmapTilingOffset: {x: .581054688, y: .581054688, z: -.00226974487, w: -.00226974487}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -13742,7 +14010,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1529641119
 Transform:
@@ -13792,7 +14060,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1532333658
 Transform:
@@ -13829,8 +14097,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .145507812, y: .145507812, z: .341228485, w: .852947235}
   m_Materials:
   - {fileID: 2100000, guid: 1b638c13f31b51c49882b17da1289f67, type: 2}
   m_SubsetIndices: 
@@ -13865,7 +14133,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1533704583
 Transform:
@@ -13901,8 +14169,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .584457397, w: .303207397}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -13937,7 +14205,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1534502992
 Transform:
@@ -13973,8 +14241,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .178710938, y: .178710938, z: .532505035, w: -.0006980896}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -14009,7 +14277,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1546700402
 Transform:
@@ -14045,8 +14313,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: -.00134277344, w: .315063477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -14081,7 +14349,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1570816975
 Transform:
@@ -14117,8 +14385,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .322944641, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -14153,7 +14421,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1571596358
 Transform:
@@ -14189,8 +14457,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .663764954, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -14300,7 +14568,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1595926993
 Transform:
@@ -14337,8 +14605,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 2
+  m_LightmapTilingOffset: {x: .130859375, y: .130859375, z: .853981018, w: .561988831}
   m_Materials:
   - {fileID: 2100000, guid: 1b638c13f31b51c49882b17da1289f67, type: 2}
   m_SubsetIndices: 
@@ -14492,7 +14760,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1614650425
 Transform:
@@ -14592,7 +14860,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1624522877
 Transform:
@@ -14619,7 +14887,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1633832737
 Transform:
@@ -14664,7 +14932,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1648203683
 Transform:
@@ -14786,7 +15054,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1689819561
 Transform:
@@ -14822,8 +15090,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .908882141, w: .924507141}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -14855,7 +15123,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1696809140
 Transform:
@@ -14894,7 +15162,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1709358687
 Transform:
@@ -14930,8 +15198,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .417671204, w: .914741516}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -14963,7 +15231,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1713140929
 Transform:
@@ -15064,7 +15332,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1733918117
 Transform:
@@ -15186,7 +15454,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1748889278
 Transform:
@@ -15222,8 +15490,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .708480835, w: .174301147}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -15258,7 +15526,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1749263197
 Transform:
@@ -15294,8 +15562,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .895210266, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -15330,7 +15598,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1752339475
 Transform:
@@ -15366,8 +15634,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .339477539, w: .819946289}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -15402,7 +15670,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1753099633
 Transform:
@@ -15438,8 +15706,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .884349823, w: .350170135}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -15473,7 +15741,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1753121852
 Transform:
@@ -15496,8 +15764,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .25, y: .25, z: .739257812, w: -.0009765625}
   m_Materials:
   - {fileID: 2100000, guid: 1c21398e35028b44b979fd3c43bb516b, type: 2}
   m_SubsetIndices: 
@@ -15676,7 +15944,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1769740577
 Transform:
@@ -15712,8 +15980,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .339477539, w: .705688477}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -15748,7 +16016,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1778483312
 Transform:
@@ -15784,8 +16052,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .542602539, w: .442993164}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -15820,7 +16088,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1779141416
 Transform:
@@ -15856,8 +16124,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .22712326, w: .85602951}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -15891,7 +16159,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1781700500
 Transform:
@@ -15940,7 +16208,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1792892588
 Transform:
@@ -15990,7 +16258,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1794914721
 Transform:
@@ -16026,8 +16294,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .336448669, w: .432151794}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16062,7 +16330,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1805347714
 Transform:
@@ -16098,8 +16366,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .336448669, w: .672386169}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16131,7 +16399,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1806241468
 Transform:
@@ -16161,7 +16429,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1815647895
 Transform:
@@ -16211,7 +16479,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1817039675
 Transform:
@@ -16234,8 +16502,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .166992188, y: .166992188, z: 0, w: .174804688}
   m_Materials:
   - {fileID: 2100000, guid: b454570d4f29d3e4bb9057db7a7e1bf5, type: 2}
   m_SubsetIndices: 
@@ -16283,7 +16551,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1818561282
 Transform:
@@ -16307,8 +16575,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .233398438, y: .233398438, z: .3399086, w: .752017975}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16343,7 +16611,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1820435932
 Transform:
@@ -16379,8 +16647,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 8
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .642211914, w: .774047852}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16415,7 +16683,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1821851680
 Transform:
@@ -16451,8 +16719,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .557201385, w: .552318573}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16484,7 +16752,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1827257368
 Transform:
@@ -16516,7 +16784,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1830959718
 Transform:
@@ -16552,8 +16820,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 11
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .587593079, w: .325874329}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16588,7 +16856,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1831524605
 Transform:
@@ -16624,8 +16892,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 6
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .921577454, w: .601264954}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16660,7 +16928,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1835563328
 Transform:
@@ -16696,8 +16964,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .178710938, y: .178710938, z: .177036285, w: -.0006980896}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16732,7 +17000,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1840168073
 Transform:
@@ -16768,8 +17036,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .210639954, w: .914741516}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -16962,7 +17230,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1849255444
 Transform:
@@ -16997,7 +17265,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1863898448
 Transform:
@@ -17033,8 +17301,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .119140625, y: .119140625, z: .827659607, w: .303245544}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -17069,7 +17337,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1879529633
 Transform:
@@ -17105,8 +17373,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .818061829, w: .926460266}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -17142,7 +17410,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1880833128
 Transform:
@@ -17193,8 +17461,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 4
+  m_LightmapTilingOffset: {x: .20703125, y: .20703125, z: .715988159, w: .787277222}
   m_Materials:
   - {fileID: 2100000, guid: 5958f9336a07dd147a88dd23988f1cfb, type: 2}
   m_SubsetIndices: 
@@ -17229,7 +17497,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1888970283
 Transform:
@@ -17265,8 +17533,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .888256073, w: -.000415802002}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -17301,7 +17569,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1920847312
 Transform:
@@ -17373,7 +17641,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1923705978
 Transform:
@@ -17409,8 +17677,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .34375, y: .34375, z: .648071289, w: .884399414}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -17443,7 +17711,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1934215855
 Transform:
@@ -17466,8 +17734,8 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .744140625, y: .744140625, z: -.00290679932, w: -.00290679932}
   m_Materials:
   - {fileID: 2100000, guid: 72bd544f88859c14b8ec282c4519a7f2, type: 2}
   m_SubsetIndices: 
@@ -17528,7 +17796,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1934650729
 Transform:
@@ -17578,7 +17846,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1940359177
 Transform:
@@ -17614,8 +17882,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: -.000503540039, w: .849105835}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -17650,7 +17918,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1942936912
 Transform:
@@ -17686,8 +17954,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .832504272, w: .174301147}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -17706,6 +17974,64 @@ MeshFilter:
   m_PrefabInternal: {fileID: 2082672076}
   m_GameObject: {fileID: 1942936911}
   m_Mesh: {fileID: 4300000, guid: 15697df7425c42446bc8f02bda3d5914, type: 3}
+--- !u!1 &1957988667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100530, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1957988668}
+  - 33: {fileID: 1957988670}
+  - 23: {fileID: 1957988669}
+  m_Layer: 0
+  m_Name: Cylinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &1957988668
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400530, guid: 44ebf29f581bcb74781c6828199b4beb, type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1957988667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.88266087, y: 5.41900253, z: 4.19579315}
+  m_LocalScale: {x: .0700000003, y: 10.0365067, z: .0700000003}
+  m_Children: []
+  m_Father: {fileID: 535146630}
+--- !u!23 &1957988669
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300378, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1957988667}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .1015625, y: .1015625, z: .34037745, w: .895243704}
+  m_Materials:
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &1957988670
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300428, guid: 44ebf29f581bcb74781c6828199b4beb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2082672076}
+  m_GameObject: {fileID: 1957988667}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1958555776
 GameObject:
   m_ObjectHideFlags: 0
@@ -17721,7 +18047,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1958555777
 Transform:
@@ -17744,8 +18070,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 7
+  m_LightmapTilingOffset: {x: .546875, y: .546875, z: -.00213623047, w: -.00213623047}
   m_Materials:
   - {fileID: 2100000, guid: bb062236c730fd84a9a4590fa1f65deb, type: 2}
   m_SubsetIndices: 
@@ -17777,7 +18103,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1963302392
 Transform:
@@ -17972,7 +18298,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1975496410
 Transform:
@@ -18007,7 +18333,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1993595829
 Transform:
@@ -18043,8 +18369,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .168441772, w: .857894897}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -18079,7 +18405,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &1993893330
 Transform:
@@ -18115,8 +18441,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .106445312, y: .106445312, z: .455638885, w: .659740448}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -18150,7 +18476,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2000783344
 Transform:
@@ -18173,8 +18499,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .234375, y: .234375, z: .739318848, w: .49810791}
   m_Materials:
   - {fileID: 2100000, guid: b75cf7abe8a3229499c2d8f18efc6b21, type: 2}
   m_SubsetIndices: 
@@ -18209,7 +18535,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2003912959
 Transform:
@@ -18232,8 +18558,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .166015625, y: .166015625, z: .168945312, w: .174804688}
   m_Materials:
   - {fileID: 2100000, guid: b6bbfe5128830f94aa747ac2b4ec43bd, type: 2}
   m_SubsetIndices: 
@@ -18354,7 +18680,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2045576986
 Transform:
@@ -18390,8 +18716,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 12
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .855941772, w: -.000503540039}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -18423,7 +18749,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2046764542
 Transform:
@@ -18455,7 +18781,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2048549077
 Transform:
@@ -18489,7 +18815,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2051387570
 Transform:
@@ -18525,8 +18851,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 9
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .513374329, w: -.00127410889}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -18671,7 +18997,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2083129243
 Transform:
@@ -18707,7 +19033,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2085032089
 Transform:
@@ -18743,8 +19069,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 3
+  m_LightmapTilingOffset: {x: .076171875, y: .076171875, z: .494819641, w: .914741516}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -18779,7 +19105,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2088947894
 Transform:
@@ -18815,8 +19141,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 10
+  m_LightmapTilingOffset: {x: .326171875, y: .326171875, z: .587593079, w: .649116516}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -18851,7 +19177,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2094188088
 Transform:
@@ -18887,8 +19213,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 13
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .855941772, w: .12840271}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -18923,7 +19249,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2096299152
 Transform:
@@ -18959,8 +19285,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .336410522, w: .174301147}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -18994,7 +19320,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2115140554
 Transform:
@@ -19115,7 +19441,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2130062505
 Transform:
@@ -19165,7 +19491,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2144494121
 Transform:
@@ -19201,8 +19527,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 14
+  m_LightmapTilingOffset: {x: .12890625, y: .12890625, z: .46043396, w: .174301147}
   m_Materials:
   - {fileID: 2100000, guid: 0119d93d33a7da142b056af06e9118dd, type: 2}
   m_SubsetIndices: 
@@ -19236,7 +19562,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2144622732
 Transform:
@@ -19286,7 +19612,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2144891503
 Transform:
@@ -19357,7 +19683,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2145708527
 Transform:
@@ -19380,8 +19706,8 @@ Renderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapIndex: 5
+  m_LightmapTilingOffset: {x: .249023438, y: .249023438, z: .739261627, w: .249027252}
   m_Materials:
   - {fileID: 2100000, guid: 68d8161688281c14388d251fcf72dbb8, type: 2}
   - {fileID: 2100000, guid: b2efb398c5be7504ab5e217d348f52ab, type: 2}

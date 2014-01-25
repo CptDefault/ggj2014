@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
     public string name;
     public Color col;
 
+    
+
 	//sound
 	public AudioSource deathSound;
     public GameObject ragdoll;
@@ -118,6 +120,7 @@ public class Player : MonoBehaviour {
         var safestSpawnpoint = GameSystem.Instance.GetSafestSpawnpoint();
         transform.position = safestSpawnpoint.transform.position; //Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
         transform.rotation = safestSpawnpoint.transform.rotation;
+        GetComponent<Moveable>().GetRotationFromFacing();
     }
 
     public void GotHit(Weapon shooter)
@@ -143,6 +146,10 @@ public class Player : MonoBehaviour {
         foreach (var rigid in rag.GetComponentsInChildren<Rigidbody>())
         {
             rigid.AddForce(rigidbody.velocity, ForceMode.VelocityChange);
+            var characterJoint = rigid.GetComponent<CharacterJoint>();
+            if(characterJoint)
+                Destroy(characterJoint, 14.95f);
+            Destroy(rigid, 15);
         }
 
         GetRespawnCamera().Activate(this, verb, sp.name, new Rect(crosshairRect.x-Screen.width/4.4f, crosshairRect.y, Screen.width/2.2f, Screen.height/15f));
@@ -166,22 +173,22 @@ public class Player : MonoBehaviour {
     	{
     		case 1: 
     			name = "RED";
-    			col = Color.red;
+    			col = GameSystem.Instance.RedMat.color;
     			break;
 
     		case 2:
     			name = "BLUE";
-    			col = Color.blue;
+    			col = GameSystem.Instance.BlueMat.color;
     			break;
 
     		case 3: 
     			name = "GREEN";
-    			col = Color.green;
+    			col = GameSystem.Instance.GreenMat.color;
     			break;
 
     		case 4:
     			name = "YELLOW";
-    			col = Color.yellow;
+    			col = GameSystem.Instance.YellowMat.color;
     			break;
     	}
     }

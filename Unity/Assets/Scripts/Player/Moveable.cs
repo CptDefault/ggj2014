@@ -65,4 +65,9 @@ public class Moveable : MonoBehaviour
         if (above)// && rigidbody.velocity.y <= 0.01f)
             _timeSinceGrounded = 0;
     }
+
+    public void GetRotationFromFacing()
+    {
+        _rotation = transform.rotation.eulerAngles.y;
+    }
 }
