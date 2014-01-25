@@ -121,6 +121,7 @@ public class Player : MonoBehaviour {
     public void GotHit(Weapon shooter)
     {
         //AudioSource.PlayClipAtPoint(deathSound.clip, transform.position, deathSound.volume);
+        _scoredMessage = null;
         deaths++;
         Player sp=null;
         string verb="";

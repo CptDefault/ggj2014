@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour {
 	public bool _mutedAll;
 	public bool _mutedMusic;
 
+	public bool mainMenu;
+
 	//music
 	public AudioClip intro;
 	public AudioClip loop;
@@ -56,10 +58,15 @@ public class AudioManager : MonoBehaviour {
 		loopSource.clip = loop;
 
 		StartCoroutine(IntroThenLoopMusic());
+
+		mainMenu = true;
 	}
 
     public void Update()
     {
+    	if(mainMenu)
+    		return;
+
         if (GameSystem.Instance.state == GameSystem.GameState.MainGame)
         {
             if (_timeSinceLastShot > 4)
