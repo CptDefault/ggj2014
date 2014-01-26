@@ -83,7 +83,19 @@ public class GameSystem : MonoBehaviour {
     public Material BlueMat;
     public Material GreenMat;
     public Material YellowMat;
+
+    public Color ColorblindRed = Color.white;
+    public Color ColorblindBlue = Color.white;
+    public Color ColorblindGreen = Color.white;
+    public Color ColorblindYellow = Color.white;
+
+    private static Color _defaultRed;
+    private static Color _defaultBlue;
+    private static Color _defaultGreen;
+    private static Color _defaultYellow;
+
     private readonly List<RespawnCamera> _pendingRespawns = new List<RespawnCamera>();
+    private bool _colourblindMode;
 
 
     void Awake()
@@ -96,10 +108,20 @@ public class GameSystem : MonoBehaviour {
 		}
 
         //TODO: REMOVE ME
-        //CurrentGameMode = GameMode.Elimination;
+        CurrentGameMode = GameMode.Elimination;
+
+        _defaultBlue = BlueMat.color;
+        _defaultRed = RedMat.color;
+        _defaultGreen = GreenMat.color;
+        _defaultYellow = YellowMat.color;
 
         Screen.showCursor = false;
 	}
+
+    protected void OnDestroy()
+    {
+        SetColorBlind(false);
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -181,8 +203,15 @@ public class GameSystem : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	    
-		switch(state)
+        //colourblind support
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            _colourblindMode = !_colourblindMode;
+
+            SetColorBlind(_colourblindMode);
+        }
+
+	    switch(state)
 		{
 			case GameState.JoinGame:
 				JoinGame();
@@ -235,6 +264,14 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
+    private void SetColorBlind(bool colourblindMode)
+    {
+        BlueMat.color = colourblindMode ? ColorblindBlue : _defaultBlue;
+        RedMat.color = colourblindMode ? ColorblindRed : _defaultRed;
+        GreenMat.color = colourblindMode ? ColorblindGreen : _defaultGreen;
+        YellowMat.color = colourblindMode ? ColorblindYellow : _defaultYellow;
+    }
+
     private void RunGameModes()
     {
         switch (CurrentGameMode)
@@ -271,8 +308,8 @@ public class GameSystem : MonoBehaviour {
                     foreach (var pendingRespawn in _pendingRespawns)
                     {
                         pendingRespawn.Respawn(3);
-                        StartCoroutine(EliminationRestart(winner, 3));
                     }
+                    StartCoroutine(EliminationRestart(winner, 3));
                     _pendingRespawns.Clear();
                 }
                 break;
@@ -284,9 +321,15 @@ public class GameSystem : MonoBehaviour {
         
     }
 
-    private IEnumerator EliminationRestart(Player player, float delay)
+    private IEnumerator EliminationRestart(Player player, int delay)
     {
-        yield return new WaitForSeconds(delay);
+        _gameCountDown = delay;
+        for (int i = 0; i < delay; i++)
+        {
+            Clicker.Instance.Click();
+            yield return new WaitForSeconds(1f);
+            _gameCountDown--;
+        }
         player.Respawn();
 
     }
@@ -820,7 +863,7 @@ public class GameSystem : MonoBehaviour {
 		for(int i=0; i<3; i++)
 		{
 			Clicker.Instance.Click();
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(1f);
 			_gameCountDown--;
 		}
 		
@@ -845,8 +888,8 @@ public class GameSystem : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), 
             string.Format(gameModeInfos[(int)CurrentGameMode].description, scoreToWin), pauseSkin.GetStyle("Text"));
 
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), 
-            "STARTING "+(roundStart ? "ROUND":"GAME")+" IN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit),
+            (roundStart ? "NEXT ROUND" : "STARTING GAME") + " IN", pauseSkin.GetStyle("Text"));
 		GUI.Box(new Rect(Screen.width/2-0.5f*unit, Screen.height/2-unit*3+unit*4, unit, unit), ""+_gameCountDown, pauseSkin.GetStyle("Countdown"));
 	}
 
@@ -963,31 +1006,67 @@ public class GameSystem : MonoBehaviour {
 			    GUI.Box(playerScripts[i].crosshairRect, "");
 		}
 
-        //bool drawScores 
+        bool drawScores = GameModeGUI();
 
-		switch(numPlayersJoined)
-		{
-			case 2:
-				GUI.Box(new Rect(Screen.width/2-unit, 0, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
-				GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
-				break;
+        if (drawScores)
+        {
+            switch (numPlayersJoined)
+            {
+                case 2:
+                    GUI.Box(new Rect(Screen.width/2 - unit, 0, unit, 0.7f*unit), "" + playerScripts[0].score,
+                            scoreSkin.GetStyle("Player" + playerScripts[0].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), "" + playerScripts[1].score,
+                            scoreSkin.GetStyle("Player" + playerScripts[1].playerNumber));
+                    break;
 
-			case 3:
-                GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
-				GUI.Box(new Rect(Screen.width/2-unit*0.5f, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player"+playerScripts[2].playerNumber));
-				break;
+                case 3:
+                    GUI.Box(new Rect(Screen.width/2 - unit, Screen.height/2 - 0.7f*unit, unit, 0.7f*unit),
+                            "" + playerScripts[0].score, scoreSkin.GetStyle("Player" + playerScripts[0].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2, Screen.height/2 - 0.7f*unit, unit, 0.7f*unit),
+                            "" + playerScripts[1].score, scoreSkin.GetStyle("Player" + playerScripts[1].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2 - unit*0.5f, Screen.height/2, unit, 0.7f*unit),
+                            "" + playerScripts[2].score, scoreSkin.GetStyle("Player" + playerScripts[2].playerNumber));
+                    break;
 
 
-			case 4:
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player"+playerScripts[2].playerNumber));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[3].score, scoreSkin.GetStyle("Player"+playerScripts[3].playerNumber));
-				break;
+                case 4:
+                    GUI.Box(new Rect(Screen.width/2 - unit, Screen.height/2 - 0.7f*unit, unit, 0.7f*unit),
+                            "" + playerScripts[0].score, scoreSkin.GetStyle("Player" + playerScripts[0].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2, Screen.height/2 - 0.7f*unit, unit, 0.7f*unit),
+                            "" + playerScripts[1].score, scoreSkin.GetStyle("Player" + playerScripts[1].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2 - unit, Screen.height/2, unit, 0.7f*unit),
+                            "" + playerScripts[2].score, scoreSkin.GetStyle("Player" + playerScripts[2].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2, Screen.height/2, unit, 0.7f*unit), "" + playerScripts[3].score,
+                            scoreSkin.GetStyle("Player" + playerScripts[3].playerNumber));
+                    break;
 
-		}
+            }
+        }
 	}
+
+    private bool GameModeGUI()
+    {
+        switch (CurrentGameMode)
+        {
+            case GameMode.Deathmatch:
+                break;
+            case GameMode.OneShot:
+                break;
+            case GameMode.Elimination:
+                if (_gameCountDown > 0)
+                {
+                    ShowObjectiveGUI(true);
+                    return false;
+                }
+                break;
+            case GameMode.Juggernaut:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        //draw the scores
+        return true;
+    }
 
     void DrawBlackBars()
     {

@@ -148,6 +148,7 @@ public class Weapon : MonoBehaviour
     public void InstantReload()
     {
         _isLoaded = true;
+        _isReloading = false;
     }
 
     private bool _isReloading;
