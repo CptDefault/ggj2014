@@ -15,7 +15,29 @@ public class GameSystem : MonoBehaviour {
 	    PreGameOver
 	};
 
-    public enum GameMode {Deathmatch, OneShot}
+    public enum GameMode
+    {
+        Deathmatch,
+        OneShot,
+        Elimination,
+        Juggernaut
+    }
+
+    [Serializable]
+    public class GameModeInfo
+    {
+        public string name;
+        public string description;
+        public int defaultScore = 5;
+    }
+
+    public GameModeInfo[] gameModeInfos = new GameModeInfo[]
+        {
+            new GameModeInfo(){name = "Deathmatch"}, 
+            new GameModeInfo(){name = "One Shot"}, 
+            new GameModeInfo(){name = "Elimination"}, 
+            new GameModeInfo(){name = "Juggernaut"}, 
+        };
 
     public GameMode CurrentGameMode { get; private set; }
 
@@ -61,6 +83,7 @@ public class GameSystem : MonoBehaviour {
     public Material BlueMat;
     public Material GreenMat;
     public Material YellowMat;
+    private readonly List<RespawnCamera> _pendingRespawns = new List<RespawnCamera>();
 
 
     void Awake()
@@ -73,7 +96,7 @@ public class GameSystem : MonoBehaviour {
 		}
 
         //TODO: REMOVE ME
-        //CurrentGameMode = GameMode.OneShot;
+        CurrentGameMode = GameMode.Elimination;
 
         Screen.showCursor = false;
 	}
@@ -169,11 +192,8 @@ public class GameSystem : MonoBehaviour {
 				break;
 
 			case GameState.MainGame:
-		        bool allNeedReload = true;
                 foreach (var player in playerScripts)
                 {
-                    if (player.ShotReady)
-                        allNeedReload = false;
                     if (player.score >= scoreToWin)
                     {
                         winner = System.Array.IndexOf(playerScripts,player);
@@ -188,13 +208,7 @@ public class GameSystem : MonoBehaviour {
                     }
                 }
 
-                if (allNeedReload && CurrentGameMode == GameMode.OneShot)
-                {
-                    foreach (var player in playerScripts)
-                    {
-                        player.GetComponent<Weapon>().StartReload();
-                    }
-                }
+                RunGameModes();
 
 				break;
 
@@ -221,7 +235,63 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
-	void OnGUI() 
+    private void RunGameModes()
+    {
+        switch (CurrentGameMode)
+        {
+            case GameMode.Deathmatch:
+                break;
+            case GameMode.OneShot:
+                bool allNeedReload = true;
+                foreach (var player in playerScripts)
+                {
+                    if (player.ShotReady)
+                        allNeedReload = false;
+                }
+                if (allNeedReload)
+                {
+                    foreach (var player in playerScripts)
+                    {
+                        player.GetComponent<Weapon>().StartReload();
+                    }
+                }
+                break;
+            case GameMode.Elimination:
+                if (_pendingRespawns.Count >= players.Count() - 1)
+                {
+                    Player winner = null;
+                    foreach (var player in playerScripts)
+                    {
+                        if (player.gameObject.activeSelf)
+                        {
+                            winner = player;
+                            player.ScoreUp();
+                        }
+                    }
+                    foreach (var pendingRespawn in _pendingRespawns)
+                    {
+                        pendingRespawn.Respawn(3);
+                        StartCoroutine(EliminationRestart(winner, 3));
+                    }
+                    _pendingRespawns.Clear();
+                }
+                break;
+            case GameMode.Juggernaut:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
+    }
+
+    private IEnumerator EliminationRestart(Player player, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        player.Respawn();
+
+    }
+
+    void OnGUI() 
 	{
 		switch(state)
 		{
@@ -956,4 +1026,9 @@ public class GameSystem : MonoBehaviour {
 	{
 		_instance = null;
 	}
+
+    public void AddPendingRespawn(RespawnCamera respawnCamera)
+    {
+        _pendingRespawns.Add(respawnCamera);
+    }
 }

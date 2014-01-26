@@ -73,6 +73,7 @@ public class Player : MonoBehaviour {
             _respawnCamera = camGO.AddComponent<RespawnCamera>();
             var cam = camGO.AddComponent<Camera>();
             cam.rect = _myCamera.rect;
+            cam.cullingMask = _myCamera.cullingMask;
         }
 
         _respawnCamera.transform.position = _myCamera.transform.position;
@@ -119,7 +120,9 @@ public class Player : MonoBehaviour {
 		}
 
         if (_messageOffset > 0)
-    	    _messageOffset -= Time.deltaTime*30;
+    	    _messageOffset -= Time.deltaTime*80;
+	    if (_messageOffset < 0)
+	        _messageOffset = 0;
 	}
 
     public void Respawn()
@@ -143,7 +146,8 @@ public class Player : MonoBehaviour {
 
         	verb = DeathMessenger.Instance.GetRandomVerb();
         	sp.SetScoredMessage(verb, name);
-            shooter.GetComponent<Player>().ScoreUp();
+            if(GameSystem.Instance.CurrentGameMode != GameSystem.GameMode.Elimination)
+                shooter.GetComponent<Player>().ScoreUp();
         }
         
         var rag = (GameObject)Instantiate(ragdoll, transform.position, transform.rotation);
@@ -210,6 +214,8 @@ public class Player : MonoBehaviour {
 
         _killStreak++;
 
+        StartCoroutine(ShowScoredMessage());
+
         switch (_killStreak)
         {
             case 2:
@@ -229,12 +235,10 @@ public class Player : MonoBehaviour {
     	        StartCoroutine(ShowScoredMessage());
                 break;
         }
-
-    	StartCoroutine(ShowScoredMessage());
     }
     IEnumerator ShowScoredMessage()
     {
-    	yield return new WaitForSeconds(3.2f);
+    	yield return new WaitForSeconds(2.0f + 0.6f * _scoredMessages.Count);
 
         
 

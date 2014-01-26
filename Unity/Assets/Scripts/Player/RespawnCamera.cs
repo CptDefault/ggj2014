@@ -3,8 +3,9 @@ using System.Collections;
 
 public class RespawnCamera : MonoBehaviour {
     string _diedMessage;
-    Rect _diedMessageRect; 
-	// Use this for initialization
+    Rect _diedMessageRect;
+    private Player _player;
+    // Use this for initialization
 	void Start () {
 	
 	}
@@ -24,17 +25,34 @@ public class RespawnCamera : MonoBehaviour {
     private IEnumerator ActiveCoroutine(Player player)
     {
         camera.enabled = true;
-        player.gameObject.SetActive(false);
+        _player = player;
+        _player.gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(3);
+        if (GameSystem.Instance.CurrentGameMode == GameSystem.GameMode.Elimination)
+        {
+            GameSystem.Instance.AddPendingRespawn(this);
+        }
+        else
+        {
+            yield return StartCoroutine(RespawnDelayed(3));
+        }
+    }
 
+    public void Respawn(float delay)
+    {
+        StartCoroutine(RespawnDelayed(delay));
+
+    }
+    public IEnumerator RespawnDelayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         camera.enabled = false;
         _diedMessage = null;
 
-        if (player != null)
+        if (_player != null)
         {
-            player.gameObject.SetActive(true);
-            player.Respawn();
+            _player.gameObject.SetActive(true);
+            _player.Respawn();
         }
     }
 

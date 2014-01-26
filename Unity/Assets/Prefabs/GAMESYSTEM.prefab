@@ -38,6 +38,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07dd4bfac8f724428405a3b96a72491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameModeInfos:
+  - name: Deathmatch
+    description: 
+    defaultScore: 5
+  - name: One Shot
+    description: 
+    defaultScore: 5
+  - name: Elimination
+    description: 
+    defaultScore: 3
+  - name: Juggernaut
+    description: 
+    defaultScore: 8
   state: 0
   playerPrefab: {fileID: 100000, guid: 8f026ff8f518c6541bb84837df297386, type: 2}
   players: []
