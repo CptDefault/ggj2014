@@ -330,6 +330,7 @@ public class GameSystem : MonoBehaviour {
             yield return new WaitForSeconds(1f);
             _gameCountDown--;
         }
+        Clicker.Instance.StartGameSound();
         player.Respawn();
 
     }
@@ -442,7 +443,7 @@ public class GameSystem : MonoBehaviour {
 			{
 				//quit
                 //ResetLevel();
-				Application.LoadLevel(1);
+				Application.LoadLevel(0);
 				Clicker.Instance.Click();
 			}
 		}
