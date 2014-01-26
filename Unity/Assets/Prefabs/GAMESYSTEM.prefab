@@ -39,16 +39,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameModeInfos:
-  - name: Deathmatch
-    description: 
+  - name: DEATHMATCH
+    description: SCORE {0} KILLS TO WIN
     defaultScore: 5
-  - name: One Shot
-    description: 
+  - name: ONE SHOT
+    description: ONLY RELOAD WHEN EVERYONE HAS FIRED
     defaultScore: 5
-  - name: Elimination
-    description: 
+  - name: ELIMINATION
+    description: BE THE LAST MAN STANDING {0} TIMES
     defaultScore: 3
-  - name: Juggernaut
+  - name: JUGGERNAUT
     description: 
     defaultScore: 8
   state: 0

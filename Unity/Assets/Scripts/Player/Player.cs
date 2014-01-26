@@ -13,7 +13,7 @@ public class Player : MonoBehaviour {
 
     public bool ShotReady
     {
-        get { return _weapon.ShotReady; }
+        get { return gameObject.activeSelf && _weapon.ShotReady; }
     }
 
     //score GUI indicator
@@ -153,6 +153,8 @@ public class Player : MonoBehaviour {
         var rag = (GameObject)Instantiate(ragdoll, transform.position, transform.rotation);
 
         rag.GetComponentInChildren<Renderer>().material.color = col;
+
+        _weapon.InstantReload();
 
         foreach (var rigid in rag.GetComponentsInChildren<Rigidbody>())
         {

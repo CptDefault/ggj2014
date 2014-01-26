@@ -145,6 +145,11 @@ public class Weapon : MonoBehaviour
             StartCoroutine(Reload());
     }
 
+    public void InstantReload()
+    {
+        _isLoaded = true;
+    }
+
     private bool _isReloading;
     protected IEnumerator Reload()
     {

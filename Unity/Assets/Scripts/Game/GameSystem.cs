@@ -96,7 +96,7 @@ public class GameSystem : MonoBehaviour {
 		}
 
         //TODO: REMOVE ME
-        CurrentGameMode = GameMode.Elimination;
+        //CurrentGameMode = GameMode.Elimination;
 
         Screen.showCursor = false;
 	}
@@ -832,7 +832,7 @@ public class GameSystem : MonoBehaviour {
 		Clicker.Instance.StartGameSound();
 	}
 
-	void ShowObjectiveGUI()
+	void ShowObjectiveGUI(bool roundStart = false)
 	{
 		float unit = Screen.width/20;
 		//background
@@ -840,10 +840,13 @@ public class GameSystem : MonoBehaviour {
 		GUI.skin = pauseSkin;
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*4, unit*10, unit*8), "");
 
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "DEATHMATCH", pauseSkin.GetStyle("Title"));
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE " + scoreToWin + " KILLS TO WIN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), 
+            gameModeInfos[(int)CurrentGameMode].name, pauseSkin.GetStyle("Title"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), 
+            string.Format(gameModeInfos[(int)CurrentGameMode].description, scoreToWin), pauseSkin.GetStyle("Text"));
 
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), 
+            "STARTING "+(roundStart ? "ROUND":"GAME")+" IN", pauseSkin.GetStyle("Text"));
 		GUI.Box(new Rect(Screen.width/2-0.5f*unit, Screen.height/2-unit*3+unit*4, unit, unit), ""+_gameCountDown, pauseSkin.GetStyle("Countdown"));
 	}
 
@@ -959,6 +962,8 @@ public class GameSystem : MonoBehaviour {
             if(playerScripts[i].ShotReady)
 			    GUI.Box(playerScripts[i].crosshairRect, "");
 		}
+
+        //bool drawScores 
 
 		switch(numPlayersJoined)
 		{
