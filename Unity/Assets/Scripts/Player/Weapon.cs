@@ -130,19 +130,35 @@ public class Weapon : MonoBehaviour
         //play sound
         weaponSource.clip = shotgunBlast;
         weaponSource.Play();
-        
-        StartCoroutine(Reload());
+
+        if (GameSystem.Instance.CurrentGameMode != GameSystem.GameMode.OneShot)
+            StartCoroutine(Reload());
 
         AudioManager.Instance.ShotsFired();
     }
 
+    public void StartReload()
+    {
+        if (!gameObject.activeSelf)
+            _isLoaded = true;
+        else
+            StartCoroutine(Reload());
+    }
+
+    private bool _isReloading;
     protected IEnumerator Reload()
     {
+        if (_isReloading)
+            yield break;
+        _animator.SetTrigger("Reload");
+
+        _isReloading = true;
         const float shootAnimTime = 0.1f;
         yield return new WaitForSeconds(shootAnimTime);
         weaponSource.PlayOneShot(reloadEffect);
         yield return new WaitForSeconds(reloadTime - shootAnimTime);
         _isLoaded = true;
+        _isReloading = false;
     }
 
     private bool TestPlayerHit(GameObject player, out float dist)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using System.Collections;
 
 public class Player : MonoBehaviour {
@@ -116,6 +117,9 @@ public class Player : MonoBehaviour {
 
 			 PlayerPrefs.SetFloat("P"+playerNumber+"sensitivityScale",  GetComponent<PlayerInput>().sensitivityScale);
 		}
+
+        if (_messageOffset > 0)
+    	    _messageOffset -= Time.deltaTime*30;
 	}
 
     public void Respawn()
@@ -129,7 +133,7 @@ public class Player : MonoBehaviour {
     public void GotHit(Weapon shooter)
     {
         //AudioSource.PlayClipAtPoint(deathSound.clip, transform.position, deathSound.volume);
-        _scoredMessage = null;
+        _scoredMessages.Clear();
         deaths++;
         Player sp=null;
         string verb="";
@@ -196,30 +200,79 @@ public class Player : MonoBehaviour {
     	}
     }
 
-    private string _scoredMessage;
+    private Queue<string> _scoredMessages = new Queue<string>();
     public bool scoredMessageLow = false;
+    private float _messageOffset;
+    private int _killStreak;
     void SetScoredMessage(string verb, string receiever)
     {
-    	_scoredMessage = "YOU " + verb+ " " + receiever;
+    	_scoredMessages.Enqueue("YOU " + verb+ " " + receiever);
+
+        _killStreak++;
+
+        switch (_killStreak)
+        {
+            case 2:
+                _scoredMessages.Enqueue("DOUBLE KILL");
+    	        StartCoroutine(ShowScoredMessage());
+                break;
+            case 3:
+                _scoredMessages.Enqueue("TRIPLE KILL");
+    	        StartCoroutine(ShowScoredMessage());
+                break;
+            case 4:
+                _scoredMessages.Enqueue("LUCKY STREAK");
+    	        StartCoroutine(ShowScoredMessage());
+                break;
+            case 5:
+                _scoredMessages.Enqueue("DREAM CRUSHER");
+    	        StartCoroutine(ShowScoredMessage());
+                break;
+        }
 
     	StartCoroutine(ShowScoredMessage());
     }
     IEnumerator ShowScoredMessage()
     {
-    	yield return new WaitForSeconds(2.0f);
+    	yield return new WaitForSeconds(3.2f);
 
-    	_scoredMessage = null;
+        
+
+        _scoredMessages.Dequeue();
+
+        if (_scoredMessages.Count > 0)
+        {
+            _messageOffset += Screen.height/15f*1.2f;
+        }
+        else
+        {
+            _killStreak = 0;
+        }
+        //_scoredMessages = null;
     }
 
     void OnGUI()
     {
     	//died
 
-		if(_scoredMessage != null){
+		if(_scoredMessages != null)
+		{
+		    float top;
 			if(!scoredMessageLow)
-				GUI.Box(new Rect(crosshairRect.x-Screen.width/4.4f, crosshairRect.y-Screen.height/4f, Screen.width/2.2f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+			{
+			    top = crosshairRect.y - Screen.height/4f;
+			}
 			else
-				GUI.Box(new Rect(crosshairRect.x-Screen.width/4.4f, crosshairRect.y+Screen.height/5.5f, Screen.width/2.2f, Screen.height/15f), _scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+			{
+			    top = crosshairRect.y + Screen.height/5.5f;
+			}
+		    top += _messageOffset * (scoredMessageLow ? -1 : 1);
+
+		    foreach (var scoredMessage in _scoredMessages)
+		    {
+                GUI.Box(new Rect(crosshairRect.x - Screen.width / 4.4f, top, Screen.width / 2.2f, Screen.height / 15f), scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+                top += Screen.height / 15f * 1.2f * (scoredMessageLow ? -1 : 1);
+		    }
 
 		}
 

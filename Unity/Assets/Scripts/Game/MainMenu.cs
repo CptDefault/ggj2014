@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour {
 
 		mainSkin.GetStyle("Button").fontSize = (int)(Screen.height/13f);
 		mainSkin.GetStyle("Button").padding.left = (int)(Screen.height/7f);
+
+        AudioManager.Instance.inMenu = true;
+
 	}
 	
 		// Update is called once per frame
@@ -28,7 +31,7 @@ public class MainMenu : MonoBehaviour {
 			}
 			else if(Input.GetButtonUp("A_"+(i+1)))
 			{
-				AudioManager.Instance.mainMenu = false;
+				AudioManager.Instance.inMenu = false;
 				Application.LoadLevel(1);
 				Clicker.Instance.Click();
 			}

@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour {
 	public bool _mutedAll;
 	public bool _mutedMusic;
 
-	public bool mainMenu;
+	public bool inMenu;
 
 	//music
 	public AudioClip intro;
@@ -38,6 +38,8 @@ public class AudioManager : MonoBehaviour {
 			_instance = this;
 		}
 		DontDestroyOnLoad(this.gameObject);
+
+	    inMenu = true;
 	}
 
 	// Use this for initialization
@@ -59,12 +61,11 @@ public class AudioManager : MonoBehaviour {
 
 		StartCoroutine(IntroThenLoopMusic());
 
-		mainMenu = true;
 	}
 
     public void Update()
     {
-    	if(mainMenu)
+    	if(inMenu)
     		return;
 
         if (GameSystem.Instance.state == GameSystem.GameState.MainGame)

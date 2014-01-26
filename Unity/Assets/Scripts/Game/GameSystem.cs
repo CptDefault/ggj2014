@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 
 public class GameSystem : MonoBehaviour {
@@ -12,7 +14,12 @@ public class GameSystem : MonoBehaviour {
 	    GameOver,
 	    PreGameOver
 	};
-	public GameState state;
+
+    public enum GameMode {Deathmatch, OneShot}
+
+    public GameMode CurrentGameMode { get; private set; }
+
+    public GameState state;
 
 	public GameObject playerPrefab;
 	private int numPlayersJoined = 0;
@@ -64,6 +71,9 @@ public class GameSystem : MonoBehaviour {
 		} else {
 			_instance = this;
 		}
+
+        //TODO: REMOVE ME
+        //CurrentGameMode = GameMode.OneShot;
 
         Screen.showCursor = false;
 	}
@@ -125,7 +135,26 @@ public class GameSystem : MonoBehaviour {
 
 		pauseSkin.GetStyle("Text").normal.textColor = Color.white;
 	}
-	
+
+    private void IncrementGameMode(bool up)
+    {
+        if (!up)
+        {
+            if (CurrentGameMode == 0)
+                CurrentGameMode = (GameMode) Enum.GetValues(typeof (GameMode)).Length - 1;
+            else
+                CurrentGameMode--;
+        }
+        else
+        {
+            if (CurrentGameMode == (GameMode)Enum.GetValues(typeof(GameMode)).Length - 1)
+                CurrentGameMode = 0;
+            else
+                CurrentGameMode++;
+        }
+    }
+
+
 	// Update is called once per frame
 	void Update () {
 
@@ -140,19 +169,33 @@ public class GameSystem : MonoBehaviour {
 				break;
 
 			case GameState.MainGame:
+		        bool allNeedReload = true;
                 foreach (var player in playerScripts)
                 {
+                    if (player.ShotReady)
+                        allNeedReload = false;
                     if (player.score >= scoreToWin)
                     {
                         winner = System.Array.IndexOf(playerScripts,player);
                         //print("Winner: " + winner);
                         StartCoroutine(ActivateGameOver());
 
+                        AudioManager.Instance.inMenu = true;
+
                         state = GameState.PreGameOver;
 
                         break;
                     }
                 }
+
+                if (allNeedReload && CurrentGameMode == GameMode.OneShot)
+                {
+                    foreach (var player in playerScripts)
+                    {
+                        player.GetComponent<Weapon>().StartReload();
+                    }
+                }
+
 				break;
 
             case GameState.PreGameOver:
@@ -234,10 +277,12 @@ public class GameSystem : MonoBehaviour {
 
 		if(state != GameState.Paused) {
 			Time.timeScale = 0;
+            AudioManager.Instance.inMenu = true;
 			state = GameState.Paused;
 		}
 		else {
 			Time.timeScale = 1;
+            AudioManager.Instance.inMenu = false;
 			state = GameState.MainGame;
 		}
 	}
@@ -711,6 +756,8 @@ public class GameSystem : MonoBehaviour {
 		
 
 		state = GameState.MainGame;
+        AudioManager.Instance.inMenu = false;
+
 		InitialisePlayers();
 		Clicker.Instance.StartGameSound();
 	}

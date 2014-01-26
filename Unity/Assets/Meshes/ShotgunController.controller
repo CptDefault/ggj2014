@@ -20,6 +20,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: Reload
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
@@ -70,11 +76,29 @@ Transition:
   m_TransitionDuration: .149999991
   m_TransitionOffset: .171638563
   m_Conditions:
-  - m_ConditionMode: 5
-    m_ConditionEvent: Shoot
+  - m_ConditionMode: 1
+    m_ConditionEvent: Reload
     m_EventTreshold: 0
     m_ExitTime: .829411685
   m_Atomic: 1
+  m_Solo: 0
+  m_Mute: 0
+--- !u!1101 &110131411
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110249142}
+  m_DstState: {fileID: 110290613}
+  m_TransitionDuration: .16428563
+  m_TransitionOffset: 0
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Reload
+    m_EventTreshold: 0
+    m_ExitTime: .700000048
+  m_Atomic: 0
   m_Solo: 0
   m_Mute: 0
 --- !u!1101 &110178480
@@ -111,6 +135,24 @@ Transition:
     m_EventTreshold: 0
     m_ExitTime: .70588237
   m_Atomic: 0
+  m_Solo: 0
+  m_Mute: 0
+--- !u!1101 &110199932
+Transition:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_SrcState: {fileID: 110286954}
+  m_DstState: {fileID: 110249142}
+  m_TransitionDuration: .347806096
+  m_TransitionOffset: .057623107
+  m_Conditions:
+  - m_ConditionMode: 5
+    m_ConditionEvent: 
+    m_EventTreshold: 0
+    m_ExitTime: .614845932
+  m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
 --- !u!1102 &110249142
@@ -177,16 +219,15 @@ StateMachine:
       first: {fileID: 0}
       second: []
     data:
-      first: {fileID: 0}
-      second: []
-    data:
       first: {fileID: 110249142}
       second:
       - {fileID: 110192860}
+      - {fileID: 110131411}
     data:
       first: {fileID: 110286954}
       second:
       - {fileID: 110100000}
+      - {fileID: 110199932}
     data:
       first: {fileID: 110290613}
       second:
