@@ -107,9 +107,6 @@ public class GameSystem : MonoBehaviour {
 			_instance = this;
 		}
 
-        //TODO: REMOVE ME
-        CurrentGameMode = GameMode.Elimination;
-
         _defaultBlue = BlueMat.color;
         _defaultRed = RedMat.color;
         _defaultGreen = GreenMat.color;
@@ -649,7 +646,7 @@ public class GameSystem : MonoBehaviour {
 			}*/
 			
 
-			if(numPlayersJoined>0)
+			if(numPlayersJoined>1 || (numPlayersJoined == 1 && Application.isEditor))
 			{ 
 				if(Input.GetButtonDown("Start_"+(i+1)))
 				{
