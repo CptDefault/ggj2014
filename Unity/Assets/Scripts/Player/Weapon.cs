@@ -46,7 +46,11 @@ public class Weapon : MonoBehaviour
 
     public ConePoints[] cone = new ConePoints[]{new ConePoints(0,0), new ConePoints(10, 2), new ConePoints(100,2), };
     public float reloadTime = 2.4f;
+    public float defaultReloadTime = 2.4f;
     private Animator _animator;
+
+    private bool _isJuggernaut;
+    public GameObject juggernautParticle;
 
     public bool ShotReady
     {
@@ -64,8 +68,37 @@ public class Weapon : MonoBehaviour
     protected void Start()
     {
         var color = GetComponent<Player>().col;
+
+        if(_isJuggernaut)
+            color = new Color(255/255.0f, 61/255.0f, 104/255.0f, 1);
+        weaponTransform.GetComponentInChildren<Renderer>().materials[2].SetColor("_MainColor", color);
+
+        if(!_isJuggernaut)
+            juggernautParticle.GetComponent<ParticleSystem>().Stop();
+    }
+
+    public void SetJuggernaut()
+    {
+        juggernautParticle.GetComponent<ParticleSystem>().Play();
+        juggernautParticle.light.enabled = true;
+        _isJuggernaut = true;
+        var color = new Color(237/255.0f, 0, 52/255.0f, 1);
+        _animator.SetFloat("Juggernaut", 1);
+        reloadTime = defaultReloadTime*0.2667f;
         weaponTransform.GetComponentInChildren<Renderer>().materials[2].SetColor("_MainColor", color);
     }
+
+    public void ResetFromJuggernaut()
+    {
+        _isJuggernaut = false;
+        juggernautParticle.GetComponent<ParticleSystem>().Stop();
+        juggernautParticle.light.enabled = false;
+        var color = GetComponent<Player>().col;
+        reloadTime = defaultReloadTime;
+        weaponTransform.GetComponentInChildren<Renderer>().materials[2].SetColor("_MainColor", color);
+        _animator.SetFloat("Juggernaut", 0);
+    }
+
 
     public void ElevationInput(float angle)
     {
@@ -160,7 +193,12 @@ public class Weapon : MonoBehaviour
 
         _isReloading = true;
         const float shootAnimTime = 0.1f;
-        yield return new WaitForSeconds(shootAnimTime);
+        
+            
+        if(_isJuggernaut)
+            yield return new WaitForSeconds(0.03f);
+        else
+            yield return new WaitForSeconds(shootAnimTime);
         weaponSource.PlayOneShot(reloadEffect);
         yield return new WaitForSeconds(reloadTime - shootAnimTime);
         _isLoaded = true;

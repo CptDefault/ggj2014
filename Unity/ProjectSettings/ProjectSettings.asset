@@ -11,7 +11,7 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: Samurai Punk
-  productName: GGJ Game
+  productName: SCREENCHEAT
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   defaultScreenWidth: 1024
@@ -68,12 +68,14 @@ PlayerSettings:
     width: 0
     height: 0
   m_SupportedAspectRatios:
-    4:3: 1
-    5:4: 1
+    4:3: 0
+    5:4: 0
     16:10: 1
     16:9: 1
-    Others: 1
+    Others: 0
   iPhoneBundleIdentifier: com.Company.ProductName
+  metroEnableIndependentInputSource: 0
+  metroEnableLowLatencyPresentationAPI: 0
   productGUID: 26ba2e46a3d4ea543a5c84879ff06326
   iPhoneBundleVersion: 1.0
   AndroidBundleVersionCode: 1
@@ -110,9 +112,28 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
+    - m_Icon: {fileID: 2800000, guid: ee51984d272a0f64680408826239ea59, type: 3}
+      m_Size: 128
+  - m_BuildTarget: Standalone
+    m_Icons:
+    - m_Icon: {fileID: 0}
+      m_Size: 1024
+    - m_Icon: {fileID: 2800000, guid: ee51984d272a0f64680408826239ea59, type: 3}
+      m_Size: 512
+    - m_Icon: {fileID: 0}
+      m_Size: 256
     - m_Icon: {fileID: 0}
       m_Size: 128
-  m_BuildTargetBatching: []
+    - m_Icon: {fileID: 0}
+      m_Size: 48
+    - m_Icon: {fileID: 0}
+      m_Size: 32
+    - m_Icon: {fileID: 0}
+      m_Size: 16
+  m_BuildTargetBatching:
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
+    m_DynamicBatching: 1
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
   wiiRegion: 1
@@ -172,6 +193,7 @@ PlayerSettings:
   metroSplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   metroSplashScreenUseBackgroundColor: 0
   metroCapabilities: {}
+  metroUnprocessedPlugins: []
   metroCompilationOverrides: 1
   blackberryDeviceAddress: 
   blackberryDevicePassword: 

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	public int score = 0;
 	public int deaths = 0;
     public Rect crosshairRect {
-        get { return new Rect(crosshairPos.x * Screen.width-5, (1-crosshairPos.y) * Screen.height-5, 10, 10);}
+        get { return new Rect(crosshairPos.x * Screen.width-Screen.width/30f, (1-crosshairPos.y) * Screen.height-Screen.width/30f, Screen.width/15f, Screen.width/15f);}
     }
 
     public bool ShotReady
@@ -31,6 +31,8 @@ public class Player : MonoBehaviour {
     public string name;
     public Color col;
 
+    //game mode
+    public bool isJuggernaut;
     
 
 	//sound
@@ -63,6 +65,11 @@ public class Player : MonoBehaviour {
 	        }
 
 	    }
+
+	    //SET INVERTED
+	    GetComponent<PlayerInput>().vertLookInvert = PlayerPrefs.GetInt("P"+playerNumber+"Inverted");
+
+	    //SetPlayerAsJuggernaut();
 	}
 
     private RespawnCamera GetRespawnCamera()
@@ -91,11 +98,21 @@ public class Player : MonoBehaviour {
 
     private void SetChildLayerRecursive(Transform t, int layer)
     {
-        t.gameObject.layer = layer;
+        if(!t.GetComponent<ParticleSystem>())
+	        t.gameObject.layer = layer;
         foreach (Transform child in t)
         {
             SetChildLayerRecursive(child, layer);
         }
+    }
+
+    public void SetPlayerAsJuggernaut()
+    {
+
+    	//set weapon
+    	_weapon.SetJuggernaut();
+
+    	isJuggernaut = true;
     }
 
     // Update is called once per frame
@@ -131,10 +148,18 @@ public class Player : MonoBehaviour {
         transform.position = safestSpawnpoint.transform.position; //Random.insideUnitCircle.XZ()*25 + Vector3.up*15;
         transform.rotation = safestSpawnpoint.transform.rotation;
         GetComponent<Moveable>().GetRotationFromFacing();
+
+        _weapon.ResetFromJuggernaut();
+        isJuggernaut = false;
     }
 
     public void GotHit(Weapon shooter)
     {
+        if(isJuggernaut)
+        {
+        	shooter.GetComponent<Player>().SetPlayerAsJuggernaut();
+        }
+
         //AudioSource.PlayClipAtPoint(deathSound.clip, transform.position, deathSound.volume);
         _scoredMessages.Clear();
         deaths++;
@@ -146,8 +171,13 @@ public class Player : MonoBehaviour {
 
         	verb = DeathMessenger.Instance.GetRandomVerb();
         	sp.SetScoredMessage(verb, name);
-            if(GameSystem.Instance.CurrentGameMode != GameSystem.GameMode.Elimination)
-                shooter.GetComponent<Player>().ScoreUp();
+            if(GameSystem.Instance.CurrentGameMode != GameSystem.GameMode.Elimination) {
+            	var plShoot = shooter.GetComponent<Player>();
+
+            	if(GameSystem.Instance.CurrentGameMode != GameSystem.GameMode.Juggernaut || (isJuggernaut || plShoot.isJuggernaut))
+                	plShoot.ScoreUp();
+            }
+
         }
         
         var rag = (GameObject)Instantiate(ragdoll, transform.position, transform.rotation);
@@ -165,7 +195,7 @@ public class Player : MonoBehaviour {
             Destroy(rigid, 15);
         }
 
-        GetRespawnCamera().Activate(this, verb, sp.name, new Rect(crosshairRect.x-Screen.width/4.4f, crosshairRect.y, Screen.width/2.2f, Screen.height/15f));
+        GetRespawnCamera().Activate(this, verb, sp.name, new Rect(crosshairRect.center.x-Screen.width/4.4f, crosshairRect.center.y, Screen.width/2.2f, Screen.height/15f));
     }
 
     public void ScoreUp()
@@ -266,7 +296,7 @@ public class Player : MonoBehaviour {
 		    float top;
 			if(!scoredMessageLow)
 			{
-			    top = crosshairRect.y - Screen.height/4f;
+			    top = crosshairRect.y - Screen.height/5.5f;
 			}
 			else
 			{
@@ -276,7 +306,7 @@ public class Player : MonoBehaviour {
 
 		    foreach (var scoredMessage in _scoredMessages)
 		    {
-                GUI.Box(new Rect(crosshairRect.x - Screen.width / 4.4f, top, Screen.width / 2.2f, Screen.height / 15f), scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
+                GUI.Box(new Rect(crosshairRect.center.x - Screen.width / 4.4f, top, Screen.width / 2.2f, Screen.height / 15f), scoredMessage, DeathMessenger.Instance.messageSkin.GetStyle("Message"));
                 top += Screen.height / 15f * 1.2f * (scoredMessageLow ? -1 : 1);
 		    }
 
@@ -284,7 +314,7 @@ public class Player : MonoBehaviour {
 
     	if(_scorePopUpTime < 1.3f)
     	{
-    		GUI.Box(new Rect(crosshairRect.x-Screen.height/32, _scorePopUpY, Screen.height/15, Screen.height/15), "+1", scorePopUpStyle);
+    		GUI.Box(new Rect(crosshairRect.center.x-Screen.height/32, _scorePopUpY, Screen.height/15, Screen.height/15), "+1", scorePopUpStyle);
 
     		_scorePopUpY -= 30*Time.deltaTime;
 
@@ -294,9 +324,9 @@ public class Player : MonoBehaviour {
 
     	if(setControls)
     	{
-    		GUI.Box(new Rect(crosshairRect.x-Screen.height/5, crosshairRect.y-Screen.height/6, Screen.height/2.5F, Screen.height/3), "", GameSystem.Instance.setControlsSkin.GetStyle("Box"));
+    		GUI.Box(new Rect(crosshairRect.center.x-Screen.height/5, crosshairRect.center.y-Screen.height/6, Screen.height/2.5F, Screen.height/3), "", GameSystem.Instance.setControlsSkin.GetStyle("Box"));
 
-    		GUI.Box(new Rect(crosshairRect.x-Screen.height/8, crosshairRect.y-Screen.height/7f, Screen.height/4f, Screen.height/13), "SET CONTROLS",GameSystem.Instance.setControlsSkin.GetStyle("Title"));
+    		GUI.Box(new Rect(crosshairRect.center.x-Screen.height/8, crosshairRect.center.y-Screen.height/7f, Screen.height/4f, Screen.height/13), "SET CONTROLS",GameSystem.Instance.setControlsSkin.GetStyle("Title"));
 
     		string invertedText;
 
@@ -305,18 +335,18 @@ public class Player : MonoBehaviour {
     		else
     			invertedText = "Y Look Inverted";
 
-    		GUI.Box(new Rect(crosshairRect.x-Screen.height/8, crosshairRect.y-Screen.height/20f, Screen.height/4f, Screen.height/13), invertedText, GameSystem.Instance.setControlsSkin.GetStyle("Button"));
+    		GUI.Box(new Rect(crosshairRect.center.x-Screen.height/8, crosshairRect.center.y-Screen.height/20f, Screen.height/4f, Screen.height/13), invertedText, GameSystem.Instance.setControlsSkin.GetStyle("Button"));
 
-    		GUI.Box(new Rect(crosshairRect.x-Screen.height/8, crosshairRect.y-Screen.height/20f+Screen.height/11f, Screen.height/4f, Screen.height/13), "Look Sensitivity", GameSystem.Instance.setControlsSkin.GetStyle("Button"));
+    		GUI.Box(new Rect(crosshairRect.center.x-Screen.height/8, crosshairRect.center.y-Screen.height/20f+Screen.height/11f, Screen.height/4f, Screen.height/13), "Look Sensitivity", GameSystem.Instance.setControlsSkin.GetStyle("Button"));
 
     		GUI.skin = GameSystem.Instance.setControlsSkin;
-    		GetComponent<PlayerInput>().sensitivityScale = GUI.HorizontalSlider(new Rect(crosshairRect.x-Screen.height/8, crosshairRect.y-Screen.height/20f+Screen.height/6f, Screen.height/4f, Screen.height/13), GetComponent<PlayerInput>().sensitivityScale, 0.5f, 2.0f);
+    		GetComponent<PlayerInput>().sensitivityScale = GUI.HorizontalSlider(new Rect(crosshairRect.center.x-Screen.height/8, crosshairRect.center.y-Screen.height/20f+Screen.height/6f, Screen.height/4f, Screen.height/13), GetComponent<PlayerInput>().sensitivityScale, 0.5f, 2.0f);
 
 
     		//icons
-    		GUI.Box(new Rect(crosshairRect.x-Screen.height/8.3f, crosshairRect.y-Screen.height/20f+Screen.height/40f, Screen.width/40f, Screen.width/40f) ,"", GameSystem.Instance.controllerIcons.GetStyle("Y"));
+    		GUI.Box(new Rect(crosshairRect.center.x-Screen.height/8.3f, crosshairRect.center.y-Screen.height/20f+Screen.height/40f, Screen.width/40f, Screen.width/40f) ,"", GameSystem.Instance.controllerIcons.GetStyle("Y"));
 
-    		GUI.Box(new Rect(crosshairRect.x-Screen.height/8.3f, crosshairRect.y-Screen.height/20f+Screen.height/11f+Screen.height/40f, Screen.width/40f, Screen.width/40f) ,"", GameSystem.Instance.controllerIcons.GetStyle("Dpad"));
+    		GUI.Box(new Rect(crosshairRect.center.x-Screen.height/8.3f, crosshairRect.center.y-Screen.height/20f+Screen.height/11f+Screen.height/40f, Screen.width/40f, Screen.width/40f) ,"", GameSystem.Instance.controllerIcons.GetStyle("Dpad"));
 
     	}
 

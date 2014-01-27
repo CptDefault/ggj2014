@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Random = UnityEngine.Random;
 
 
 public class GameSystem : MonoBehaviour {
@@ -8,9 +11,37 @@ public class GameSystem : MonoBehaviour {
 	private static GameSystem _instance;
 
 	public enum GameState {JoinGame, ShowObjective, MainGame, Paused,
-	    GameOver
+	    GameOver,
+	    PreGameOver
 	};
-	public GameState state;
+
+    public enum GameMode
+    {
+        Deathmatch,
+        OneShot,
+        Elimination,
+        Juggernaut
+    }
+
+    [Serializable]
+    public class GameModeInfo
+    {
+        public string name;
+        public string description;
+        public int defaultScore = 5;
+    }
+
+    public GameModeInfo[] gameModeInfos = new GameModeInfo[]
+        {
+            new GameModeInfo(){name = "Deathmatch"}, 
+            new GameModeInfo(){name = "One Shot"}, 
+            new GameModeInfo(){name = "Elimination"}, 
+            new GameModeInfo(){name = "Juggernaut"}, 
+        };
+
+    public GameMode CurrentGameMode { get; private set; }
+
+    public GameState state;
 
 	public GameObject playerPrefab;
 	private int numPlayersJoined = 0;
@@ -40,11 +71,32 @@ public class GameSystem : MonoBehaviour {
 	struct LobbyCharacter {
 		public int number;
 		public bool joined;
+		public Vector2 centerOfScreen;
+		public bool inverted;
 	}
 
 	private LobbyCharacter[] _lobby;
     public int scoreToWin = 5;
     private int winner;
+
+    public Material RedMat;
+    public Material BlueMat;
+    public Material GreenMat;
+    public Material YellowMat;
+
+    public Color ColorblindRed = Color.white;
+    public Color ColorblindBlue = Color.white;
+    public Color ColorblindGreen = Color.white;
+    public Color ColorblindYellow = Color.white;
+
+    private static Color _defaultRed;
+    private static Color _defaultBlue;
+    private static Color _defaultGreen;
+    private static Color _defaultYellow;
+
+    private readonly List<RespawnCamera> _pendingRespawns = new List<RespawnCamera>();
+    private bool _colourblindMode;
+
 
     void Awake()
 	{
@@ -55,11 +107,30 @@ public class GameSystem : MonoBehaviour {
 			_instance = this;
 		}
 
+<<<<<<< HEAD
+        //TODO: REMOVE ME
+        //CurrentGameMode = GameMode.Elimination;
+
+=======
+>>>>>>> 8e50f96f3723e83e1030bedbb66230321617e76f
+        _defaultBlue = BlueMat.color;
+        _defaultRed = RedMat.color;
+        _defaultGreen = GreenMat.color;
+        _defaultYellow = YellowMat.color;
+
         Screen.showCursor = false;
 	}
 
+    protected void OnDestroy()
+    {
+        SetColorBlind(false);
+    }
+
 	// Use this for initialization
 	void Start () {
+
+		Time.timeScale = 1;
+
 		_spawnPoints = new List<GameObject>();
 		//get spawn points from scene
 		foreach(GameObject sp in GameObject.FindGameObjectsWithTag("SpawnPoint"))
@@ -68,6 +139,24 @@ public class GameSystem : MonoBehaviour {
 		}
 
 		_lobby = new LobbyCharacter[4];
+
+		//init center of screen for lobby characters for customise controls
+	    for (int i = 0; i < 4; i++)
+	    {
+            var rect = new Rect(i % 2 == 0 ? 0 : 0.5f,
+                i >= 2 ? 0 : (4 > 2 ? 0.5f : 0),
+                i == 2 && 4 == 3 ? 1 :  0.5f,
+                4 > 2 ? 0.5f : 1f);
+	        _lobby[i].centerOfScreen = rect.center;
+
+	        if(!PlayerPrefs.HasKey("P"+(i+1)+"Inverted"))
+	        	PlayerPrefs.SetInt("P"+(i+1)+"Inverted", 1);
+
+	        if(!PlayerPrefs.HasKey("P"+(i+1)+"SensitivityScale"))
+	        	PlayerPrefs.SetFloat("P"+(i+1)+"SensitivityScale", 1);
+	    }
+	    _dpads = new float[4];
+	    //initialise
 
 		//state = GameState.ShowObjective;
 
@@ -92,14 +181,44 @@ public class GameSystem : MonoBehaviour {
 		joinGameSkin.GetStyle("Box").padding.left = (int)(Screen.height/15f);
 		joinGameSkin.GetStyle("JoinText").fontSize = (int)(Screen.height/15f);
 
+		pauseSkin.GetStyle("GameMode").fontSize = (int)(Screen.height/20f);
+
 		pauseSkin.GetStyle("Text").normal.textColor = Color.white;
 	}
-	
+
+    private void IncrementGameMode(bool up)
+    {
+        if (!up)
+        {
+            if (CurrentGameMode == 0)
+                CurrentGameMode = (GameMode) Enum.GetValues(typeof (GameMode)).Length - 1;
+            else
+                CurrentGameMode--;
+        }
+        else
+        {
+            if (CurrentGameMode == (GameMode)Enum.GetValues(typeof(GameMode)).Length - 1)
+                CurrentGameMode = 0;
+            else
+                CurrentGameMode++;
+        }
+
+        scoreToWin = gameModeInfos[(int)CurrentGameMode].defaultScore;
+    }
+
+
 	// Update is called once per frame
 	void Update () {
 
-	    
-		switch(state)
+        //colourblind support
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            _colourblindMode = !_colourblindMode;
+
+            SetColorBlind(_colourblindMode);
+        }
+
+	    switch(state)
 		{
 			case GameState.JoinGame:
 				JoinGame();
@@ -114,48 +233,36 @@ public class GameSystem : MonoBehaviour {
                     if (player.score >= scoreToWin)
                     {
                         winner = System.Array.IndexOf(playerScripts,player);
-<<<<<<< HEAD
-                        print("Winner: " + winner);
-                        state = GameState.GameOver;
-                        foreach (var p2 in playerScripts)
-                        {
-                            p2.GetComponent<PlayerInput>().enabled = false;
-                            p2.GetComponent<Moveable>().enabled = false;
-                            p2.rigidbody.angularVelocity = Vector3.zero;
-                        }
-=======
                         //print("Winner: " + winner);
                         StartCoroutine(ActivateGameOver());
->>>>>>> WinstonBranch
+
+                        AudioManager.Instance.inMenu = true;
+
+                        state = GameState.PreGameOver;
+
                         break;
                     }
                 }
+
+                RunGameModes();
+
 				break;
+
+            case GameState.PreGameOver:
+                break;
 				
             case GameState.GameOver:
-<<<<<<< HEAD
-		        {
-		            for (int i = 0; i < 4; i++)
-		            {
-		                if (Input.GetButtonUp("Start_" + (i + 1)))
-		                {
-                            Application.LoadLevel(Application.loadedLevel);
-		                }
-		            }
-		        }
-		 break;
-=======
             	for(int i=0; i<4; i++)
             	{
 		            if(Input.GetButtonUp("Start_"+(i+1)))
 		            {
 		            	//restart
-		            	Application.LoadLevel(Application.loadedLevel);
+                        ResetLevel();
+		            	//Application.LoadLevel(Application.loadedLevel);
 		            	Clicker.Instance.Click();
 		            }
 		        }
 		 		break;
->>>>>>> WinstonBranch
 
 			case GameState.Paused:
 				Paused();
@@ -164,7 +271,78 @@ public class GameSystem : MonoBehaviour {
 		}
 	}
 
-	void OnGUI() 
+    private void SetColorBlind(bool colourblindMode)
+    {
+        BlueMat.color = colourblindMode ? ColorblindBlue : _defaultBlue;
+        RedMat.color = colourblindMode ? ColorblindRed : _defaultRed;
+        GreenMat.color = colourblindMode ? ColorblindGreen : _defaultGreen;
+        YellowMat.color = colourblindMode ? ColorblindYellow : _defaultYellow;
+    }
+
+    private void RunGameModes()
+    {
+        switch (CurrentGameMode)
+        {
+            case GameMode.Deathmatch:
+                break;
+            case GameMode.OneShot:
+                bool allNeedReload = true;
+                foreach (var player in playerScripts)
+                {
+                    if (player.ShotReady)
+                        allNeedReload = false;
+                }
+                if (allNeedReload)
+                {
+                    foreach (var player in playerScripts)
+                    {
+                        player.GetComponent<Weapon>().StartReload();
+                    }
+                }
+                break;
+            case GameMode.Elimination:
+                if (_pendingRespawns.Count >= players.Count() - 1)
+                {
+                    Player winner = null;
+                    foreach (var player in playerScripts)
+                    {
+                        if (player.gameObject.activeSelf)
+                        {
+                            winner = player;
+                            player.ScoreUp();
+                        }
+                    }
+                    foreach (var pendingRespawn in _pendingRespawns)
+                    {
+                        pendingRespawn.Respawn(3);
+                    }
+                    StartCoroutine(EliminationRestart(winner, 3));
+                    _pendingRespawns.Clear();
+                }
+                break;
+            case GameMode.Juggernaut:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
+    }
+
+    private IEnumerator EliminationRestart(Player player, int delay)
+    {
+        _gameCountDown = delay;
+        for (int i = 0; i < delay; i++)
+        {
+            Clicker.Instance.Click();
+            yield return new WaitForSeconds(1f);
+            _gameCountDown--;
+        }
+        Clicker.Instance.StartGameSound();
+        player.Respawn();
+
+    }
+
+    void OnGUI() 
 	{
 		switch(state)
 		{
@@ -184,6 +362,12 @@ public class GameSystem : MonoBehaviour {
 				PausedGUI();
 				break;
 
+            case GameState.PreGameOver:
+                float unit = Screen.width / 15f;
+		        DrawBlackBars();
+		        GUI.Box(new Rect(Screen.width / 2f - 2 * unit, Screen.height / 2f - 0.35f * unit, unit * 4, unit * 0.7f), "GAME OVER", pauseSkin.GetStyle("Title"));
+		        break;
+
             case GameState.GameOver:
 		        GameOverGUI();
 		        break;
@@ -191,6 +375,19 @@ public class GameSystem : MonoBehaviour {
 
 
 	}
+
+    public GameObject GetSafestSpawnpoint()
+    {
+        if(players == null || !players.Any())
+            return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
+        var activePlayers = players.Where(p => p != null && p.activeSelf).ToList();
+        if (activePlayers.Count == 0)
+            return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
+        return _spawnPoints.OrderBy(
+            spawn => activePlayers.
+                             Min(p => (p.transform.position - spawn.transform.position).sqrMagnitude))
+                    .Last();
+    }
 
     public void TogglePauseGame()
 	{
@@ -201,10 +398,12 @@ public class GameSystem : MonoBehaviour {
 
 		if(state != GameState.Paused) {
 			Time.timeScale = 0;
+            AudioManager.Instance.inMenu = true;
 			state = GameState.Paused;
 		}
 		else {
 			Time.timeScale = 1;
+            AudioManager.Instance.inMenu = false;
 			state = GameState.MainGame;
 		}
 	}
@@ -224,6 +423,7 @@ public class GameSystem : MonoBehaviour {
 					state = GameState.Paused;
 
 					Clicker.Instance.Click();
+					PlayerPrefs.Save();
 				}
 			}
 
@@ -249,6 +449,8 @@ public class GameSystem : MonoBehaviour {
 			else if(Input.GetButtonUp("Back_"+(i+1)))
 			{
 				//quit
+                //ResetLevel();
+				Application.LoadLevel(0);
 				Clicker.Instance.Click();
 			}
 		}
@@ -313,6 +515,24 @@ public class GameSystem : MonoBehaviour {
 
 	}
 
+    public void ResetLevel()
+    {
+        Time.timeScale = 1;
+
+        GameObject.Find("Main Camera").GetComponent<Camera>().enabled = true;
+
+        _gameCountDown = 3;
+        winner = 0;
+        
+        foreach (var player in players)
+        {
+            Destroy(player);
+        }
+
+        StartCoroutine(ShowObjectiveThenStartGame());
+    }
+
+
 	IEnumerator ActivateGameOver()
 	{
 		foreach (var p2 in playerScripts)
@@ -322,9 +542,9 @@ public class GameSystem : MonoBehaviour {
 		    p2.rigidbody.angularVelocity = Vector3.zero;
 		}
 
-		for(float t = 0; t < 4.5f; t += Time.deltaTime / (1 - ( t / 6)))
+		for(float t = 0; t < 2.5f; t += Time.deltaTime / (1 - ( t / 3)))
 		{
-			Time.timeScale = 1 - ( t / 6);
+			Time.timeScale = 1 - ( t / 3);
 			yield return null;
 		}
 		state = GameState.GameOver;
@@ -341,8 +561,26 @@ public class GameSystem : MonoBehaviour {
    			GUI.Box(gameOverPlayerRects[i], "", joinGameSkin.GetStyle(playerScripts[i].name));
    		}
 
-   		GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
-   		GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+   		switch(numPlayersJoined)
+   		{
+   			case 2:
+   				//draw black bars
+   				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+   				break;
+
+   			case 3:
+
+   				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height/2), "", scoreSkin.GetStyle("Box"));
+   				GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+   				break;
+
+
+   			case 4:
+   				GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+   				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+   				break;
+
+   		}
 
         float unit = Screen.width / 20;
         //background
@@ -379,6 +617,10 @@ public class GameSystem : MonoBehaviour {
         GUI.Box(new Rect(Screen.width / 2 - 1.3f * unit, Screen.height / 2 - unit * 5 + unit * 7.05f, unit * 0.5f, 0.5f * unit),"", controllerIcons.GetStyle("Start"));
     }
 
+    //dpad input
+    private float[] _dpads;
+    private float dPadTimer=0;
+
     void JoinGame()
 	{
 		for(int i=0; i<4; i++)
@@ -392,11 +634,63 @@ public class GameSystem : MonoBehaviour {
 				print("joined");
 			}
 
-			if(numPlayersJoined>0)
+
+			if(Input.GetButtonDown("Y_"+(i+1)))
 			{
+				_lobby[i].inverted = !_lobby[i].inverted;
+				//PlayerPrefs.SetInt("P"+(i+1)+"Inverted", -1);
+				print("Invert controsl for " + (i+1));
+			}
+
+			//game mode
+			if(Input.GetButtonDown("LB_"+(i+1)))
+			{
+				IncrementGameMode(false);
+			}
+			else if(Input.GetButtonDown("RB_"+(i+1)))
+			{
+				IncrementGameMode(true);
+			}
+
+			dPadTimer += Time.deltaTime;
+			if(dPadTimer > 0.2f)
+			{
+				float temp = _dpads[i];
+				float thisInput = Input.GetAxis("DPad_XAxis_"+(i+1));
+
+				if(thisInput > 0)
+					print("input" + thisInput);
+
+				if(temp == 0 && thisInput !=0)
+				{
+					if(thisInput>0) {
+						scoreToWin++;
+
+						if(scoreToWin>10)
+							scoreToWin = 10;
+					}
+					else if(thisInput<0) {
+
+						scoreToWin--;
+
+						if(scoreToWin<1)
+							scoreToWin = 1;
+					}
+				}
+
+				dPadTimer = 0;
+			}
+
+
+
+
+
+			if(numPlayersJoined>1 || (numPlayersJoined == 1 && Application.isEditor))
+			{ 
 				if(Input.GetButtonDown("Start_"+(i+1)))
 				{
 					StartCoroutine(ShowObjectiveThenStartGame());
+					PlayerPrefs.Save();
 					state = GameState.ShowObjective;
 					Clicker.Instance.Click();
 				}
@@ -422,7 +716,7 @@ public class GameSystem : MonoBehaviour {
 		GUI.Box(new Rect(Screen.width/2,Screen.height/2, Screen.width/2, Screen.height/2), "", joinGameSkin.GetStyle("Yellow"));
 
 		float startingX = Screen.width/4;
-		float startingY = Screen.height/4;
+		float startingY = Screen.height/6;
 		joinGameSkin.GetStyle("JoinText").normal.textColor = Color.black;
 		for(int i=0; i<4; i++)
 		{
@@ -431,6 +725,14 @@ public class GameSystem : MonoBehaviour {
 			string playerName = "";
 			joinGameSkin.GetStyle("JoinText").normal.textColor = Color.black;
 
+			string invertedText = "";
+			if(!thisChar.inverted) {
+				invertedText = "Y LOOK NORMAL";
+			}
+			else {
+				invertedText = "Y LOOK INVERTED";
+			}
+
 			switch(i)
 			{
 				case 0:
@@ -438,25 +740,46 @@ public class GameSystem : MonoBehaviour {
 					playerName = "RED\n";
 
 					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit, unit*5, unit*2f), playerName, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX-2.5f*unit+unit*0.5f, startingY-unit+unit*0.9f, unit*5, unit*2f), invertedText, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX-3.25f*unit, startingY-unit+unit*1.35f, unit*1, unit*1f), "", controllerIcons.GetStyle("Y"));
+
 					break;
 
 				case 1:
 					playerName = "BLUE\n";
 					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit, unit*5, unit*2f), playerName, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*0.5f, startingY-unit+unit*0.9f, unit*5, unit*2f), invertedText, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX+Screen.width/2-3.25f*unit, startingY-unit+unit*1.35f, unit*1, unit*1f), "", controllerIcons.GetStyle("Y"));
+
 					break;
 
 				case 2:
 					playerName = "GREEN\n";
 					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+Screen.height/2, unit*5, unit*2f), playerName, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX-2.5f*unit+unit*0.5f, startingY+Screen.height/2-unit+unit*0.9f, unit*5, unit*2f), invertedText, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX-3.1f*unit, startingY+Screen.height/2-unit+unit*1.35f, unit*1, unit*1f), "", controllerIcons.GetStyle("Y"));
+
 					break;
 
 				case 3:
 					playerName = "YELLOW\n";
 					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+Screen.height/2, unit*5, unit*2f), playerName, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*0.5f, startingY+Screen.height/2-unit+unit*0.9f, unit*5, unit*2f), invertedText, joinGameSkin.GetStyle("JoinText"));
+
+					GUI.Box(new Rect(startingX+Screen.width/2-3.25f*unit, startingY-unit+Screen.height/2+unit*1.35f, unit*1, unit*1f), "", controllerIcons.GetStyle("Y"));
+
 					break;
 			}
 
 			string joinedText = "";
+			
 
 			if(thisChar.joined) {
 				joinedText += "READY";
@@ -467,40 +790,49 @@ public class GameSystem : MonoBehaviour {
 				joinGameSkin.GetStyle("JoinText").normal.textColor = Color.black;
 			}
 
+
 			switch(i)
 			{
 				case 0:
 					//red
 					playerName = "RED\n";
 
-					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+
 
 					if(!thisChar.joined) 
-						GUI.Box(new Rect(startingX-2.5f*unit+unit*1.9f, startingY-unit+unit*1.5f, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+						GUI.Box(new Rect(startingX-2.5f*unit+unit*1.9f, startingY-unit+unit*1.5f+unit, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+
 					break;
 
 				case 1:
 					playerName = "BLUE\n";
-					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+
 
 					if(!thisChar.joined) 
-						GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*1.9f, startingY-unit+unit*1.5f, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+						GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*1.9f, startingY-unit+unit*1.5f+unit, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+
 					break;
 
 				case 2:
 					playerName = "GREEN\n";
-					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+Screen.height/2+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+					GUI.Box(new Rect(startingX-2.5f*unit, startingY-unit+Screen.height/2+unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+
 
 					if(!thisChar.joined) 
-						GUI.Box(new Rect(startingX-2.5f*unit+unit*1.9f, startingY-unit+Screen.height/2+unit*1.5f, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+						GUI.Box(new Rect(startingX-2.5f*unit+unit*1.9f, startingY-unit+Screen.height/2+unit*1.5f+unit, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+
 					break;
 
 				case 3:
 					playerName = "YELLOW\n";
-					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+Screen.height/2+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+					GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit, startingY-unit+Screen.height/2+unit+unit, unit*5, unit*2f), joinedText, joinGameSkin.GetStyle("JoinText"));
+
 
 					if(!thisChar.joined) 
-						GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*1.9f, startingY-unit+Screen.height/2+unit*1.5f, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+						GUI.Box(new Rect(startingX+Screen.width/2-2.5f*unit+unit*1.9f, startingY-unit+Screen.height/2+unit*1.5f+unit, unit*1, unit*1f), "", controllerIcons.GetStyle("A"));
+
 					break;
 			}
 		}
@@ -514,10 +846,25 @@ public class GameSystem : MonoBehaviour {
 		else
 			startText = "WAIT FOR PLAYERS";
 
-		GUI.Box(new Rect(Screen.width/2-unit*3f, Screen.height/2-0.05f*Screen.height, unit*6, Screen.height*0.1f), startText, pauseSkin.GetStyle("Title"));
+		GUI.Box(new Rect(Screen.width/2-unit*3.5f, Screen.height/2-0.05f*Screen.height, unit*7, Screen.height*0.1f), startText, pauseSkin.GetStyle("Title"));
+
+		//game mode selection
+		GUI.Box(new Rect(Screen.width/2-unit*3.5f, 0, unit*7, Screen.height*0.05f), CurrentGameMode.ToString(), pauseSkin.GetStyle("GameMode"));
+
+		GUI.Box(new Rect(Screen.width/2-unit*3.5f, Screen.height*0.95f, unit*7, Screen.height*0.05f), "SCORE LIMIT " + scoreToWin, pauseSkin.GetStyle("GameMode"));
+
+		//ICONS
+		GUI.Box(new Rect(Screen.width/2-unit*2.6f-unit*0.8f, -Screen.height*0.0105f, unit*0.8f, unit*0.8f), "", controllerIcons.GetStyle("LB"));
+		GUI.Box(new Rect(Screen.width/2+unit*2.6f, -Screen.height*0.0105f, unit*0.8f, unit*0.8f), "", controllerIcons.GetStyle("RB"));
+
+		GUI.Box(new Rect(Screen.width/2-unit*2.3f,Screen.height*0.955f, unit*0.5f, unit*0.5f), "", controllerIcons.GetStyle("Dpad"));
+
 
 		//each player can say they're playing, increasing numPlayersJoined by 1, then set num players
+
+		//JoinGameControlsGUI();
 	}
+
 
 	IEnumerator ShowObjectiveThenStartGame()
 	{
@@ -526,27 +873,33 @@ public class GameSystem : MonoBehaviour {
 		for(int i=0; i<3; i++)
 		{
 			Clicker.Instance.Click();
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(1f);
 			_gameCountDown--;
 		}
 		
 
 		state = GameState.MainGame;
+        AudioManager.Instance.inMenu = false;
+
 		InitialisePlayers();
 		Clicker.Instance.StartGameSound();
 	}
 
-	void ShowObjectiveGUI()
+	void ShowObjectiveGUI(bool roundStart = false)
 	{
 		float unit = Screen.width/20;
 		//background
+	    pauseSkin.GetStyle("Text").normal.textColor = Color.white;
 		GUI.skin = pauseSkin;
 		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*4, unit*10, unit*8), "");
 
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), "DEATHMATCH", pauseSkin.GetStyle("Title"));
-		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), "SCORE 5 KILLS TO WIN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*1.25f, unit*5, unit), 
+            gameModeInfos[(int)CurrentGameMode].name, pauseSkin.GetStyle("Title"));
+		GUI.Box(new Rect(Screen.width/2-2.5f*unit, Screen.height/2-unit*4+unit*2.5f, unit*5, unit), 
+            string.Format(gameModeInfos[(int)CurrentGameMode].description, scoreToWin), pauseSkin.GetStyle("Text"));
 
-		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit), "STARTING GAME IN", pauseSkin.GetStyle("Text"));
+		GUI.Box(new Rect(Screen.width/2-5*unit, Screen.height/2-unit*3+unit*3, unit*10, unit),
+            (roundStart ? "NEXT ROUND" : "STARTING GAME") + " IN", pauseSkin.GetStyle("Text"));
 		GUI.Box(new Rect(Screen.width/2-0.5f*unit, Screen.height/2-unit*3+unit*4, unit, unit), ""+_gameCountDown, pauseSkin.GetStyle("Countdown"));
 	}
 
@@ -569,17 +922,25 @@ public class GameSystem : MonoBehaviour {
 			if(!_lobby[i].joined)
 				continue;
 
+			//set inverted
+			if(_lobby[i].inverted)
+				PlayerPrefs.SetInt("P"+(i+1)+"Inverted", -1);
+			else
+				PlayerPrefs.SetInt("P"+(i+1)+"Inverted", 1);
+
 			//choose a spawn point
 			//find one that hasn't been used
 			int usedCount = 0;
 			GameObject sp = null;
-			do {
+			/*do {
 				sp = _spawnPoints[Random.Range(0,_spawnPoints.Count)];
 				usedCount = sp.GetComponent<SpawnPoint>().usedCount++;
 				print("used" + usedCount);
-			} while(usedCount > 0);
+			} while(usedCount > 0);*/
 
-			players[currentPlayer] = (GameObject)Instantiate(playerPrefab, sp.transform.position, Quaternion.identity);
+		    sp = GetSafestSpawnpoint();
+
+			players[currentPlayer] = (GameObject)Instantiate(playerPrefab, sp.transform.position, sp.transform.rotation);
 			//players[currentPlayer].GetComponent<Player>().playerNumber = i+1;
 			players[currentPlayer].GetComponent<Player>().SetPlayerNameAndColor(i+1);
 			players[currentPlayer].name = "Player"+(i+1);
@@ -587,6 +948,10 @@ public class GameSystem : MonoBehaviour {
 
 			currentPlayer++;
 		}
+
+		//special case
+		if(numPlayers == 3)
+			playerScripts[2].scoredMessageLow = true;
 
 		SetUpPlayerViewports(numPlayers);
 	}
@@ -642,47 +1007,150 @@ public class GameSystem : MonoBehaviour {
 	{
 		float unit = Screen.width/15;
 
+        DrawBlackBars();
+
 		//draw crosshairs
 		for(int i=0;i<numPlayersJoined;i++)
 		{
             if(playerScripts[i].ShotReady)
-			    GUI.Box(playerScripts[i].crosshairRect, "");
+			    GUI.Box(playerScripts[i].crosshairRect, "", scoreSkin.GetStyle("Crosshair"));
 		}
 
-		switch(numPlayersJoined)
-		{
-			case 2:
-				//draw black bars
-				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+        bool drawScores = GameModeGUI();
 
-				GUI.Box(new Rect(Screen.width/2-unit, 0, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
-				GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
-				break;
+        if (drawScores)
+        {
+            switch (numPlayersJoined)
+            {
+                case 2:
+                    GUI.Box(new Rect(Screen.width/2 - unit, 0, unit, 0.7f*unit), "" + playerScripts[0].score,
+                            scoreSkin.GetStyle("Player" + playerScripts[0].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2, 0, unit, 0.7f*unit), "" + playerScripts[1].score,
+                            scoreSkin.GetStyle("Player" + playerScripts[1].playerNumber));
 
-			case 3:
+                    if(CurrentGameMode == GameMode.OneShot)
+                    {
+                    	if(playerScripts[0].ShotReady)
+                    		GUI.Box(new Rect(Screen.width/2 - unit-0.7f*unit, 0, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+                    	
+                    	if(playerScripts[1].ShotReady)
+                    		GUI.Box(new Rect(Screen.width/2 + unit, 0, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+                    	
+                    }
+                    break;
 
-				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height/2), "", scoreSkin.GetStyle("Box"));
-				GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+                case 3:
+                    GUI.Box(new Rect(Screen.width/2 - unit, Screen.height/2 - 0.7f*unit, unit, 0.7f*unit),
+                            "" + playerScripts[0].score, scoreSkin.GetStyle("Player" + playerScripts[0].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2, Screen.height/2 - 0.7f*unit, unit, 0.7f*unit),
+                            "" + playerScripts[1].score, scoreSkin.GetStyle("Player" + playerScripts[1].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2 - unit*0.5f, Screen.height/2, unit, 0.7f*unit),
+                            "" + playerScripts[2].score, scoreSkin.GetStyle("Player" + playerScripts[2].playerNumber));
 
 
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
-				GUI.Box(new Rect(Screen.width/2-unit*0.5f, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player"+playerScripts[2].playerNumber));
-				break;
+                    if(CurrentGameMode == GameMode.OneShot)
+                    {
+                    	if(playerScripts[0].ShotReady)
+                    		GUI.Box(new Rect(Screen.width/2 - unit-0.7f*unit, Screen.height/2 - 0.7f*unit, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+                    	
+                    	if(playerScripts[1].ShotReady)
+                    		GUI.Box(new Rect(Screen.width/2 + unit, Screen.height/2 - 0.7f*unit, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+
+                    	if(playerScripts[2].ShotReady)
+                    		GUI.Box(new Rect(Screen.width/2 - unit-0.35f*unit, Screen.height/2, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+                    	
+                    }
+
+                    break;
 
 
-			case 4:
-				GUI.Box(new Rect(0, Screen.height/2-3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
-				GUI.Box(new Rect(Screen.width/2-3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+                case 4:
+                    GUI.Box(new Rect(Screen.width/2 - unit, Screen.height/2 - 0.7f*unit, unit, 0.7f*unit),
+                            "" + playerScripts[0].score, scoreSkin.GetStyle("Player" + playerScripts[0].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2, Screen.height/2 - 0.7f*unit, unit, 0.7f*unit),
+                            "" + playerScripts[1].score, scoreSkin.GetStyle("Player" + playerScripts[1].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2 - unit, Screen.height/2, unit, 0.7f*unit),
+                            "" + playerScripts[2].score, scoreSkin.GetStyle("Player" + playerScripts[2].playerNumber));
+                    GUI.Box(new Rect(Screen.width/2, Screen.height/2, unit, 0.7f*unit), "" + playerScripts[3].score,
+                            scoreSkin.GetStyle("Player" + playerScripts[3].playerNumber));
 
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[0].score, scoreSkin.GetStyle("Player"+playerScripts[0].playerNumber));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2-0.7f*unit, unit, 0.7f*unit), ""+playerScripts[1].score, scoreSkin.GetStyle("Player"+playerScripts[1].playerNumber));
-				GUI.Box(new Rect(Screen.width/2-unit, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[2].score, scoreSkin.GetStyle("Player"+playerScripts[2].playerNumber));
-				GUI.Box(new Rect(Screen.width/2, Screen.height/2, unit, 0.7f*unit), ""+playerScripts[3].score, scoreSkin.GetStyle("Player"+playerScripts[3].playerNumber));
-				break;
 
-		}
+                    if(CurrentGameMode == GameMode.OneShot)
+                    {
+                    	if(playerScripts[0].ShotReady)
+                    		GUI.Box(new Rect(Screen.width/2 - unit-0.7f*unit, Screen.height/2 - 0.7f*unit, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+                    	
+                    	if(playerScripts[1].ShotReady)
+                    		GUI.Box(new Rect(Screen.width/2 + unit, Screen.height/2 - 0.7f*unit, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+
+                		if(playerScripts[2].ShotReady)
+                			GUI.Box(new Rect(Screen.width/2 - unit-0.7f*unit, Screen.height/2, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+                		
+                		if(playerScripts[3].ShotReady)
+                			GUI.Box(new Rect(Screen.width/2 + unit, Screen.height/2, 0.7f*unit, 0.7f*unit), "",scoreSkin.GetStyle("Buck"));
+
+
+
+                    	
+                    }
+                    break;
+
+            }
+        }
 	}
+
+    private bool GameModeGUI()
+    {
+        switch (CurrentGameMode)
+        {
+            case GameMode.Deathmatch:
+                break;
+            case GameMode.OneShot:
+                break;
+            case GameMode.Elimination:
+                if (_gameCountDown > 0)
+                {
+                    ShowObjectiveGUI(true);
+                    return false;
+                }
+                break;
+            case GameMode.Juggernaut:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        //draw the scores
+        return true;
+    }
+
+    void DrawBlackBars()
+    {
+        float unit = Screen.width / 15;
+        switch (numPlayersJoined)
+        {
+            case 2:
+                //draw black bars
+                GUI.Box(new Rect(Screen.width / 2 - 3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+
+                break;
+
+            case 3:
+
+                GUI.Box(new Rect(Screen.width / 2 - 3, 0, 6, Screen.height / 2), "", scoreSkin.GetStyle("Box"));
+                GUI.Box(new Rect(0, Screen.height / 2 - 3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+
+
+                break;
+
+
+            case 4:
+                GUI.Box(new Rect(0, Screen.height / 2 - 3, Screen.width, 6), "", scoreSkin.GetStyle("Box"));
+                GUI.Box(new Rect(Screen.width / 2 - 3, 0, 6, Screen.height), "", scoreSkin.GetStyle("Box"));
+
+                break;
+
+        }
+    }
 
 
 	public static GameSystem Instance
@@ -697,4 +1165,9 @@ public class GameSystem : MonoBehaviour {
 	{
 		_instance = null;
 	}
+
+    public void AddPendingRespawn(RespawnCamera respawnCamera)
+    {
+        _pendingRespawns.Add(respawnCamera);
+    }
 }

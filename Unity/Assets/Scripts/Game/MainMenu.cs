@@ -7,6 +7,8 @@ public class MainMenu : MonoBehaviour {
 
 	public GUISkin controllerIcons;
 
+	bool _showController;
+
 	// Use this for initialization
 	void Start () {
 		mainSkin.GetStyle("Box").fontSize = (int)(Screen.height/20f);
@@ -26,7 +28,10 @@ public class MainMenu : MonoBehaviour {
 		{
 			if(Input.GetButtonUp("X_"+(i+1)))
 			{
+				//controls
 
+				GameObject.Find("Controller").GetComponent<GUITexture>().enabled = !GameObject.Find("Controller").GetComponent<GUITexture>().enabled;
+				_showController = !_showController;
 				Clicker.Instance.Click();
 			}
 			else if(Input.GetButtonUp("A_"+(i+1)))
@@ -41,12 +46,20 @@ public class MainMenu : MonoBehaviour {
 				Application.Quit();
 				Clicker.Instance.Click();
 			}
+			else if(Input.GetButtonUp("Y_"+(i+1)))
+			{
+				Application.LoadLevel("Credits");
+				Clicker.Instance.Click();
+			}
 		}
 	
 	}
 
 	void OnGUI()
 	{	
+		if(_showController)
+			return;
+
 		GUI.skin = mainSkin;
 		GUI.Box(new Rect(Screen.width-Screen.width*0.42f, Screen.height*0.36f, Screen.width*0.25f, Screen.height*0.1f), "", mainSkin.GetStyle("Samurai"));
 		GUI.Box(new Rect(Screen.width-Screen.width*0.27f, Screen.height*0.375f, Screen.width*0.25f, Screen.height*0.1f), " GAME");
@@ -57,27 +70,34 @@ public class MainMenu : MonoBehaviour {
 
 
 		//buttons
-		if(GUI.Button(new Rect(Screen.width/2-Screen.width*0.4f, Screen.height*0.5f, Screen.width*0.4f, Screen.height*0.1f), "DEATHMATCH"))
+		if(GUI.Button(new Rect(Screen.width/2-Screen.width*0.4f, Screen.height*0.5f-Screen.height*0.1f, Screen.width*0.4f, Screen.height*0.1f), "PLAY"))
 		{
 
 		}
 
-		if(GUI.Button(new Rect(Screen.width/2-Screen.width*0.4f, Screen.height*0.65f, Screen.width*0.4f, Screen.height*0.1f), "CREDITS"))
+		if(GUI.Button(new Rect(Screen.width/2-Screen.width*0.4f, Screen.height*0.65f-Screen.height*0.1f, Screen.width*0.4f, Screen.height*0.1f), "HOW TO PLAY"))
 		{
 
 		}
 
-		if(GUI.Button(new Rect(Screen.width/2-Screen.width*0.4f, Screen.height*0.8f, Screen.width*0.4f, Screen.height*0.1f), "QUIT"))
+		if(GUI.Button(new Rect(Screen.width/2-Screen.width*0.4f, Screen.height*0.8f-Screen.height*0.1f, Screen.width*0.4f, Screen.height*0.1f), "CREDITS"))
+		{
+
+		}
+
+		if(GUI.Button(new Rect(Screen.width/2-Screen.width*0.4f, Screen.height*0.95f-Screen.height*0.1f, Screen.width*0.4f, Screen.height*0.1f), "QUIT"))
 		{
 
 		}
 
 		//icons
-		GUI.Box(new Rect(Screen.width/2-Screen.width*0.4f+Screen.width*0.02f, Screen.height*0.505f, Screen.width*0.05f, Screen.width*0.05f),"", controllerIcons.GetStyle("A"));
+		GUI.Box(new Rect(Screen.width/2-Screen.width*0.4f+Screen.width*0.02f, Screen.height*0.505f-Screen.height*0.1f, Screen.width*0.05f, Screen.width*0.05f),"", controllerIcons.GetStyle("A"));
 
-		GUI.Box(new Rect(Screen.width/2-Screen.width*0.4f+Screen.width*0.02f, Screen.height*0.655f, Screen.width*0.05f, Screen.width*0.05f),"", controllerIcons.GetStyle("X"));
+		GUI.Box(new Rect(Screen.width/2-Screen.width*0.4f+Screen.width*0.02f, Screen.height*0.655f-Screen.height*0.1f, Screen.width*0.05f, Screen.width*0.05f),"", controllerIcons.GetStyle("X"));
 
-		GUI.Box(new Rect(Screen.width/2-Screen.width*0.4f+Screen.width*0.02f, Screen.height*0.805f, Screen.width*0.05f, Screen.width*0.05f),"", controllerIcons.GetStyle("Back"));
+		GUI.Box(new Rect(Screen.width/2-Screen.width*0.4f+Screen.width*0.02f, Screen.height*0.805f-Screen.height*0.1f, Screen.width*0.05f, Screen.width*0.05f),"", controllerIcons.GetStyle("Y"));
+
+		GUI.Box(new Rect(Screen.width/2-Screen.width*0.4f+Screen.width*0.02f, Screen.height*0.955f-Screen.height*0.1f, Screen.width*0.05f, Screen.width*0.05f),"", controllerIcons.GetStyle("Back"));
 
 
 	}
