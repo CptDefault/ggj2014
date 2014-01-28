@@ -164,13 +164,13 @@ public class Player : MonoBehaviour {
         _scoredMessages.Clear();
         deaths++;
         Player sp=null;
-        string verb="";
+        //string verb = DeathMessenger.Instance.GetRandomVerb();
+        var killMessage = DeathMessenger.Instance.GetRandomMessage();
         if(shooter != null) {
         	//set death message for me, and score for scorer
         	sp = shooter.GetComponent<Player>();
 
-        	verb = DeathMessenger.Instance.GetRandomVerb();
-        	sp.SetScoredMessage(verb, name);
+            sp.SetScoredMessage(string.Format(killMessage.killerMessage, name, sp.name));
             if(GameSystem.Instance.CurrentGameMode != GameSystem.GameMode.Elimination) {
             	var plShoot = shooter.GetComponent<Player>();
 
@@ -195,7 +195,7 @@ public class Player : MonoBehaviour {
             Destroy(rigid, 15);
         }
 
-        GetRespawnCamera().Activate(this, verb, sp.name, new Rect(crosshairRect.center.x-Screen.width/4.4f, crosshairRect.center.y, Screen.width/2.2f, Screen.height/15f));
+        GetRespawnCamera().Activate(this, string.Format(killMessage.victimMessage, name, sp.name), new Rect(crosshairRect.center.x - Screen.width / 4.4f, crosshairRect.center.y, Screen.width / 2.2f, Screen.height / 15f));
     }
 
     public void ScoreUp()
@@ -242,7 +242,11 @@ public class Player : MonoBehaviour {
     private int _killStreak;
     void SetScoredMessage(string verb, string receiever)
     {
-    	_scoredMessages.Enqueue("YOU " + verb+ " " + receiever);
+        SetScoredMessage("YOU " + verb + " " + receiever);
+    }
+    void SetScoredMessage(string message)
+    {
+    	_scoredMessages.Enqueue(message);
 
         _killStreak++;
 

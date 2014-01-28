@@ -15,10 +15,10 @@ public class RespawnCamera : MonoBehaviour {
 	
 	}
 
-    public void Activate(Player player, string verb, string sender, Rect dr)
+    public void Activate(Player player, string message, Rect dr)
     {
         _diedMessageRect = dr;
-          _diedMessage = "YOU GOT " + verb + " BY " + sender;
+          _diedMessage = message;
         StartCoroutine(ActiveCoroutine(player));
     }
 

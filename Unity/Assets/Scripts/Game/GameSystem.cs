@@ -138,9 +138,9 @@ public class GameSystem : MonoBehaviour {
 	    for (int i = 0; i < 4; i++)
 	    {
             var rect = new Rect(i % 2 == 0 ? 0 : 0.5f,
-                i >= 2 ? 0 : (4 > 2 ? 0.5f : 0),
-                i == 2 && 4 == 3 ? 1 :  0.5f,
-                4 > 2 ? 0.5f : 1f);
+                i >= 2 ? 0 : (0.5f),
+                0.5f,
+                0.5f);
 	        _lobby[i].centerOfScreen = rect.center;
 
 	        if(!PlayerPrefs.HasKey("P"+(i+1)+"Inverted"))
@@ -255,11 +255,12 @@ public class GameSystem : MonoBehaviour {
 		            	//Application.LoadLevel(Application.loadedLevel);
 		            	Clicker.Instance.Click();
 
-		            	 if(Input.GetButtonUp("B_"+(i+1)))
-		            	 {
-		            		Application.LoadLevel(Application.loadedLevel);
-		            	}
-		            }
+                    }
+                    if (Input.GetButtonUp("B_" + (i + 1)))
+                    {
+                        Application.LoadLevel(Application.loadedLevel);
+                    }
+
 		        }
 		 		break;
 
